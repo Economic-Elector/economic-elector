@@ -27,6 +27,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <h1>TESTING IN APP</h1>
         <div>
           <Nav />
           <Switch>
