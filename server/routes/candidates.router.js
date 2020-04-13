@@ -5,13 +5,10 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/all', (req, res) => {
-    
-});
-
-router.get('/:election_id', (req, res) => {
+router.get('/', (req, res) => {
 
 });
+
 /**
  * POST route template
  */
