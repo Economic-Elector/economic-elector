@@ -6,18 +6,12 @@
 // except the inputs will be filled with values for the admin to change. Changing the values and then pressing submit will save the changes made for the candidate.
 
 import React, {Component} from 'react';
-import {
-  HashRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 import './AddCandidate.css'
 
 
-class App extends Component {
+class AddCandidate extends Component {
 
     handleCreate = () => {
         console.log("Creating Election");
@@ -81,5 +75,5 @@ class App extends Component {
     )}
   }
   
-  export default connect()(App);
+  export default connect()(AddCandidate);
   
