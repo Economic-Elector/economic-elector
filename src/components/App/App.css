@@ -8,6 +8,10 @@ body {
     margin: 50px;
 }
 
+.newElection{
+    text-align: center;
+}
+
 form {
     background-color: #dbd5d5;
     width: 30%;
