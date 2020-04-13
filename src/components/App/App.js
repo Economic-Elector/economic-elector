@@ -23,6 +23,7 @@ import AdminHome from '../AdminHome/AdminHome';
 import AdminElection from '../AdminElection/AdminElection';
 import AddCandidate from '../AddCandidate/AddCandidate';
 import NewElection from '../NewElection/NewElection';
+import RegisterPage from '../RegisterPage/RegisterPage';
 
 
 
@@ -78,6 +79,11 @@ class App extends Component {
               exact
               path="/logOutButton"
               component={LogOutButton}
+            />
+            <Route
+              exact
+              path="/registerPage"
+              component={RegisterPage}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
