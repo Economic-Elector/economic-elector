@@ -4,7 +4,8 @@
 -- ex. SELECT * FROM "user";
 -- Otherwise you will have errors!
 
-create a database called 'economic_elector'
+--create a database called 'economic_elector'
+
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
@@ -33,7 +34,10 @@ CREATE TABLE "candidates"(
 
 CREATE TABLE "budget_categories"(
 	"id" SERIAL PRIMARY KEY,
-	"name" VARCHAR
+	"name" VARCHAR,
+	"past_allocation" MONEY,
+	"elections_id" integer REFERENCES "elections"
+
 );
 
 
@@ -76,5 +80,3 @@ VALUES(1, 1, 500),
 (2, 5, 88000),
 (2, 6, 99000),
 (2, 7, 11000);
-
-
