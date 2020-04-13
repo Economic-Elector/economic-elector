@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/all', (req, res) => {
     pool.query('SELECT * FROM "elections";').then((result) => {
-        res.send(results.rows);
+        res.send(result.rows);
     }).catch((error) => {
         console.log('Error in /all GET', error)
         res.sendStatus(500);
