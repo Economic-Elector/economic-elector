@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App/App.css';
 import Election from '../Election/Election';
+import { connect } from 'react-redux';
 
 class ElectionList extends Component {
     render() {

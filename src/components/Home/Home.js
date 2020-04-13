@@ -1,8 +1,8 @@
-
-import React from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import DeleteButton from '../DeleteButton/DeleteButton';
+import React, {Component} from 'react';
+import ElectionList from '../ElectionList/ElectionList';
+
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (

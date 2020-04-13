@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App/App.css';
+import { connect } from 'react-redux';
 
 class Election extends Component {
   state = {

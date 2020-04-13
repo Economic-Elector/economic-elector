@@ -16,16 +16,13 @@ import InfoPage from '../InfoPage/InfoPage';
 import Home from '../Home/Home';
 import Budget from '../Budget/Budget';
 import Results from '../Results/Results';
-import InfoPage from '../InfoPage/InfoPage';
 import AdminLogin from '../AdminLogin/AdminLogin';
 import LoginPage from '../LoginPage/LoginPage';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import AdminHome from '../AdminHome/AdminHome';
 import AdminElection from '../AdminElection/AdminElection';
 import AddCandidate from '../AddCandidate/AddCandidate';
-import AdminHome from '../AdminHome/AdminHome';
 import NewElection from '../NewElection/NewElection';
-import RegisterPage from '../RegisterPage/RegisterPage';
 
 
 
@@ -49,11 +46,6 @@ class App extends Component {
             This is a route anyone can see, no login necessary */}
             <Route
               exact
-              path="/about"
-              component={AboutPage}
-            />
-            <Route
-              exact
               path="/home"
               component={Home}
             />
@@ -71,11 +63,6 @@ class App extends Component {
               exact
               path="/adminLogin"
               component={AdminLogin}
-            />
-            <Route
-              exact
-              path="/registerPage"
-              component={RegisterPage}
             />
             <Route
               exact
