@@ -33,7 +33,7 @@ CREATE TABLE "candidates"(
 
 CREATE TABLE "budget_categories"(
 	"id" SERIAL PRIMARY KEY,
-	"name" VARCHAR,
+	"name" VARCHAR
 );
 
 
