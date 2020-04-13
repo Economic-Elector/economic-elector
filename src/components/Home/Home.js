@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
@@ -49,3 +50,4 @@ const mapStateToProps = (state) => ({
 
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(Home);
+
