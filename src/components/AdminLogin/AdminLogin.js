@@ -1,0 +1,2 @@
+// Here the admin can login to the website. The admin’s username and password will be hardcoded into the database. They will enter their username and password. 
+// Once click of the “Login” button, the admin will be taken to the Admin Home (2).

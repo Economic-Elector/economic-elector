@@ -1,0 +1,3 @@
+// The budget page will contain a user input form to enter personal budget preferences. It will also display the current budget alongside the user inputed budget. 
+// The user can input any number they want into a budget input. But, they will have the current budget to reference so that they can come up with realistic numbers. 
+// This data will be displayed in a bar chart showing the budget breakdown. Once the user has clicked the “Find My Candidate” button, they will be brought to the Results View (3).
