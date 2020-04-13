@@ -53,12 +53,6 @@ const Nav = (props) => (
       <Link to="/Budget">
         <h2 className="nav-link">Budget</h2>
       </Link>
-      <Link to="/Election">
-        <h2 className="nav-link">Election</h2>
-      </Link>
-      <Link to="/ElectionList">
-        <h2 className="nav-link">Election List</h2>
-      </Link>
       <Link to="/AddCandidate">
         <h2 className="nav-link">Add Candidate</h2>
       </Link>
