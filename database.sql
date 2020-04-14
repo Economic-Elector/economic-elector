@@ -35,7 +35,7 @@ CREATE TABLE "budget_categories"(
 	"id" SERIAL PRIMARY KEY,
 	"name" VARCHAR,
 	"past_allocation" MONEY,
-	"elections_id" integer REFERENCES "elections"
+	"election_id" integer REFERENCES "elections"
 
 );
 
