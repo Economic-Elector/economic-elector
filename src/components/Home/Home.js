@@ -25,12 +25,16 @@ class Home extends Component {
             }
         ]
     }
+
     componentDidMount = () =>{
         this.getElections();
     }
+
     getElections = () =>{
         console.log('Getting elections')
+        this.props.dispatch({ type: 'GET_ALL_ELECTIONS'})
     }
+
     render() {
         return(
             <div>
@@ -45,8 +49,8 @@ class Home extends Component {
 // Instead of taking everything from state, we just want the user info.
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({user}) => ({ user });
-const mapStateToProps = (state) => ({
-    reduxState: state
+const mapStateToProps = (reduxState) => ({
+    reduxState
 });
 
 // this allows us to use <App /> in index.js
