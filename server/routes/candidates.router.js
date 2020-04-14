@@ -33,17 +33,18 @@ router.post('/', (req, res) => {
     pool.query(query, values)
     .then((result) => {
         res.send(result);
-        res.sendStatus (200);
     }).catch((error) => {
-        console.log("Error in cadidate.router POST function", error);
+        console.log("Error in candidate.router POST function", error);
         res.sendStatus(500);
     })
 });
 
 //post for admin to add budget for candidate
 router.post('/budget', (req, res) => {
+    console.log(req.body);
+    
     const query = "INSERT INTO budget_allocation (candidate_id, budget_category_id, amount) VALUES ($1, $2, $3)";
-    values = [1, 1, 300];
+    values = [req.body.candidate_id, 1, req.body.amount];
     pool.query(query, values)
     .then((result) => {
         res.sendStatus (200);
