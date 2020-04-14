@@ -13,8 +13,8 @@ import './AddCandidate.css'
 
 class AddCandidate extends Component {
 
-    handleCreate = () => {
-        console.log("Creating Election");
+    handleAdd = () => {
+        console.log("Add candidate");
     }
 
     handleCancel = () => {
@@ -24,21 +24,13 @@ class AddCandidate extends Component {
     render() {
       return (
           <div class="def_style">
-            <h2>New Election</h2>
+            <h2>Add Candidate</h2>
 
-            <label>Election Office</label>
-            <input placeholder="Office"/>
+            <label>Name</label>
+            <input placeholder="first and last name"/>
             <br/>
 
-            <label>Location</label>
-            <input placeholder="Location"/>
-            <br/>
-
-            <label>Date</label>
-            <input placeholder="Date"/>
-            <br/>
-
-            <h2>Prior Year's Budget Distribution</h2>
+            <h2>Candidate's Proposed Budget</h2>
 
             <label>Law Enforcement</label>
             <input placeholder="$default"/>
@@ -68,7 +60,7 @@ class AddCandidate extends Component {
             <input placeholder="$default"/>
             <br/>
 
-            <button onClick={this.handleCreate} >Create Election</button>
+            <button onClick={this.handleAdd} >Add Candidate</button>
             <button onClick={this.handleCancel} >Cancel</button>
 
           </div>
