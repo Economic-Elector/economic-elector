@@ -57,6 +57,11 @@ class App extends Component {
             />
             <Route
               exact
+              path="/budget/:id"
+              component={Budget}
+            />
+            <Route
+              exact
               path="/results"
               component={Results}
             />

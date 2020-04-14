@@ -10,6 +10,13 @@ import './Budget.css'
 
 
 class Budget extends Component {
+    state = {}
+
+
+    componentDidMount = () => {
+      console.log('page mount');
+      console.log('props', this.props)
+    }
 
     handleBack = () => {
         console.log("going back....way back");
@@ -31,7 +38,7 @@ class Budget extends Component {
             <div class="center_just">
 
                 <label>Law Enforcement</label>
-                <input placeholder="$default"/>
+                <input placeholder=".."/>
                 <br/>
 
                 <label>Parks/Rec</label>
@@ -65,4 +72,8 @@ class Budget extends Component {
     )}
   }
   
-  export default connect()(Budget);
+  const mapStateToProps = (reduxState) => ({
+    reduxState
+  });
+  
+  export default connect(mapStateToProps)(Budget);

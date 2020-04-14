@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
+import budget from './budgetReducer';
 import candidates from './candidatesReducer';
 import elections from './electionsReducer';
 
@@ -16,7 +17,7 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
   candidates,
-  elections,
+  elections
 });
 
 export default rootReducer;

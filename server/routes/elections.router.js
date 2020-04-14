@@ -39,4 +39,14 @@ router.post('/newElection', (req, res) => {
         });
     });
 
+router.get('/budget/:id', (req, res) => {
+    const queryText = `SELECT * FROM "budget_categories" WHERE "elections_id" = $1;`
+    pool.query(queryText, [req.params.id])
+    .then((result) => res.send(result.rows))
+    .catch((err) => {
+        console.log('Error completing GET query', err);
+        res.sendStatus(500);
+      });
+});
+
 module.exports = router;
