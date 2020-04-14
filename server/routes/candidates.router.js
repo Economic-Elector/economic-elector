@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
     values = [req.params.election_id, req.body.name, req.body.running_for, req.body.email, req.body.incumbent]
     pool.query(query, values)
     .then((result) => {
+        res.send(result);
         res.sendStatus (200);
     }).catch((error) => {
         console.log("Error in cadidate.router POST function", error);
