@@ -27,11 +27,23 @@ router.get('/:election_id', (req, res) => {
  */
 router.post('/newElection', (req, res) => {
     console.log(req.body);
-
+    let id = 0;
     const queryText = 'INSERT INTO "elections" (name, date, location) VALUES($1, $2, $3) RETURNING id'
     pool.query(queryText, [req.body.office, req.body.date, req.body.location])
         .then(result => {
             res.send(result);
+            console.log('this is election result.rows[0].id', result.rows[0].id);
+            id = result.rows[0].id;
+            const queryTextTwo = `INSERT INTO "budget_categories" ("name", "past_allocation", "election_id") VALUES
+                ('Parks and Rec', $1, ${id}),
+                ('Law Enforcement', $2, ${id}),
+                ('Education', $3, ${id}),
+                ('First Responders', $4, ${id}),
+                ('Public Works', $5, ${id}),
+                ('Administration', $6, ${id}),
+                ('Community Development', $7, ${id})`;
+            pool.query(queryTextTwo, [req.body.parksRec, req.body.lawEnforcement, req.body.education, req.body.firstResponders,
+            req.body.publicWorks, req.body.administration, req.body.communityDev])
         })
         .catch((err) => {
             console.log('Error completing INSERT query', err);
