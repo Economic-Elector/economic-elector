@@ -13,7 +13,7 @@ import AdminLogin from '../AdminLogin/AdminLogin';
 import LoginPage from '../LoginPage/LoginPage';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import AdminHome from '../AdminHome/AdminHome';
-import AdminElection from '../AdminElection/AdminElection';
+import AdminElection from '../AdminNewElection/AdminNewElection';
 import AddCandidate from '../AddCandidate/AddCandidate';
 import NewElection from '../NewElection/NewElection';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -49,6 +49,9 @@ const Nav = (props) => (
       </Link>
       <Link to="/AdminElection">
         <h2 className="nav-link">Admin Election</h2>
+      </Link>
+      <Link to="/AdminNewElection">
+        <h2 className="nav-link">Admin New Election</h2>
       </Link>
       <Link to="/Budget">
         <h2 className="nav-link">Budget</h2>

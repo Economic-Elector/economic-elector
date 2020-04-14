@@ -22,7 +22,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import AdminHome from '../AdminHome/AdminHome';
 import AdminElection from '../AdminElection/AdminElection';
 import AddCandidate from '../AddCandidate/AddCandidate';
-import NewElection from '../NewElection/NewElection';
+import AdminNewElection from '../AdminNewElection/AdminNewElection';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 
@@ -111,8 +111,8 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/newElection"
-              component={NewElection}
+              path="/adminNewElection"
+              component={AdminNewElection}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
