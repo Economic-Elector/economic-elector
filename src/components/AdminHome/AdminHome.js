@@ -9,12 +9,36 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
+import axios from 'axios';
+import Election from '../Election/Election'
 
 import {connect} from 'react-redux';
 
 
 class AdminHome extends Component {
+    state = {
+      elections : []
+    }
+    componentDidMount = () =>{
+      this.getElections();
+    }
 
+    //i just have the axios get request in here instead of in a saga
+    //since we don't to save the data to a reducer. i think?
+    getElections = () =>{
+      axios({
+        method: 'GET',
+        url: '/api/elections/all'
+      }).then((response) => {
+        console.log('all elections', response.data)
+        this.setState({
+          elections: response.data
+        })
+      }).catch((error) => {
+        console.log(error);
+        alert(error);
+      })
+    }
     handleAdd = () => {
         console.log("adding")
     }
@@ -24,8 +48,16 @@ class AdminHome extends Component {
           <div class="def_style">
             <h2>Your Elections</h2>
             <button onClick={this.handleAdd}>Add New Election</button>
+            <ul>
+              {this.state.elections.map((election)=>{
+                return(
+                  //need to fix this. it goes to the user's budget page when you click the election
+                  <Election election={election}/>
+                )
+              })}
+            </ul>
 
-            // need to map through the elections
+            
 
           </div>
     )}
