@@ -16,13 +16,15 @@ class AddCandidate extends Component {
     name: '',
     email: '',
     incumbent: false,
-    lawEnforcement: '',
-    parksRec: '',
-    publicWorks: '',
-    firstResponders: '',
-    communityDev: '',
-    administration: '',
-    education: ''
+    budget: {
+      lawEnforcement: '',
+      parksRec: '',
+      publicWorks: '',
+      firstResponders: '',
+      communityDev: '',
+      administration: '',
+      education: ''
+    }
   }
   handleAdd = () => {
     console.log("Add candidate", this.state);
@@ -34,13 +36,26 @@ class AddCandidate extends Component {
     console.log("CANCELING");
   }
 
-  handleChange = (event, typeOf) => {
+  //handles the change of name and email inputs
+  handleChange = (event, typeOf) =>{
     this.setState({
       [typeOf]: event.target.value
+    })
+  }
+
+  //handles change of budget inputs
+  handleBudgetChange = (event, typeOf) => {
+    this.setState({
+      budget:{
+        ...this.state.budget,
+        [typeOf]: event.target.value
+      }
     })
     console.log(this.state);
 
   }
+
+  //handles change of incumbetn checkbox
   handleCheck = () => {
     // console.log(event.target.value);
     this.setState({
@@ -69,31 +84,31 @@ class AddCandidate extends Component {
         <h2>Candidate's Proposed Budget</h2>
 
         <label>Law Enforcement</label>
-        <input placeholder="$default" onChange={(event) => this.handleChange(event, 'lawEnforcement')} />
+        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
         <br />
 
         <label>Parks/Rec</label>
-        <input placeholder="$default" onChange={(event) => this.handleChange(event, 'parksRec')} />
+        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
         <br />
 
         <label>Public Works</label>
-        <input placeholder="$default" onChange={(event) => this.handleChange(event, 'publicWorks')} />
+        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
         <br />
 
         <label>First Responders</label>
-        <input placeholder="$default" onChange={(event) => this.handleChange(event, 'firstResponders')} />
+        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'firstResponders')} />
         <br />
 
         <label>Community Development</label>
-        <input placeholder="$default" onChange={(event) => this.handleChange(event, 'communityDev')} />
+        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
         <br />
 
         <label>Administration</label>
-        <input placeholder="$default" onChange={(event) => this.handleChange(event, 'administration')} />
+        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'administration')} />
         <br />
 
         <label>Education</label>
-        <input placeholder="$default" onChange={(event) => this.handleChange(event, 'education')} />
+        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'education')} />
         <br />
 
         <button onClick={this.handleAdd} >Add Candidate</button>
