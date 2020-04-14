@@ -22,9 +22,6 @@ router.get('/:election_id', (req, res) => {
         .catch(() => res.sendStatus(500));
 });
 
-/**
- * POST route template
- */
 router.post('/newElection', (req, res) => {
     console.log(req.body);
     let id = 0;
@@ -32,7 +29,7 @@ router.post('/newElection', (req, res) => {
     pool.query(queryText, [req.body.office, req.body.date, req.body.location])
         .then(result => {
             res.send(result);
-            console.log('this is election result.rows[0].id', result.rows[0].id);
+            // console.log('this is election result.rows[0].id', result.rows[0].id);
             id = result.rows[0].id;
             const queryTextTwo = `INSERT INTO "budget_categories" ("name", "past_allocation", "election_id") VALUES
                 ('Parks and Rec', $1, ${id}),

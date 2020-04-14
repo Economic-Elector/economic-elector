@@ -47,27 +47,17 @@ class AdminElection extends Component {
             this.props.dispatch({ type: 'INPUT_NEW_ELECTION', payload: this.state.newElection })
             this.setState({
                 newElection: this.state.newElection,
-            });
+            }); 
+                }
+            this.setState({
+                    newElection: {office: '', location: '', date: '', lawEnforcement: '', parksRec: '', publicWorks: '', 
+                                    firstResponders: '', communityDev: '', administration: '', education: '', }});
             this.props.history.push('/adminElection');
-        }
     }
-    cancelElection = () => {
-        console.log('in cancelElection');
-        this.setState({
-            newElection: {
-                office: '',
-                location: '',
-                date: '',
-                lawEnforcement: '',
-                parksRec: '',
-                publicWorks: '',
-                firstResponders: '',
-                communityDev: '',
-                administration: '',
-                education: '',
-            }
-        });
-        // this.props.history.push('/');
+
+    // resetElection needs to clear the inputs on the DOM
+    resetElection = () => {
+   
     }
 
     render = () => {
@@ -128,7 +118,7 @@ class AdminElection extends Component {
                      <br></br><br></br>
                     <button className="center" onClick={this.addNewElection}><b>Create Election</b></button>
                      <br></br><br></br>
-                    <button className="center" onClick={this.cancelElection}><b>Cancel</b></button>
+                    <button className="center" onClick={this.resetElection}><b>Cancel</b></button>
                 
             </div>
         )
