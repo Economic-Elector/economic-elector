@@ -10,9 +10,9 @@ function* newFunction(action) {
 
 }
 
-function* cadidatesSagas() {
+function* candidatesSagas() {
     yield takeLatest('above function goes here', newFunction);
 
 }
 
-export default cadidatesSagas;
+export default candidatesSagas;

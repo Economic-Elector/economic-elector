@@ -2,7 +2,7 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
-import cadidatesSaga from './cadidatesSagas';
+import candidatesSaga from './candidatesSagas';
 import electionsSaga from './electionsSagas';
 
 // rootSaga is the primary saga.
@@ -17,7 +17,7 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
-    cadidatesSaga(),
+    candidatesSaga(),
     electionsSaga(),
   ]);
 }
