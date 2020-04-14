@@ -10,7 +10,7 @@ class Election extends Component {
   render = () => {
     let election = this.props.election;
     return (
-      <div className="Election">
+      <div onClick={() => { this.props.dispatch({ type: 'INPUT_NEW_ELECTION', payload: election }) }} className="Election">
         {election.name}
         <br/>
         {election.date}
