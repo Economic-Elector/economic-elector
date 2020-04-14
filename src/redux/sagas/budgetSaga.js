@@ -15,8 +15,13 @@ function* fetchBudget(action) {
   }
 }
 
+function* currentElection(action) {
+    put({ type:'SET_CURRENT', payload: action.payload });
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_BUDGET', fetchBudget);
+  yield takeLatest('CURRENT_ELECTION', currentElection)
 }
 
 export default userSaga;

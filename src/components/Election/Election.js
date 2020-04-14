@@ -20,6 +20,10 @@ class Election extends Component {
       type: 'FETCH_BUDGET',
       payload: id
     })
+    this.props.dispatch({
+      type: 'CURRENT_ELECTION',
+      payload: this.props.election
+    })
   }
 
   render = () => {

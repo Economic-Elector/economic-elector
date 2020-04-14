@@ -16,6 +16,7 @@ class Budget extends Component {
     componentDidMount = () => {
       console.log('page mount');
       console.log('props', this.props)
+      console.log('current election', this.props.reduxState)
     }
 
     handleBack = () => {
@@ -30,7 +31,7 @@ class Budget extends Component {
             <button class="left_just" onclick={this.handleBack}>Back to Elections</button>
 
             
-            <h1 class="center_just">City of Pawnee / Parks Director</h1>
+            {/* <h1 class="center_just">{this.props.reduxState.budgetReducer.pastBudget[1].name}</h1> */}
             <div>
                 <h3><u>Create Your Budget Preferences</u></h3> <h3 class="right_just"><u>Current Budget</u></h3>   
             </div>
