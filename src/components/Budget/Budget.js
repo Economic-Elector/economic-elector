@@ -34,43 +34,45 @@ class Budget extends Component {
           <div>
             
             <button class="left_just" onclick={this.handleBack}>Back to Elections</button>
-            {this.props.reduxState.budget.pastBudget.map((item) => (<p><BudgetItem item={item} /></p>))}
+            <div className = 'budgetForm'>
+                <h3><u>Create Your Budget Preferences</u></h3>    
+            
 
-            <div>
-                <h3><u>Create Your Budget Preferences</u></h3> <h3 class="right_just"><u>Current Budget</u></h3>   
+              <div class="center_just">
+
+                  <label>Law Enforcement</label>
+                  <input placeholder=".."/>
+                  <br/>
+
+                  <label>Parks/Rec</label>
+                  <input placeholder="$default"/>
+                  <br/>
+
+                  <label>Public Works</label>
+                  <input placeholder="$default"/>
+                  <br/>
+
+                  <label>First Responders</label>
+                  <input placeholder="$default"/>
+                  <br/>
+
+                  <label>Community Development</label>
+                  <input placeholder="$default"/>
+                  <br/>
+
+                  <label>Administration</label>
+                  <input placeholder="$default"/>
+                  <br/>
+
+                  <label>Education</label>
+                  <input placeholder="$default"/>
+                  <br/>
+              </div>
+              <div class="right_just">
+                <h3><u>Current Budget</u></h3>
+                {this.props.reduxState.budget.pastBudget.map((item) => (<p><BudgetItem item={item} /></p>))}
+              </div>
             </div>
-
-            <div class="center_just">
-
-                <label>Law Enforcement</label>
-                <input placeholder=".."/>
-                <br/>
-
-                <label>Parks/Rec</label>
-                <input placeholder="$default"/>
-                <br/>
-
-                <label>Public Works</label>
-                <input placeholder="$default"/>
-                <br/>
-
-                <label>First Responders</label>
-                <input placeholder="$default"/>
-                <br/>
-
-                <label>Community Development</label>
-                <input placeholder="$default"/>
-                <br/>
-
-                <label>Administration</label>
-                <input placeholder="$default"/>
-                <br/>
-
-                <label>Education</label>
-                <input placeholder="$default"/>
-                <br/>
-            </div>
-
             <button class="center_just" >Find My Candidate</button>
 
           </div>
