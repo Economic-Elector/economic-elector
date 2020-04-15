@@ -49,7 +49,7 @@ router.post('/newElection', (req, res) => {
     });
 
 router.get('/budget/:id', (req, res) => {
-    const queryText = `SELECT * FROM "budget_categories" WHERE "elections_id" = $1;`
+    const queryText = `SELECT * FROM "budget_categories" WHERE "election_id" = $1;`
     pool.query(queryText, [req.params.id])
     .then((result) => res.send(result.rows))
     .catch((err) => {
