@@ -16,10 +16,15 @@ router.get('/all', (req, res) => {
 
 
 router.get('/:election_id', (req, res) => {
-    const queryText = 'SELECT * FROM elections JOIN budget_categories ON budget_categories.election_id = elections.id WHERE elections.id = 4;'
-    pool.query(queryText, [req.params.id])
+    console.log('getting election,', req.params.election_id);
+    
+    const queryText = `SELECT * FROM elections WHERE id = ${req.params.election_id};`
+    pool.query(queryText)
         .then((result) => res.send(result.rows))
-        .catch(() => res.sendStatus(500));
+        .catch((err) => {
+            console.log('Error completing GET query', err);
+            res.sendStatus(500);
+        });
 });
 
 router.post('/newElection', (req, res) => {

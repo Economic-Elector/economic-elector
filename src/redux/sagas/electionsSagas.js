@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* electionsSagas() {
     yield takeLatest('INPUT_NEW_ELECTION', postNewElection);
-
+    yield takeLatest('FETCH_ELECTION', fetchElection);
 }
 
 // POST to create new election row in elections table of DB
@@ -23,6 +23,18 @@ function* postNewElection(action) {
     catch (error) {
         console.log(error);
     }
+}
+
+//this function will GET all the info for an election and put it 
+//the elections reducer
+function* fetchElection(action){
+    console.log('payload from AdminElectionListItem', action.payload);
+    let response = yield Axios({
+        method: 'GET',
+        url: `/api/elections/${action.payload.id}`
+    })
+    console.log(response.data);
+    
 }
 
 export default electionsSagas;

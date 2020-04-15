@@ -8,28 +8,24 @@ class AdminElectionListItem extends Component {
 
   }
 
-  handleClick = (a) => {
-    console.log(a.props.election.id)
-    let election_id = a.props.election.id
-    this.a(election_id);
+  handleClick = (election) => {
+    console.log(election.id)
+    this.props.dispatch({
+      type: 'FETCH_BUDGET',
+      payload: election.id
+    })
+    this.props.dispatch({
+      type: 'FETCH_ELECTION',
+      payload: election
+    })
     this.props.history.push(`/adminElection`);
   }
 
-  a = (id) => {
-    this.props.dispatch({
-      type: 'FETCH_BUDGET',
-      payload: id
-    })
-    this.props.dispatch({
-      type: 'SET_NEW_ELECTION_ID',
-      payload: this.props.election
-    })
-  }
-
+  
   render = () => {
     let election = this.props.election;
     return (
-      <div onClick={() => this.handleClick(this)} className="Election">
+      <div onClick={() => this.handleClick(election)} className="Election">
         {election.name}
         <br/>
         {election.date}
