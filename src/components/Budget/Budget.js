@@ -7,6 +7,7 @@ import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
 import './Budget.css'
+import BudgetItem from '../BudgetItem/BudgetItem';
 
 
 class Budget extends Component {
@@ -16,7 +17,11 @@ class Budget extends Component {
     componentDidMount = () => {
       console.log('page mount');
       console.log('props', this.props)
-      console.log('current election', this.props.reduxState)
+      console.log('current election', this.props.reduxState.budget.pastBudget)
+    }
+
+    componentDidUpdate = () => {
+
     }
 
     handleBack = () => {
@@ -29,9 +34,8 @@ class Budget extends Component {
           <div>
             
             <button class="left_just" onclick={this.handleBack}>Back to Elections</button>
+            {this.props.reduxState.budget.pastBudget.map((item) => (<p><BudgetItem item={item} /></p>))}
 
-            
-            {/* <h1 class="center_just">{this.props.reduxState.budgetReducer.pastBudget[1].name}</h1> */}
             <div>
                 <h3><u>Create Your Budget Preferences</u></h3> <h3 class="right_just"><u>Current Budget</u></h3>   
             </div>
