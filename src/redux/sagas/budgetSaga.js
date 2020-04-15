@@ -15,6 +15,15 @@ function* fetchBudget(action) {
   }
 }
 
+function* findResults(action) {
+    try{
+        const response = yield axios.get('/api/candidates/all');
+        yield put({ type: 'SET_RESULTS', payload: response.data });
+    } catch (error) {
+        console.log('error in Getting candidates', error);
+    }
+}
+
 function* currentElection(action) {
     put({ type:'SET_CURRENT', payload: action.payload });
 }
@@ -22,6 +31,7 @@ function* currentElection(action) {
 function* userSaga() {
   yield takeLatest('FETCH_BUDGET', fetchBudget);
   yield takeLatest('CURRENT_ELECTION', currentElection)
+  yield takeLatest('FIND_CANDIDATE', findResults)
 }
 
 export default userSaga;
