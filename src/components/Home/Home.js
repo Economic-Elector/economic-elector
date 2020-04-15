@@ -20,6 +20,8 @@ class Home extends Component {
         this.getElections();
     }
 
+    //get all elections and then put them in the state
+    //once in the state, the elections will be mapped onto the DOM
     getElections = () =>{
         axios({
             method: 'GET',
