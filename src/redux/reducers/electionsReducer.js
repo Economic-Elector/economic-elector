@@ -7,13 +7,20 @@ const electionId = (state = {}, action) => {
     switch (action.type) {
         case 'SET_NEW_ELECTION_ID':
             return action.payload;
+        default:
+            return state;
+    }
+};
+
+const election = (state = {}, action) => {
+    switch (action.type) {
         case 'SET_ELECTION':
             return action.payload;
         default:
             return state;
     }
 };
-
 export default combineReducers({
     electionId,
+    election
 });
