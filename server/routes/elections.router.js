@@ -16,7 +16,7 @@ router.get('/all', (req, res) => {
 
 
 router.get('/:election_id', (req, res) => {
-    const queryText = 'SELECT * FROM "elections" where "election_id" = $1;'
+    const queryText = 'SELECT * FROM elections JOIN budget_categories ON budget_categories.election_id = elections.id WHERE elections.id = 4;'
     pool.query(queryText, [req.params.id])
         .then((result) => res.send(result.rows))
         .catch(() => res.sendStatus(500));
