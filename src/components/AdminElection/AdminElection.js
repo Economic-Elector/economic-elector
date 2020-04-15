@@ -24,8 +24,8 @@ class AdminElection extends Component {
     // to get NameOfElection, Location, Date, from elections DB table then display these 3 items on DOM in h1,h2,h2
     getLastElection = () => {
         this.props.dispatch({
-            type: 'FETCH_LAST_ELECTION',
-            payload: this.props.reduxState
+            type: 'FETCH_ELECTION',
+            payload: this.props.reduxState.elections.electionId
         });
     }
 
@@ -37,22 +37,20 @@ class AdminElection extends Component {
     getCandidateList = () => {
         this.props.dispatch({
             type: 'FETCH_CANDIDATE_LIST',
-            payload: this.props.reduxState
+            payload: this.props.reduxState.elections.electionId
         });
     }
 
     // bring user to add Add Candidate/Edit Candidate page
     // probably need to pass with it the election ID
     addCandidate = () => {
-        console.log('in AdminElection page, addCandidate');
         this.props.history.push('/addCandidate')
     }
 
     // bring user to add Add Candidate/Edit Candidate page
     // probably need to pass with it the election ID
     editCandidate = () => {
-        console.log('in AdminElection page, editCandidate');
-        // this.props.history.push('/')
+        this.props.history.push('/addCandidate')
     }
 
     // removeCandidate deletes candidate from this election
@@ -70,6 +68,12 @@ class AdminElection extends Component {
     render = () => {
         return (
             <div className="newElection">
+                <ul>
+                    <li>
+                        {JSON.stringify(this.props.reduxState)}
+                    </li>
+                </ul>
+    
                 <h1>Name of last election</h1>
                 <h2>City, State</h2>
                 <h2>Date</h2>
