@@ -4,6 +4,7 @@
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
 import ElectionList from '../ElectionList/ElectionList';
+import axios from 'axios';
 
 
 // this could also be written with destructuring parameters as:
@@ -12,18 +13,7 @@ import ElectionList from '../ElectionList/ElectionList';
 
 class Home extends Component {
     state = {
-        elections:[
-            {
-                id: 1,
-                title: 'Maple Plain Governor',
-                date: '09/22/20'
-            },
-            {
-                id: 2,
-                title: 'Eden Prairie City Council',
-                date: '09/23/20'
-            }
-        ]
+        elections:[]
     }
 
     componentDidMount = () =>{
@@ -31,8 +21,18 @@ class Home extends Component {
     }
 
     getElections = () =>{
-        console.log('Getting elections')
-        this.props.dispatch({ type: 'GET_ALL_ELECTIONS'})
+        axios({
+            method: 'GET',
+            url: '/api/elections/all'
+        }).then((response) => {
+            console.log('all elections', response.data)
+            this.setState({
+                elections: response.data
+            })
+        }).catch((error) => {
+            console.log(error);
+            alert(error);
+        })
     }
 
     render() {
