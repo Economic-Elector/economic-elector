@@ -14,11 +14,79 @@ class AdminElection extends Component {
       
     }
 
+    componentDidUpdate() {
+        this.getLastElection();
+        this.getCandidateList();
+        
+    }
+
+    // call to sagas to GET last election using the RETURNING id from the last POST
+    getLastElection = () => {
+        this.props.dispatch({
+            type: 'FETCH_LAST_ELECTION',
+            payload: this.props.reduxState
+        });
+    }
+
+    // call to sagas to GET candidate List for this election ID
+    getCandidateList = () => {
+        this.props.dispatch({
+            type: 'FETCH_CANDIDATE_LIST',
+            payload: this.props.reduxState
+        });
+    }
+
+    // bring user to add Candidate page 
+    addCandidate = () => {
+        console.log('in AdminElection page, addCandidate');
+        // this.props.history.push('/')
+    }
+
+    // bring user to edit page to edit candidte info
+    editCandidate = () => {
+        console.log('in AdminElection page, editCandidate');
+        // this.props.history.push('/')
+    }
+
+    // removeCandidate deletes candidate from this election
+    removeCandidate = () => {
+        console.log('in AdminElection page, removeCandidate');
+        // this.props.history.push("/")
+    }
+
     render = () => {
         return (
-            <div >
-                <h1>Admin Election</h1>
-                
+            <div className="newElection">
+                <h1>Name of last election</h1>
+                <h2>City, State</h2>
+                <h2>Date</h2>
+                <button>Edit</button>
+                <br></br><br></br>
+                <button onClick={this.addCandidate}>Add Candidate</button>
+                <br></br><br></br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Candidate Name</th>
+                            <th>Total Budget</th>
+                            <th>Law Enforcement</th>
+                            <th>Parks and Rec</th>
+                            <th>Public Works</th>
+                            <th>First Responders</th>
+                            <th>Community Dev</th>
+                            <th>Admin</th>
+                            <th>Education</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* {this.props.reduxState.map(election => (<tr><td>{election.name}</td>
+                            <td>{election.totBudg}</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                            <button onClick={this.editCandidate}>Edit</button>
+                            <button onClick={this.removeCandidate}>Remove</button></tr>))} */}
+                    </tbody>
+                </table>
                 
             </div>
         )
@@ -30,4 +98,6 @@ const mapStateToProps = (reduxState) => ({
 });
 
 export default connect(mapStateToProps)(AdminElection);
+
+
 
