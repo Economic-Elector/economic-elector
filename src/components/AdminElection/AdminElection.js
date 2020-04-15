@@ -22,7 +22,7 @@ class AdminElection extends Component {
 
     // call to sagas to GET last election using the RETURNING id from the POST on AdminNewElection page
     // use returning ID from redux: electionId
-    // to get NameOfElection, Location, Date, then display these 3 items on DOM in h1,h2,h2
+    // to get NameOfElection, Location, Date, from elections DB table then display these 3 items on DOM in h1,h2,h2
     getLastElection = () => {
         this.props.dispatch({
             type: 'FETCH_LAST_ELECTION',
@@ -32,7 +32,7 @@ class AdminElection extends Component {
 
     // call to sagas to GET candidate List for election ID from "candidates" table and add to redux
     // create function to provide sum of candidate budget 
-    // call to sagas to GET Candidates budget catagories from the "candidates" table and add to redux
+    // call to sagas to GET Candidates budget catagories from the "budget_allocation"  table and add to redux
     // display all these things on DOM in table
     // important - need to discuss DB budget catagories with team member that created component AddCandidate
     getCandidateList = () => {
@@ -66,7 +66,8 @@ class AdminElection extends Component {
             payload: this.props.reduxState
         });
     }
-
+    //everything in h1,h2,h2 will come from "elections" DB table
+    //everything in the table body will come from "candidates" and "budget_allocation" DB tables
     render = () => {
         return (
             <div className="newElection">
