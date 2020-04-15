@@ -15,19 +15,19 @@ class AdminElection extends Component {
     }
 
     componentDidMount() {
-        this.getLastElection();
+        // this.getLastElection();
         this.getCandidateList();   
     }
 
     // call to sagas to GET last election using the RETURNING id from the POST on AdminNewElection page
     // use returning ID from redux: electionId
     // to get NameOfElection, Location, Date, from elections DB table then display these 3 items on DOM in h1,h2,h2
-    getLastElection = () => {
-        this.props.dispatch({
-            type: 'FETCH_ELECTION',
-            payload: this.props.reduxState.elections.electionId
-        });
-    }
+    // getLastElection = () => {
+    //     this.props.dispatch({
+    //         type: 'FETCH_ELECTION',
+    //         payload: this.props.reduxState.elections.electionId
+    //     });
+    // }
 
     // call to sagas to GET candidate List for election ID from "candidates" table and add to redux
     // create function to provide sum of candidate budget 

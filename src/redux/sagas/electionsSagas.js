@@ -34,7 +34,7 @@ function* fetchElection(action){
         url: `/api/elections/${action.payload.id}`
     })
     console.log(response.data);
-    
+    yield put({type:'SET_ELECTION', payload: response.data})
 }
 
 export default electionsSagas;
