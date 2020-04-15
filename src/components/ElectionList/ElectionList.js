@@ -15,8 +15,8 @@ class ElectionList extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    
+const mapStateToProps = (reduxState) => ({
+    reduxState
 });
 
 export default connect(mapStateToProps)(ElectionList);

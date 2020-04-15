@@ -11,7 +11,17 @@ import BudgetItem from '../BudgetItem/BudgetItem';
 
 
 class Budget extends Component {
-    state = {}
+    state = {
+      budget: {
+        lawEnforcement: '',
+        parksRec: '',
+        publicWorks: '',
+        firstResponders: '',
+        communityDev: '',
+        administration: '',
+        education: ''
+      }
+    }
 
 
     componentDidMount = () => {
@@ -20,12 +30,30 @@ class Budget extends Component {
       console.log('current election', this.props.reduxState.budget.pastBudget)
     }
 
-    componentDidUpdate = () => {
-
+    componentDidUpdate = (prevProps) => {
+      if(this.props.reduxState.budget.results !== prevProps.reduxState.budget.results){
+        this.props.history.push(`/Results`);
+      }
     }
 
     handleBack = () => {
         console.log("going back....way back");
+    }
+
+    handleBudgetChange = (event, typeOf) => {
+      this.setState({
+        budget:{
+          ...this.state.budget,
+          [typeOf]: event.target.value
+        }
+      })
+      console.log(this.state);
+    }
+
+    findCandidate = () => {
+      console.log("Finding Candidate Comparing to...", this.state);
+      let userBudget = this.state;
+      this.props.dispatch({ type: 'FIND_CANDIDATE', payload: userBudget})
     }
 
   // once server and db is setup needs to be dynamic
@@ -35,42 +63,51 @@ class Budget extends Component {
             
             <button class="left_just" onclick={this.handleBack}>Back to Elections</button>
             <div className = 'budgetForm'>
-              <div class="right_just">
-                  <h3><u>Create Your Budget Preferences</u></h3>
-                  <label>Law Enforcement</label>
-                  <input placeholder=".."/>
-                  <br/>
 
-                  <label>Parks/Rec</label>
-                  <input placeholder="$default"/>
-                  <br/>
+                <h3><u>Create Your Budget Preferences</u></h3>    
+            
 
-                  <label>Public Works</label>
-                  <input placeholder="$default"/>
-                  <br/>
+              <div class="center_just">
 
-                  <label>First Responders</label>
-                  <input placeholder="$default"/>
-                  <br/>
+              <label>Law Enforcement</label>
+              <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
+              <br />
 
-                  <label>Community Development</label>
-                  <input placeholder="$default"/>
-                  <br/>
 
-                  <label>Administration</label>
-                  <input placeholder="$default"/>
-                  <br/>
+              <label>Parks/Rec</label>
+              <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
+              <br />
 
-                  <label>Education</label>
-                  <input placeholder="$default"/>
-                  <br/>
-                  <button >Find My Candidate</button>
+              <label>Public Works</label>
+              <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
+              <br />
+
+              <label>First Responders</label>
+              <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'firstResponders')} />
+              <br />
+
+              <label>Community Development</label>
+              <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
+              <br />
+
+              <label>Administration</label>
+              <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'administration')} />
+              <br />
+
+
+              <label>Education</label>
+              <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'education')} />
+              <br />
+
               </div>
               <div class="left_just">
                 <h3><u>Current Budget</u></h3>
                 {this.props.reduxState.budget.pastBudget.map((item) => (<p><BudgetItem item={item} /></p>))}
               </div>
             </div>
+
+            <button class="center_just" onClick={this.findCandidate}>Find My Candidate</button>
+
           </div>
     )}
   }
