@@ -14,13 +14,15 @@ class AdminElection extends Component {
       
     }
 
-    componentDidUpdate() {
+    componentDidMount() {
         this.getLastElection();
         this.getCandidateList();
         
     }
 
-    // call to sagas to GET last election using the RETURNING id from the last POST
+    // call to sagas to GET last election using the RETURNING id from the POST on AdminNewElection page
+    // use returning ID from redux: electionId
+    // to get NameOfElection, Location, Date, from elections DB table then display these 3 items on DOM in h1,h2,h2
     getLastElection = () => {
         this.props.dispatch({
             type: 'FETCH_LAST_ELECTION',
@@ -28,7 +30,11 @@ class AdminElection extends Component {
         });
     }
 
-    // call to sagas to GET candidate List for this election ID
+    // call to sagas to GET candidate List for election ID from "candidates" table and add to redux
+    // create function to provide sum of candidate budget 
+    // call to sagas to GET Candidates budget catagories from the "budget_allocation"  table and add to redux
+    // display all these things on DOM in table
+    // important - need to discuss DB budget catagories with team member that created component AddCandidate
     getCandidateList = () => {
         this.props.dispatch({
             type: 'FETCH_CANDIDATE_LIST',
@@ -36,28 +42,32 @@ class AdminElection extends Component {
         });
     }
 
-    // bring user to add Candidate page 
+    // bring user to add Add Candidate/Edit Candidate page
+    // probably need to pass with it the election ID
     addCandidate = () => {
         console.log('in AdminElection page, addCandidate');
         // this.props.history.push('/')
     }
 
-    // bring user to edit page to edit candidte info
+    // bring user to add Add Candidate/Edit Candidate page
+    // probably need to pass with it the election ID
     editCandidate = () => {
         console.log('in AdminElection page, editCandidate');
         // this.props.history.push('/')
     }
 
     // removeCandidate deletes candidate from this election
+    // call to sagas to make DELETE call to "candidates" table
+    // must send with it the election ID
     removeCandidate = () => {
         console.log('in AdminElection page, removeCandidate');
         this.props.dispatch({
             type: 'DELETE_CANDIDATE_FROM_LIST',
             payload: this.props.reduxState
         });
-        // this.props.history.push("/")
     }
-
+    //everything in h1,h2,h2 will come from "elections" DB table
+    //everything in the table body will come from "candidates" and "budget_allocation" DB tables
     render = () => {
         return (
             <div className="newElection">
