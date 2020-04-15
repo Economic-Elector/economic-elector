@@ -51,6 +51,10 @@ class AdminElection extends Component {
     // removeCandidate deletes candidate from this election
     removeCandidate = () => {
         console.log('in AdminElection page, removeCandidate');
+        this.props.dispatch({
+            type: 'DELETE_CANDIDATE_FROM_LIST',
+            payload: this.props.reduxState
+        });
         // this.props.history.push("/")
     }
 
