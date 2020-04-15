@@ -59,10 +59,11 @@ class Budget extends Component {
   // once server and db is setup needs to be dynamic
     render() {
       return (
-          <div>
+          <div className="center_just">
             
             <button class="left_just" onclick={this.handleBack}>Back to Elections</button>
             <div className = 'budgetForm'>
+
                 <h3><u>Create Your Budget Preferences</u></h3>    
             
 
@@ -71,6 +72,7 @@ class Budget extends Component {
               <label>Law Enforcement</label>
               <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
               <br />
+
 
               <label>Parks/Rec</label>
               <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
@@ -92,15 +94,18 @@ class Budget extends Component {
               <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'administration')} />
               <br />
 
+
               <label>Education</label>
               <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'education')} />
               <br />
+
               </div>
-              <div class="right_just">
+              <div class="left_just">
                 <h3><u>Current Budget</u></h3>
                 {this.props.reduxState.budget.pastBudget.map((item) => (<p><BudgetItem item={item} /></p>))}
               </div>
             </div>
+
             <button class="center_just" onClick={this.findCandidate}>Find My Candidate</button>
 
           </div>

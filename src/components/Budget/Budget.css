@@ -1,8 +1,9 @@
 .center_just{
     text-align: center;
     align-items: center;
-    margin: 0 auto;
+    margin: auto;
     display: block;
+
 }
 
 .left_just{
@@ -13,8 +14,12 @@
 .right_just{
     text-align: right;
     display: block;
+    margin-right: 20px;
 }
 
 .budgetForm{
+    text-align: center;
+    margin: auto;
     display: flex;
+    width: 50%;
 }
