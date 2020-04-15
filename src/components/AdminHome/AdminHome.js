@@ -10,7 +10,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import axios from 'axios';
-import Election from '../Election/Election'
+import AdminElectionListItem from './AdminElectionListItem'
 
 import {connect} from 'react-redux';
 
@@ -39,20 +39,20 @@ class AdminHome extends Component {
         alert(error);
       })
     }
-    handleAdd = () => {
-        console.log("adding")
-    }
+    addNewElection = () => {
+        this.props.history.push('/adminNewElection')
+      }
   
     render() {
       return (
           <div class="def_style">
             <h2>Your Elections</h2>
-            <button onClick={this.handleAdd}>Add New Election</button>
+            <button onClick={this.addNewElection}>Add New Election</button>
             <ul>
               {this.state.elections.map((election)=>{
                 return(
                   //need to fix this. it goes to the user's budget page when you click the election
-                  <Election election={election}/>
+                  <AdminElectionListItem election={election}/>
                 )
               })}
             </ul>
