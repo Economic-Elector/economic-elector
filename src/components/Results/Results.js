@@ -5,14 +5,33 @@
 import React, { Component } from 'react';
 import Candidate from '../Candidate/Candidate';
 import { connect } from 'react-redux';
+import './Results.css'
 
 class Results extends Component {
     render() {
+        console.log('USERBUDGET:', this.props.reduxState.budget.userBudget.budget)
         return (
             <div className="CandidateList">
-                <ul>
-                    {this.props.reduxState.budget.results.map(candidate => (<li key={candidate.id}><Candidate candidate={candidate} /></li>))}
-                </ul>
+                <h2>Your Results</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Candidate Name</th>
+                            <th>Total Difference</th>
+                            <th>Total Budget</th>
+                            <th>Law Enforcement</th>
+                            <th>Parks and Rec</th>
+                            <th>Public Works</th>
+                            <th>First Responders</th>
+                            <th>Community Dev</th>
+                            <th>Admin</th>
+                            <th>Education</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.reduxState.budget.results.map(candidate => (<tr key={candidate.id}><Candidate candidate={candidate} budget={this.props.reduxState.budget.userBudget.budget}/></tr>))}
+                    </tbody>    
+                </table>
             </div>
         );
     }

@@ -19,7 +19,8 @@ class Budget extends Component {
         firstResponders: '',
         communityDev: '',
         administration: '',
-        education: ''
+        education: '',
+        total: ''
       }
     }
 
@@ -31,7 +32,7 @@ class Budget extends Component {
     }
 
     componentDidUpdate = (prevProps) => {
-      if(this.props.reduxState.budget.results !== prevProps.reduxState.budget.results){
+      if((this.props.reduxState.budget.results !== prevProps.reduxState.budget.results)){
         this.props.history.push(`/Results`);
       }
     }
@@ -47,13 +48,22 @@ class Budget extends Component {
           [typeOf]: event.target.value
         }
       })
+      let tempTotal = parseFloat( parseFloat(this.state.budget.lawEnforcement) + parseFloat(this.state.budget.parksRec) + parseFloat(this.state.budget.publicWorks) + parseFloat(this.state.budget.firstResponders) + parseFloat(this.state.budget.communityDev) + parseFloat(this.state.budget.administration) + parseFloat(this.state.budget.education));
+      this.setState({
+        budget:{
+          ...this.state.budget,
+          total: tempTotal
+        }
+      })
       console.log(this.state);
     }
 
     findCandidate = () => {
-      console.log("Finding Candidate Comparing to...", this.state);
+      console.log('STATE IN BUDGET:', this.state.budget)
       let userBudget = this.state;
-      this.props.dispatch({ type: 'FIND_CANDIDATE', payload: userBudget})
+      this.props.dispatch({ type: 'FIND_CANDIDATE', payload: userBudget});
+      this.props.dispatch({ type: 'SET_USER_BUDGET', payload: userBudget});
+      console.log("Finding Candidate Comparing to...", this.props.reduxState);
     }
 
   // once server and db is setup needs to be dynamic
