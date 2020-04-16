@@ -84,24 +84,6 @@ class AdminNewElection extends Component {
         this.props.history.push('/adminElection');
     }
 
-    // resetElection needs to clear the inputs on the DOM
-    resetElection = () => {
-        this.setState ({
-            newElection: {
-                office: '',
-                location: '',
-                date: '',
-                lawEnforcement: '',
-                parksRec: '',
-                publicWorks: '',
-                firstResponders: '',
-                communityDev: '',
-                administration: '',
-                education: ''
-            }
-        });
-    }
-
     render = () => {
         return (
             <form onSubmit={this.addNewElection} className="newElection">
@@ -191,7 +173,7 @@ class AdminNewElection extends Component {
 
                 <br /><br />
 
-                <button className="center" type="reset" onClick={this.resetElection}><b>Cancel</b></button>
+                <button className="center" type="reset"><b>Cancel</b></button>
 
             </form>
         )
