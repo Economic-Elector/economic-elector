@@ -13,7 +13,26 @@ router.get('/all', (req, res) => {
         res.sendStatus(500);
     });
 });
-
+//get all budget allocations from each candidate
+router.get('/allBudgets/:election_id', (req, res) => {
+    const query = `SELECT DISTINCT budget_allocation.candidate_id, budget_allocation.budget_category_id, budget_allocation.amount 
+    FROM budget_allocation 
+    JOIN budget_categories ON budget_categories.election_id = 4
+    ORDER BY budget_allocation.candidate_id ASC;`
+    pool.query(query)
+        .then((result) => {
+            let allocations = result.rows;
+            let newAllocationsArray;
+            for(let i =0; i <allocations.length; i++){
+                console.log(allocations[i]);
+                
+            }
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log("Error in candidate.router GET allBudgets function", error);
+            res.sendStatus(500);
+        });
+});
 //get a specific candidate. so admin can edit it
 router.get('/:candidate_id', (req, res) => {
     const query = `SELECT * FROM candidates WHERE id = ${req.params.candidate_id}`
