@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import React, {Component} from 'react';
 import ElectionList from '../ElectionList/ElectionList';
 import axios from 'axios';
+import './Home.css'
 
 
 // this could also be written with destructuring parameters as:
@@ -37,12 +38,22 @@ class Home extends Component {
         })
     }
 
+    goAdminPage = () => {
+        this.props.history.push('/adminHome')
+    }
+
     render() {
         return(
             <div>
+                <div>
                 <a href="https://myballotmn.sos.state.mn.us/">Which elections can I vote in?</a>
                 <h3>Upcoming Elections</h3>
                 <ElectionList electionList={this.state.elections}/>
+                
+                 </div>
+           
+                <button className="float_right" onClick={this.goAdminPage}>ADMIN</button>
+
             </div>
         )
     }

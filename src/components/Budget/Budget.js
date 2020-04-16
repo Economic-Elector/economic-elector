@@ -24,7 +24,6 @@ class Budget extends Component {
       }
     }
 
-
     componentDidMount = () => {
       console.log('page mount');
       console.log('props', this.props)
@@ -38,8 +37,9 @@ class Budget extends Component {
     }
 
     handleBack = () => {
-        console.log("going back....way back");
-    }
+      console.log("going back....way back");
+      this.props.history.push('/home');
+  }
 
     handleBudgetChange = (event, typeOf) => {
       this.setState({
