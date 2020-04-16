@@ -17,12 +17,11 @@ router.get('/all', (req, res) => {
 router.get('/allBudgets/:election_id', (req, res) => {
     const query = `SELECT DISTINCT budget_allocation.candidate_id, budget_allocation.budget_category_id, budget_allocation.amount 
     FROM budget_allocation 
-    JOIN budget_categories ON budget_categories.election_id = 4
+    JOIN budget_categories ON budget_categories.election_id = ${req.params.election_id}
     ORDER BY budget_allocation.candidate_id ASC;`
     pool.query(query)
         .then((result) => {            
             let allocations = result.rows;
-            console.log(allocations)
             let candidateId = allocations[0].candidate_id
             let candidateAllocations = {};
             let candidateObject = {}
