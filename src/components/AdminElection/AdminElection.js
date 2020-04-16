@@ -35,6 +35,7 @@ class AdminElection extends Component {
     // display all these things on DOM in table
     // important - need to discuss DB budget catagories with team member that created component AddCandidate
     getCandidateList = () => {
+        this.props.reduxState.elections.electionId &&
         this.props.dispatch({
             type: 'FETCH_CANDIDATE_LIST',
             payload: this.props.reduxState.elections.electionId
@@ -70,14 +71,15 @@ class AdminElection extends Component {
             <div className="newElection">
                 <ul>
                     <li>
-                        {JSON.stringify(this.props.reduxState)}
+                        {JSON.stringify(this.props.reduxState.elections.election)}
+                        {JSON.stringify(this.props.reduxState.elections.electionId)}
                     </li>
                 </ul>
     
-                <h1>Name of last election</h1>
-                <h2>City, State</h2>
-                <h2>Date</h2>
-                <button>Edit</button>
+                <h1>{this.props.reduxState.elections.election.name}</h1>
+                <h3>{this.props.reduxState.elections.election.location}</h3>
+                <h3>{this.props.reduxState.elections.election.date}</h3>
+                <button onClick={this.editCandidate}>Edit</button>
                 <br></br><br></br>
                 <button onClick={this.addCandidate}>Add Candidate</button>
                 <br></br><br></br>

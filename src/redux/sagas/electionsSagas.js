@@ -13,11 +13,11 @@ function* postNewElection(action) {
     console.log('in postNewElection Saga', action);
     try {
         let response = yield Axios.post('/api/elections/newElection', action.payload);
-        let electionId = response.data.rows[0].id;
+        let election = response.data.rows[0];
         // console.log('election response', response);
-        console.log('election id', electionId);
+        console.log('election', election);
         yield put({
-            type: 'SET_NEW_ELECTION_ID', payload: electionId
+            type: 'SET_ELECTION', payload: election
         })
     }
     catch (error) {
