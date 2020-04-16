@@ -9,7 +9,7 @@ router.get('/all', (req, res) => {
     .then((result) => {
         res.send(result.rows);
     }).catch((error) => {
-        console.log("Error in cadidate.router GET function", error);
+        console.log("Error in candidate.router GET function", error);
         res.sendStatus(500);
     });
 });
@@ -20,13 +20,36 @@ router.get('/allBudgets/:election_id', (req, res) => {
     JOIN budget_categories ON budget_categories.election_id = 4
     ORDER BY budget_allocation.candidate_id ASC;`
     pool.query(query)
-        .then((result) => {
+        .then((result) => {            
             let allocations = result.rows;
-            let newAllocationsArray;
+            console.log(allocations)
+            let candidateId = allocations[0].candidate_id
+            let candidateAllocations = {};
+            let candidateObject = {}
+            let amount;
             for(let i =0; i <allocations.length; i++){
-                console.log(allocations[i]);
+                if(allocations[i].candidate_id === candidateId){
+                    amount = allocations[i].amount;
+                    candidateObject = {
+                        ...candidateObject,
+                        [allocations[i].budget_category_id]: amount
+                    }
+                    console.log(candidateObject);
+                    candidateAllocations = {
+                        ...candidateAllocations,
+                        [allocations[i].candidate_id]: candidateObject
+                    }
+                    
+                } else{
+                    candidateId = allocations[i].candidate_id;
+                    amount = allocations[i].amount;
+                    candidateObject = {
+                        [allocations[i].budget_category_id]: amount
+                    }
+                } 
                 
             }
+            console.log(candidateAllocations);
             res.send(result.rows);
         }).catch((error) => {
             console.log("Error in candidate.router GET allBudgets function", error);
@@ -40,7 +63,7 @@ router.get('/:candidate_id', (req, res) => {
     .then((result) => {
         res.send(result.rows);
     }).catch((error) => {
-        console.log("Error in cadidate.router GET function", error);
+        console.log("Error in candidate.router GET function", error);
         res.sendStatus(500);
     });
 });
