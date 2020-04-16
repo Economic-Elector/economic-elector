@@ -26,9 +26,14 @@ class Election extends Component {
     })
     
     this.props.dispatch({
-      type: 'CURRENT_ELECTION',
+      type: 'SET_ELECTION',
       payload: this.props.election
     })
+
+    // this.props.dispatch({
+    //   type: 'CURRENT_ELECTION',
+    //   payload: this.props.election
+    // })
 
     this.setState({
       id: id

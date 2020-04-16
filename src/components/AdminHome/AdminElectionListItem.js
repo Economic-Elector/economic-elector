@@ -14,8 +14,10 @@ class AdminElectionListItem extends Component {
       type: 'FETCH_BUDGET',
       payload: election.id
     })
+    //since we already have all the info for the election, we
+    //can send it straight to the election reducer
     this.props.dispatch({
-      type: 'FETCH_ELECTION',
+      type: 'SET_ELECTION',
       payload: election
     })
     this.props.history.push(`/adminElection`);
