@@ -30,7 +30,7 @@ router.get('/:election_id', (req, res) => {
 router.post('/newElection', (req, res) => {
     console.log(req.body);
     let id = 0;
-    const queryText = 'INSERT INTO "elections" (name, date, location) VALUES($1, $2, $3) RETURNING id'
+    const queryText = 'INSERT INTO "elections" (name, date, location) VALUES($1, $2, $3) RETURNING *'
     pool.query(queryText, [req.body.office, req.body.date, req.body.location])
         .then(result => {
             res.send(result);
