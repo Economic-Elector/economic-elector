@@ -3,7 +3,6 @@
     align-items: center;
     margin: auto;
     display: block;
-
 }
 
 .left_just{
@@ -22,4 +21,12 @@
     margin: auto;
     display: flex;
     width: 50%;
+}
+
+.graph_just{
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    display: block;
 }
