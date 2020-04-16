@@ -28,8 +28,18 @@ const results = (state = {}, action) => {
     }
 };
 
+const userBudget = (state = {}, action) => {
+    switch (action.type) {
+        case 'SET_USER_BUDGET':
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
 export default combineReducers({
   pastBudget,
   currentElection,
   results,
+  userBudget,
 });

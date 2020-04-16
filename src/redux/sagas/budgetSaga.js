@@ -24,14 +24,19 @@ function* findResults(action) {
     }
 }
 
+function* userBudget(action) {
+    put({ type:'SET_USER_BUDGET', payload: action.payload})
+}
+
 function* currentElection(action) {
     put({ type:'SET_CURRENT', payload: action.payload });
 }
 
 function* userSaga() {
   yield takeLatest('FETCH_BUDGET', fetchBudget);
-  yield takeLatest('CURRENT_ELECTION', currentElection)
-  yield takeLatest('FIND_CANDIDATE', findResults)
+  yield takeLatest('CURRENT_ELECTION', currentElection);
+  yield takeLatest('FIND_CANDIDATE', findResults);
+  yield takeLatest('SET_USER_BUDGET', userBudget);
 }
 
 export default userSaga;

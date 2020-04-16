@@ -31,7 +31,7 @@ class Budget extends Component {
     }
 
     componentDidUpdate = (prevProps) => {
-      if(this.props.reduxState.budget.results !== prevProps.reduxState.budget.results){
+      if((this.props.reduxState.budget.results !== prevProps.reduxState.budget.results)){
         this.props.history.push(`/Results`);
       }
     }
@@ -51,9 +51,10 @@ class Budget extends Component {
     }
 
     findCandidate = () => {
-      console.log("Finding Candidate Comparing to...", this.state);
       let userBudget = this.state;
       this.props.dispatch({ type: 'FIND_CANDIDATE', payload: userBudget})
+      this.props.dispatch({ type: 'SET_USER_BUDGET', payload: userBudget})
+      console.log("Finding Candidate Comparing to...", this.props.reduxState);
     }
 
   // once server and db is setup needs to be dynamic

@@ -11,9 +11,18 @@ class Candidate extends Component {
     render() {
         console.log('item', this.props.item)
       return (
-          <div>
-            {this.props.candidate.name}{this.props.candidate.id}
-          </div>
+          <>
+            <td>{this.props.candidate.name}</td>
+            <td>Total Difference</td>
+            <td>Total Budget</td>
+            <td>{this.props.budget.lawEnforcement}</td>
+            <td>{this.props.budget.parksRec}</td>
+            <td>{this.props.budget.publicWorks}</td>
+            <td>{this.props.budget.firstResponders}</td>
+            <td>{this.props.budget.communityDev}</td>
+            <td>{this.props.budget.administration}</td>
+            <td>{this.props.budget.education}</td>
+          </>
     )}
   }
   
