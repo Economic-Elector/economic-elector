@@ -20,6 +20,10 @@ class AdminElectionListItem extends Component {
       type: 'SET_ELECTION',
       payload: election
     })
+    this.props.dispatch({
+      type: 'FETCH_CANDIDATES',
+      payload: election.id
+    })
     this.props.history.push(`/adminElection`);
   }
 

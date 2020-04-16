@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 //get all candidates
-router.get('/all', (req, res) => {
+router.get('/all/:election_id', (req, res) => {
     const query = "SELECT * FROM candidates"
     pool.query(query)
     .then((result) => {
@@ -33,7 +33,6 @@ router.get('/allBudgets/:election_id', (req, res) => {
                         ...candidateObject,
                         [allocations[i].budget_category_id]: amount
                     }
-                    console.log(candidateObject);
                     candidateAllocations = {
                         ...candidateAllocations,
                         [allocations[i].candidate_id]: candidateObject
@@ -48,8 +47,7 @@ router.get('/allBudgets/:election_id', (req, res) => {
                 } 
                 
             }
-            console.log(candidateAllocations);
-            res.send(result.rows);
+            res.send(candidateAllocations);
         }).catch((error) => {
             console.log("Error in candidate.router GET allBudgets function", error);
             res.sendStatus(500);

@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* candidatesSagas() {
     yield takeLatest('ADD_CANDIDATE', postCandidate);
-
+    yield takeLatest('FETCH_CANDIDATES', fetchCandidates)
 }
 
 function* postCandidate(action) {
@@ -31,4 +31,28 @@ function* postCandidate(action) {
     }
 }
 
+function* fetchCandidates(action){
+    console.log('election id for candidate fetch:', action.payload)
+    //get all their candidates
+    let response = yield axios.get(`/api/candidates/all/${action.payload}`);
+    let candidates = response.data;
+    console.log(candidates, 'all candidates');
+    //get their budgets
+    response = yield axios.get(`/api/candidates/allBudgets/${action.payload}`);
+    let candidateBudgets = response.data
+    console.log('candidate budgets', candidateBudgets);
+    //loop through candidates and add their budget onto them
+    let candidateId
+    //use a for loop to add the candidates budget to each candidate object in the array
+    //of candidates
+    for(let i = 0; i < candidates.length; i++){
+        candidateId = candidates[i].id
+        //here we are creating a new property for the object called 'budget'
+        //and giving it the budget that has the same candidate id
+        candidates[i].budget = candidateBudgets[candidateId];
+        console.log('candidate budget added', candidates[i]);
+    }
+        
+    
+}
 export default candidatesSagas;
