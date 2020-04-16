@@ -69,12 +69,12 @@ class AdminElection extends Component {
     render = () => {
         return (
             <div className="newElection">
-                <ul>
+                {/* <ul>
                     <li>
                         {JSON.stringify(this.props.reduxState.elections.election)}
                         {JSON.stringify(this.props.reduxState.elections.electionId)}
                     </li>
-                </ul>
+                </ul> */}
     
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>

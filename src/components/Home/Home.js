@@ -45,7 +45,7 @@ class Home extends Component {
     render() {
         return(
             <div>
-                <div>
+                <div className="center_just">
                 <a href="https://myballotmn.sos.state.mn.us/">Which elections can I vote in?</a>
                 <h3>Upcoming Elections</h3>
                 <ElectionList electionList={this.state.elections}/>
