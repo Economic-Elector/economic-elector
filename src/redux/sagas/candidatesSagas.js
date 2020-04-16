@@ -52,7 +52,7 @@ function* fetchCandidates(action){
         candidates[i].budget = candidateBudgets[candidateId];
         console.log('candidate budget added', candidates[i]);
     }
-        
+    yield put({type:'SET_ALL_CANDIDATES', payload: candidates});   
     
 }
 export default candidatesSagas;

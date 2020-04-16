@@ -75,7 +75,8 @@ class AdminElection extends Component {
                         {JSON.stringify(this.props.reduxState.elections.electionId)}
                     </li>
                 </ul> */}
-    
+                <h3>JUST PUTTING THIS HERE TO CELEBRATE</h3>
+                <h3>{JSON.stringify(this.props.reduxState.candidates.allCandidates)}</h3>
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>
                 <h3>{this.props.reduxState.elections.election.date}</h3>
