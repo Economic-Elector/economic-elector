@@ -3,7 +3,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* candidatesSagas() {
     yield takeLatest('ADD_CANDIDATE', postCandidate);
-
+    yield takeLatest('FETCH_CANDIDATES', fetchCandidates)
+    yield takeLatest('FETCH_CANDIDATE_ALLOCATIONS')
 }
 
 function* postCandidate(action) {
@@ -29,6 +30,11 @@ function* postCandidate(action) {
     } catch (error) {
         console.log(error);
     }
+}
+
+function* fetchCandidates(action){
+    console.log(action.payload);
+    
 }
 
 export default candidatesSagas;

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
 
-const newReducer = (state = [], action) => {
+const candidateAllocations = (state = {}, action) => {
     switch (action.type) {
-        case '':
+        case 'SET_ALLOCATIONS':
             return action.payload;
         default:
             return state;
@@ -12,5 +12,5 @@ const newReducer = (state = [], action) => {
 
 
 export default combineReducers({
-    newReducer,
+    candidateAllocations,
 });
