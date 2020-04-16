@@ -99,7 +99,7 @@ class App extends Component {
               path="/adminHome"
               component={AdminHome}
             />
-            <Route
+            <ProtectedRoute
               exact
               path="/addCandidate"
               component={AddCandidate}

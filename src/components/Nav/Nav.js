@@ -59,7 +59,7 @@ const Nav = (props) => (
       </Link>
       
       <Link to="/AddCandidate">
-        <h2 className="nav-link">Add Candidate</h2>
+        <h2 className="nav-link">Admin Add Candidate</h2>
       </Link>
     </div>
   </div>
