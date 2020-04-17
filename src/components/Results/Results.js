@@ -13,12 +13,16 @@ class Results extends Component {
     
 
     render() {
+        console.log('pastBudget:', this.props.reduxState.budget.pastBudget[0].name)
+        console.log('userData:', this.props.reduxState.budget.userBudget)
 
-        
+        const pastData = this.props.reduxState.budget.pastBudget
+        const userData = this.props.reduxState
+        // const pastData = this.props.reduxState.budget.userBudget.budget
         // const for bar graphs using react-vis
-        const userData = [{ x: 'Law Enforc', y: 10000 }, { x: 'Parks/Rec', y: 12000 }, { x: 'PublicWorks', y: 50000 }, { x: 'First Responders', y: 50000 }, { x: 'Community Dev', y: 50000 }, { x: 'Administration', y: 50000 }, { x: 'Education', y: 50000 }];
+        const userData = [{ x: 'Law Enforc', y: 1231}, { x: 'Parks/Rec', y: 12000 }, { x: 'PublicWorks', y: 50000 }, { x: 'First Responders', y: 50000 }, { x: 'Community Dev', y: 50000 }, { x: 'Administration', y: 50000 }, { x: 'Education', y: 50000 }];
 
-        const currentData = [{ x: 'Law Enforc', y: 12000 }, { x: 'Parks/Rec', y: 14000 }, { x: 'PublicWorks', y: 52000 }, { x: 'First Responders', y: 52000 }, { x: 'Community Dev', y: 51000 }, { x: 'Administration', y: 54000 }, { x: 'Education', y: 51000 }];
+        const currentData = [{ x: 'Law Enforc', y: pastData[0].past_allocation }, { x: 'Parks/Rec', y: 14000 }, { x: 'PublicWorks', y: 52000 }, { x: 'First Responders', y: 52000 }, { x: 'Community Dev', y: 51000 }, { x: 'Administration', y: 54000 }, { x: 'Education', y: 51000 }];
 
         const labelData = userData.map((d, idx) => ({
             x: d.x,
@@ -29,7 +33,7 @@ class Results extends Component {
         return (
             <div className="CandidateList">
                 <h2>Your Results</h2>
-                <table>
+                <table class="graph_just">
                     <thead>
                         <tr>
                             <th>Candidate Name</th>
