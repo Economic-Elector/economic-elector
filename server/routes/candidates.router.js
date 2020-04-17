@@ -81,10 +81,10 @@ router.post('/', (req, res) => {
 
 //post for admin to add budget for candidate
 router.post('/budget', (req, res) => {
-    console.log(req.body);
+    console.log('here is req.body', req.body);
     
     const query = "INSERT INTO budget_allocation (candidate_id, budget_category_id, amount) VALUES ($1, $2, $3)";
-    values = [req.body.candidate_id, 1, req.body.amount];
+    values = [req.body.candidate_id, req.body.category_id, req.body.amount];
     pool.query(query, values)
     .then((result) => {
         res.sendStatus (200);
@@ -93,6 +93,47 @@ router.post('/budget', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+// only an admin is able to DELETE users from the DB
+// router.delete('/deleteCandidate/:id',  (req, res) => {
+// console.log('in candidates.router DELETE req.params.id',req.params.id);
+//     const queryText = 'DELETE FROM "candidates" WHERE id=$1';
+//     pool.query(queryText, [req.params.id])
+//         .then(() => { res.sendStatus(200); })
+//         .catch((err) => {
+//             console.log('Error completing delete user query', err);
+//             res.sendStatus(500);
+//         });
+// });
+
+router.delete('/deleteCandidate/:id', (req, res) => {
+    ; (async () => {
+        const client = await pool.connect()
+        try {
+            await client.query('BEGIN')
+            let queryText = 'DELETE FROM "budget_allocation" WHERE candidate_id=$1';
+            await client.query(queryText, [req.params.id]);
+            queryText = 'DELETE FROM "candidates" WHERE id=$1';
+            await client.query(queryText, [req.params.id]);
+            await client.query('COMMIT')
+        } catch (error) {
+            await client.query('ROLLBACK')
+            throw error
+        } finally {
+            res.sendStatus(200)
+            //must release the client at the end
+            //or else the client will remain unavailable if you
+            //want to use it again?
+            client.release()
+        }
+    })().catch(e => console.error(e.stack))
+});
+
+
+
+
+
+
 
 //i was trying to work on a way to combine these two posts. i'll just leave it here, commented out. doesn't quite work yet.
 // router.post('/', (req, res) => { 

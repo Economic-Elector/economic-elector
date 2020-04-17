@@ -8,27 +8,32 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import './AddCandidate.css'
-
+import './AddCandidate.css';
 
 class AddCandidate extends Component {
     state = {
         name: '',
         email: '',
         incumbent: false,
+        categories: this.props.reduxState.budget.pastBudget,
         budget: {
-            lawEnforcement: '',
-            parksRec: '',
-            publicWorks: '',
-            firstResponders: '',
-            communityDev: '',
-            administration: '',
-            education: ''
+
         }
+    }
+    componentDidMount = () => {
+        this.props.dispatch({
+            type: 'FETCH_BUDGET',
+            payload: this.props.reduxState.elections.election.id
+        })
     }
     handleAdd = () => {
         console.log("Add candidate", this.state);
-        let newCandidate = this.state;
+        let newCandidate = {
+                                name: this.state.name,
+                                email: this.state.email,
+                                incumbent: this.state.incumbent,
+                                budget: this.state.budget
+        }
         this.props.dispatch({ type: 'ADD_CANDIDATE', payload: newCandidate })
     }
 
@@ -44,12 +49,16 @@ class AddCandidate extends Component {
     }
 
     //handles change of budget inputs
-    handleBudgetChange = (event, typeOf) => {
+    handleBudgetChange = (event, id, typeOf) => {
         this.setState({
             budget: {
                 ...this.state.budget,
-                [typeOf]: event.target.value
-            }
+                [typeOf]: {
+                            ...this.state.budget[typeOf],
+                            id: id,
+                            amount: event.target.value
+                }
+            }       
         })
         console.log(this.state);
 
@@ -83,33 +92,13 @@ class AddCandidate extends Component {
 
                 <h2>Candidate's Proposed Budget</h2>
 
-                <label>Law Enforcement</label>
-                <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
-                <br />
-
-                <label>Parks/Rec</label>
-                <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
-                <br />
-
-                <label>Public Works</label>
-                <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
-                <br />
-
-                <label>First Responders</label>
-                <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'firstResponders')} />
-                <br />
-
-                <label>Community Development</label>
-                <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
-                <br />
-
-                <label>Administration</label>
-                <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'administration')} />
-                <br />
-
-                <label>Education</label>
-                <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'education')} />
-                <br />
+                {this.state.categories.map((category) => {
+                    return(<div>
+                        <label>{category.name}</label>
+                        <input placeholder={category.name} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
+                        <br />
+                    </div>)
+                })}
 
                 <button onClick={this.handleAdd} >Add Candidate</button>
                 <button onClick={this.handleCancel} >Cancel</button>
@@ -119,4 +108,8 @@ class AddCandidate extends Component {
     }
 }
 
-export default connect()(AddCandidate);
+const mapStateToProps = (reduxState) => ({
+    reduxState
+});
+
+export default connect(mapStateToProps)(AddCandidate);

@@ -13,16 +13,22 @@ class Results extends Component {
     
 
     render() {
-        console.log('pastBudget:', this.props.reduxState.budget.pastBudget[0].name)
-        console.log('userData:', this.props.reduxState.budget.userBudget)
+        console.log('pastBudget:', this.props.reduxState.budget.pastBudget)
+        console.log('userData:', this.props.reduxState.budget.userBudget.budget)
+        
 
         const pastData = this.props.reduxState.budget.pastBudget
-        const userStuff = this.props.reduxState
+        const thing = pastData[0].past_allocation.substr(1)
+        const betterthing = thing.substr(0 , 5)
+        const num = parseInt(betterthing)
+        console.log('thing:', num)
+        const userStuff = this.props.reduxState.budget.userBudget.budget
         // const pastData = this.props.reduxState.budget.userBudget.budget
         // const for bar graphs using react-vis
-        const userData = [{ x: 'Law Enforc', y: 1231}, { x: 'Parks/Rec', y: 12000 }, { x: 'PublicWorks', y: 50000 }, { x: 'First Responders', y: 50000 }, { x: 'Community Dev', y: 50000 }, { x: 'Administration', y: 50000 }, { x: 'Education', y: 50000 }];
+        const userData = [{ x: 'Law Enforc', y: Number(userStuff.lawEnforcement)}, { x: 'Parks/Rec', y: Number(userStuff.parksRec) }, { x: 'PublicWorks', y: Number(userStuff.publicWorks) }, { x: 'First Responders', y: Number(userStuff.firstResponders) }, { x: 'Community Dev', y: Number(userStuff.communityDev) }, { x: 'Administration', y: Number(userStuff.administration) }, { x: 'Education', y: Number(userStuff.education) }];
 
-        const currentData = [{ x: 'Law Enforc', y: pastData[0].past_allocation }, { x: 'Parks/Rec', y: 14000 }, { x: 'PublicWorks', y: 52000 }, { x: 'First Responders', y: 52000 }, { x: 'Community Dev', y: 51000 }, { x: 'Administration', y: 54000 }, { x: 'Education', y: 51000 }];
+        // const currentData = [{ x: 'Law Enforc', y: parseInt(pastData[0].past_allocation) }, { x: 'Parks/Rec', y: parseInt(pastData[1].past_allocation) }, { x: 'PublicWorks', y: parseInt(pastData[2].past_allocation) }, { x: 'First Responders', y: parseInt(pastData[3].past_allocation) }, { x: 'Community Dev', y: parseInt(pastData[4].past_allocation) }, { x: 'Administration', y: parseInt(pastData[5].past_allocation) }, { x: 'Education', y: parseInt(pastData[6].past_allocation) }];
+        const currentData = [{ x: 'Law Enforc', y: 3000 }, { x: 'Parks/Rec', y: 2020 }, { x: 'PublicWorks', y: 6400 }, { x: 'First Responders', y: 1000 }, { x: 'Community Dev', y: 1000 }, { x: 'Administration', y: 1000 }, { x: 'Education', y: 1000 }];
 
         const labelData = userData.map((d, idx) => ({
             x: d.x,
@@ -53,10 +59,10 @@ class Results extends Component {
                     </tbody>
                 </table>
                 <div class="graph_just">
-                    <XYPlot xType="ordinal" width={1000} height={500} xDistance={700}>
+                    <XYPlot  xType="ordinal" width={700} height={700}>
                         <VerticalGridLines />
                         <HorizontalGridLines />
-                        <XAxis />
+                        <XAxis tickLabelAngle={-20} />
                         <YAxis />
                         <BarSeries data={userData} />
                         <BarSeries data={currentData} />

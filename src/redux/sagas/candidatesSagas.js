@@ -4,6 +4,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* candidatesSagas() {
     yield takeLatest('ADD_CANDIDATE', postCandidate);
     yield takeLatest('FETCH_CANDIDATES', fetchCandidates)
+    yield takeLatest('DELETE_CANDIDATE_FROM_LIST', deleteCandidate)
 }
 
 function* postCandidate(action) {
@@ -18,11 +19,16 @@ function* postCandidate(action) {
         //we loop through the object that was sent from the AddCandidate view
         //using a "for... in" loop. this loop will send a post request for each budget allocation 
         // to the server.
+        console.log(action.payload.budget);
+        
         for (const category in action.payload.budget) {
             //inside the for in loop, we build a new object to send to the server
             //it holds the category name, the amount of money the candidate is allocating, and the candidate id
-            categoryInfo = {category: category, amount: action.payload.budget[category], candidate_id: candidate_id}
+            console.log(category);
+            
+            categoryInfo = { category_id: action.payload.budget[category].id, amount: action.payload.budget[category].amount, candidate_id: candidate_id}
             console.log(categoryInfo);
+            
             //then we send it to be posted
             yield axios.post('/api/candidates/budget', categoryInfo);
         }
@@ -55,4 +61,15 @@ function* fetchCandidates(action){
     yield put({type:'SET_ALL_CANDIDATES', payload: candidates});   
     
 }
+
+function* deleteCandidate(action){
+    console.log('in deleteCandidate saga, ID:', action.payload);
+    try {
+        yield axios.delete(`/api/candidates/deleteCandidate/${action.payload.candidate}`);
+        yield put({ type: 'FETCH_CANDIDATES', payload: action.payload.electionId})
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export default candidatesSagas;
