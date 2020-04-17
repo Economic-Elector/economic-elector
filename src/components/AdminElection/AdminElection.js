@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 
 class AdminElection extends Component {
     state = {
+        totalBudget: 0,
       
     }
 
@@ -42,6 +43,10 @@ class AdminElection extends Component {
         });
     }
 
+    sumOfBudget = () => {
+       
+    }
+
     // bring user to add Add Candidate/Edit Candidate page
     // probably need to pass with it the election ID
     addCandidate = () => {
@@ -57,13 +62,19 @@ class AdminElection extends Component {
     // removeCandidate deletes candidate from this election
     // call to sagas to make DELETE call to "candidates" table
     // must send with it the election ID
-    removeCandidate = () => {
+    removeCandidate = (event, id) => {
         console.log('in AdminElection page, removeCandidate');
+        console.log('candidate id', id);
+        let obj = {
+            candidate: id,
+            electionId: this.props.reduxState.elections.election.id
+        }
         this.props.dispatch({
             type: 'DELETE_CANDIDATE_FROM_LIST',
-            payload: this.props.reduxState
+            payload: obj
         });
     }
+
     //everything in h1,h2,h2 will come from "elections" DB table
     //everything in the table body will come from "candidates" and "budget_allocation" DB tables
     render = () => {
@@ -71,12 +82,12 @@ class AdminElection extends Component {
             <div className="newElection">
                 {/* <ul>
                     <li>
-                        {JSON.stringify(this.props.reduxState.elections.election)}
+                        {JSON.stringify(this.props.reduxState.elections.election.id)}
                         {JSON.stringify(this.props.reduxState.elections.electionId)}
                     </li>
-                </ul> */}
+                </ul>
                 <h3>JUST PUTTING THIS HERE TO CELEBRATE</h3>
-                <h3>{JSON.stringify(this.props.reduxState.candidates.allCandidates)}</h3>
+                <h3>{JSON.stringify(this.props.reduxState.candidates.elections)}</h3> */}
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>
                 <h3>{this.props.reduxState.elections.election.date}</h3>
@@ -89,22 +100,24 @@ class AdminElection extends Component {
                         <tr>
                             <th>Candidate Name</th>
                             <th>Total Budget</th>
-                            <th>Law Enforcement</th>
                             <th>Parks and Rec</th>
-                            <th>Public Works</th>
-                            <th>First Responders</th>
-                            <th>Community Dev</th>
-                            <th>Admin</th>
+                            <th>Law Enforcement</th>
                             <th>Education</th>
+                            <th>First Responders</th>
+                            <th>Public Works</th>
+                            <th>Admin</th>
+                            <th>Community Dev</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {this.props.reduxState.map(election => (<tr><td>{election.name}</td>
-                            <td>{election.totBudg}</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        {this.props.reduxState.candidates.allCandidates.map(election => (<tr><td>{election.name}</td>
+                            <td>{election.totalBudget}</td><td>{election.budget[64]}</td><td>{election.budget[65]}</td>
+                            <td>{election.budget[66]}</td><td>{election.budget[67]}</td><td>{election.budget[68]}</td>
+                            <td>{election.budget[69]}</td><td>{election.budget[70]}</td>
                             <button onClick={this.editCandidate}>Edit</button>
-                            <button onClick={this.removeCandidate}>Remove</button></tr>))} */}
+                            <button onClick={(event) => this.removeCandidate(event, election.id)}>Remove</button></tr>))}
                     </tbody>
                 </table>
                 

@@ -4,6 +4,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* candidatesSagas() {
     yield takeLatest('ADD_CANDIDATE', postCandidate);
     yield takeLatest('FETCH_CANDIDATES', fetchCandidates)
+    yield takeLatest('DELETE_CANDIDATE_FROM_LIST', deleteCandidate)
 }
 
 function* postCandidate(action) {
@@ -60,4 +61,15 @@ function* fetchCandidates(action){
     yield put({type:'SET_ALL_CANDIDATES', payload: candidates});   
     
 }
+
+function* deleteCandidate(action){
+    console.log('in deleteCandidate saga, ID:', action.payload);
+    try {
+        yield axios.delete(`/api/candidates/deleteCandidate/${action.payload.candidate}`);
+        yield put({ type: 'FETCH_CANDIDATES', payload: action.payload.electionId})
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export default candidatesSagas;
