@@ -17,7 +17,7 @@ function* fetchBudget(action) {
 
 function* findResults(action) {
     try {
-        const response = yield axios.get('/api/candidates/all');
+        const response = yield axios.get(`/api/candidates/all/${action.payload}`);
         yield put({ type: 'SET_RESULTS', payload: response.data });
     } catch (error) {
         console.log('error in Getting candidates', error);

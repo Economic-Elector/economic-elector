@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Budget.css'
 import BudgetItem from '../BudgetItem/BudgetItem';
-import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, VerticalBarSeries, LabelSeries } from 'react-vis';
+
 
 class Budget extends Component {
 
@@ -61,7 +61,7 @@ class Budget extends Component {
     findCandidate = () => {
         console.log('STATE IN BUDGET:', this.state.budget)
         let userBudget = this.state;
-        this.props.dispatch({ type: 'FIND_CANDIDATE', payload: userBudget });
+        this.props.dispatch({ type: 'FIND_CANDIDATE', payload: this.props.reduxState.elections.election.id });
         this.props.dispatch({ type: 'SET_USER_BUDGET', payload: userBudget });
         console.log("Finding Candidate Comparing to...", this.props.reduxState);
     }
@@ -72,15 +72,6 @@ class Budget extends Component {
     render() {
 
         // const for bar graphs using react-vis
-        const userData = [{ x: 'Law Enforc', y: this.state.budget.lawEnforcement }, { x: 'Parks/Rec', y: 12000 }, { x: 'PublicWorks', y: 50000 }, { x: 'First Responders', y: 50000 }, { x: 'Community Dev', y: 50000 }, { x: 'Administration', y: 50000 }, { x: 'Education', y: 50000 }];
-
-        const currentData = [{ x: 'Law Enforc', y: 12000 }, { x: 'Parks/Rec', y: 14000 }, { x: 'PublicWorks', y: 52000 }, { x: 'First Responders', y: 52000 }, { x: 'Community Dev', y: 51000 }, { x: 'Administration', y: 54000 }, { x: 'Education', y: 51000 }];
-
-        const labelData = userData.map((d, idx) => ({
-            x: d.x,
-            y: Math.max(userData[idx].y, currentData[idx].y)
-        }));
-        const BarSeries = VerticalBarSeries;
 
 
 
@@ -134,17 +125,6 @@ class Budget extends Component {
 
                 <button class="center_just" onClick={this.findCandidate}>Find My Candidate</button>
 
-                <div class="graph_just">
-                    <XYPlot xType="ordinal" width={1000} height={500} xDistance={700}>
-                        <VerticalGridLines />
-                        <HorizontalGridLines />
-                        <XAxis />
-                        <YAxis />
-                        <BarSeries data={userData} />
-                        <BarSeries data={currentData} />
-                        <LabelSeries data={labelData} />
-                    </XYPlot>
-                </div>
 
 
 
