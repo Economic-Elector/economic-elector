@@ -36,6 +36,8 @@ class AddCandidate extends Component {
                                 election_id: this.props.reduxState.elections.election.id
         }
         this.props.dispatch({ type: 'ADD_CANDIDATE', payload: newCandidate })
+       
+        this.props.history.push('/adminElection')
     }
 
     handleCancel = () => {
