@@ -28,7 +28,12 @@ class AddCandidate extends Component {
     }
     handleAdd = () => {
         console.log("Add candidate", this.state);
-        let newCandidate = this.state;
+        let newCandidate = {
+                                name: this.state.name,
+                                email: this.state.email,
+                                incumbent: this.state.incumbent,
+                                budget: this.state.budget
+        }
         this.props.dispatch({ type: 'ADD_CANDIDATE', payload: newCandidate })
     }
 
@@ -90,7 +95,7 @@ class AddCandidate extends Component {
                 {this.state.categories.map((category) => {
                     return(<div>
                         <label>{category.name}</label>
-                        <input placeholder={category.name} onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
+                        <input placeholder={category.name} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
                         <br />
                     </div>)
                 })}
