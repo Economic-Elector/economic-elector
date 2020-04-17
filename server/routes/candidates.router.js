@@ -4,7 +4,7 @@ const router = express.Router();
 
 //get all candidates
 router.get('/all/:election_id', (req, res) => {
-    const query = "SELECT * FROM candidates"
+    const query = `SELECT * FROM candidates WHERE election_id = ${req.params.election_id}`
     pool.query(query)
     .then((result) => {
         res.send(result.rows);
