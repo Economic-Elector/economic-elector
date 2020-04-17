@@ -81,10 +81,10 @@ router.post('/', (req, res) => {
 
 //post for admin to add budget for candidate
 router.post('/budget', (req, res) => {
-    console.log(req.body);
+    console.log('here is req.body', req.body);
     
     const query = "INSERT INTO budget_allocation (candidate_id, budget_category_id, amount) VALUES ($1, $2, $3)";
-    values = [req.body.candidate_id, 1, req.body.amount];
+    values = [req.body.candidate_id, req.body.category_id, req.body.amount];
     pool.query(query, values)
     .then((result) => {
         res.sendStatus (200);
