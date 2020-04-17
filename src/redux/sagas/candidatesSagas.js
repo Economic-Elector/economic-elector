@@ -59,7 +59,12 @@ function* fetchCandidates(action){
 
 function* deleteCandidate(action){
     console.log('in deleteCandidate saga, ID:', action.payload);
-    
+    try {
+        yield axios.delete(`/api/candidates/deleteCandidate/${action.payload}`);
+        yield put({ type: 'FETCH_CANDIDATES' })
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export default candidatesSagas;

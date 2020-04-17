@@ -94,6 +94,47 @@ router.post('/budget', (req, res) => {
     })
 });
 
+// only an admin is able to DELETE users from the DB
+// router.delete('/deleteCandidate/:id',  (req, res) => {
+// console.log('in candidates.router DELETE req.params.id',req.params.id);
+//     const queryText = 'DELETE FROM "candidates" WHERE id=$1';
+//     pool.query(queryText, [req.params.id])
+//         .then(() => { res.sendStatus(200); })
+//         .catch((err) => {
+//             console.log('Error completing delete user query', err);
+//             res.sendStatus(500);
+//         });
+// });
+
+router.delete('/deleteCandidate/:id', (req, res) => {
+    ; (async () => {
+        const client = await pool.connect()
+        try {
+            await client.query('BEGIN')
+            let queryText = 'DELETE FROM "budget_allocation" WHERE candidate_id=$1';
+            await client.query(queryText, [req.params.id]);
+            queryText = 'DELETE FROM "candidates" WHERE id=$1';
+            await client.query(queryText, [req.params.id]);
+            await client.query('COMMIT')
+        } catch (error) {
+            await client.query('ROLLBACK')
+            throw error
+        } finally {
+            res.sendStatus(200)
+            //must release the client at the end
+            //or else the client will remain unavailable if you
+            //want to use it again?
+            client.release()
+        }
+    })().catch(e => console.error(e.stack))
+});
+
+
+
+
+
+
+
 //i was trying to work on a way to combine these two posts. i'll just leave it here, commented out. doesn't quite work yet.
 // router.post('/', (req, res) => { 
 //     ;(async () => {
