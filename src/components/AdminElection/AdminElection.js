@@ -65,10 +65,13 @@ class AdminElection extends Component {
     removeCandidate = (event, id) => {
         console.log('in AdminElection page, removeCandidate');
         console.log('candidate id', id);
-        
+        let obj = {
+            candidate: id,
+            electionId: this.props.reduxState.elections.election.id
+        }
         this.props.dispatch({
             type: 'DELETE_CANDIDATE_FROM_LIST',
-            payload: id,
+            payload: obj
         });
     }
 
@@ -79,12 +82,12 @@ class AdminElection extends Component {
             <div className="newElection">
                 {/* <ul>
                     <li>
-                        {JSON.stringify(this.props.reduxState.elections.election)}
+                        {JSON.stringify(this.props.reduxState.elections.election.id)}
                         {JSON.stringify(this.props.reduxState.elections.electionId)}
                     </li>
-                </ul> */}
+                </ul>
                 <h3>JUST PUTTING THIS HERE TO CELEBRATE</h3>
-                <h3>{JSON.stringify(this.props.reduxState.candidates.allCandidates)}</h3>
+                <h3>{JSON.stringify(this.props.reduxState.candidates.elections)}</h3> */}
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>
                 <h3>{this.props.reduxState.elections.election.date}</h3>

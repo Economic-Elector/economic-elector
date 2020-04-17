@@ -60,8 +60,8 @@ function* fetchCandidates(action){
 function* deleteCandidate(action){
     console.log('in deleteCandidate saga, ID:', action.payload);
     try {
-        yield axios.delete(`/api/candidates/deleteCandidate/${action.payload}`);
-        yield put({ type: 'FETCH_CANDIDATES' })
+        yield axios.delete(`/api/candidates/deleteCandidate/${action.payload.candidate}`);
+        yield put({ type: 'FETCH_CANDIDATES', payload: action.payload.electionId})
     } catch (error) {
         console.log(error);
     }
