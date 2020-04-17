@@ -20,49 +20,49 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import './Nav.css';
 
 const Nav = (props) => (
-  <div className="nav">
-    <Link to="/home">
-      <h2 className="nav-title">Economic Elector</h2>
-    </Link>
-    <div className="nav-right">
-      <Link className="nav-link" to="/home">
-        {/* Show this link if they are logged in or not,
+    <div className="nav">
+        <Link to="/home">
+            <h2 className="nav-title">Economic Elector</h2>
+        </Link>
+        <div className="nav-right">
+            <Link className="nav-link" to="/home">
+                {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {props.user.id ? 'User Home' : 'User Home'}
-      </Link>
-      {/* Show the link to the info page and the logout button if the user is logged in */}
-      {props.user.id && (
-        <>
-          {/* <Link className="nav-link" to="/info">
+                {props.user.id ? 'User Home' : 'User Home'}
+            </Link>
+            {/* Show the link to the info page and the logout button if the user is logged in */}
+            {props.user.id && (
+                <>
+                    {/* <Link className="nav-link" to="/info">
             Info Page
           </Link> */}
-          <LogOutButton className="nav-link"/>
-        </>
-      )}
-      {/* Always show this link since the about page is not protected */}
-      {/* <Link className="nav-link" to="/about">
+                    <LogOutButton className="nav-link" />
+                </>
+            )}
+            {/* Always show this link since the about page is not protected */}
+            {/* <Link className="nav-link" to="/about">
         About
       </Link> */}
-     
-      <Link to="/Budget">
-        <h2 className="nav-link">User Budget</h2>
-      </Link>
-      <Link to="/AdminHome">
-        <h2 className="nav-link">Admin Home</h2>
-      </Link>
-      <Link to="/AdminElection">
-        <h2 className="nav-link">Admin Election</h2>
-      </Link>
-      <Link to="/AdminNewElection">
-        <h2 className="nav-link">Admin New Election</h2>
-      </Link>
-      
-      <Link to="/AddCandidate">
-        <h2 className="nav-link">Admin Add Candidate</h2>
-      </Link>
+
+            <Link to="/Budget">
+                <h2 className="nav-link">User Budget</h2>
+            </Link>
+            <Link to="/AdminHome">
+                <h2 className="nav-link">Admin Home</h2>
+            </Link>
+            <Link to="/AdminElection">
+                <h2 className="nav-link">Admin Election</h2>
+            </Link>
+            <Link to="/AdminNewElection">
+                <h2 className="nav-link">Admin New Election</h2>
+            </Link>
+
+            <Link to="/AddCandidate">
+                <h2 className="nav-link">Admin Add Candidate</h2>
+            </Link>
+        </div>
     </div>
-  </div>
 );
 
 // Instead of taking everything from state, we just want the user
@@ -71,7 +71,7 @@ const Nav = (props) => (
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({ user }) => ({ user });
 const mapStateToProps = state => ({
-  user: state.user,
+    user: state.user,
 });
 
 export default connect(mapStateToProps)(Nav);

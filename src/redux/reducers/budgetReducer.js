@@ -2,12 +2,12 @@ import { combineReducers } from 'redux';
 
 // pastBudget holds the previous budget for the election
 const pastBudget = (state = [], action) => {
-  switch (action.type) {
-    case 'SET_BUDGET':
-      return action.payload;
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case 'SET_BUDGET':
+            return action.payload;
+        default:
+            return state;
+    }
 };
 
 const currentElection = (state = {}, action) => {
@@ -38,8 +38,8 @@ const userBudget = (state = {}, action) => {
 };
 
 export default combineReducers({
-  pastBudget,
-  currentElection,
-  results,
-  userBudget,
+    pastBudget,
+    currentElection,
+    results,
+    userBudget,
 });

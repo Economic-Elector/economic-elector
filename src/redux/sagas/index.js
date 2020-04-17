@@ -14,12 +14,12 @@ import electionsSagas from './electionsSagas';
 // the registration triggers a login
 // and login triggers setting the user
 export default function* rootSaga() {
-  yield all([
-    loginSaga(),
-    registrationSaga(),
-    userSaga(),
-    budgetSaga(),
-    candidatesSagas(),
-    electionsSagas(),
-  ]);
+    yield all([
+        loginSaga(),
+        registrationSaga(),
+        userSaga(),
+        budgetSaga(),
+        candidatesSagas(),
+        electionsSagas(),
+    ]);
 }

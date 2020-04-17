@@ -1,56 +1,56 @@
 import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Election extends Component {
-  state = {}
+    state = {}
 
-  handleClick = (a) => {
-    console.log(a.props.election.id)
-    let election_id = a.props.election.id
-    this.a(election_id);
-  }
-
-  componentDidUpdate = (prevProps) => {
-    if(this.props.reduxState.budget.pastBudget !== prevProps.reduxState.budget.pastBudget){
-      this.props.history.push(`/Budget/${this.state.id}`);
+    handleClick = (a) => {
+        console.log(a.props.election.id)
+        let election_id = a.props.election.id
+        this.a(election_id);
     }
-  }
 
-  a = (id) => {
-    
-    this.props.dispatch({
-      type: 'FETCH_BUDGET',
-      payload: id
-    })
-    
-    this.props.dispatch({
-      type: 'SET_ELECTION',
-      payload: this.props.election
-    })
+    componentDidUpdate = (prevProps) => {
+        if (this.props.reduxState.budget.pastBudget !== prevProps.reduxState.budget.pastBudget) {
+            this.props.history.push(`/Budget/${this.state.id}`);
+        }
+    }
 
-    // this.props.dispatch({
-    //   type: 'CURRENT_ELECTION',
-    //   payload: this.props.election
-    // })
+    a = (id) => {
 
-    this.setState({
-      id: id
-    })
+        this.props.dispatch({
+            type: 'FETCH_BUDGET',
+            payload: id
+        })
 
-  }
+        this.props.dispatch({
+            type: 'SET_ELECTION',
+            payload: this.props.election
+        })
 
-  render = () => {
-    let election = this.props.election;
-    return (
-      <div onClick={() => this.handleClick(this)} className="Election">
-        {election.name}
-        <br/>
-        {election.date}
-      </div>
-    )
-  }
+        // this.props.dispatch({
+        //   type: 'CURRENT_ELECTION',
+        //   payload: this.props.election
+        // })
+
+        this.setState({
+            id: id
+        })
+
+    }
+
+    render = () => {
+        let election = this.props.election;
+        return (
+            <div onClick={() => this.handleClick(this)} className="Election">
+                {election.name}
+                <br />
+                {election.date}
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (reduxState) => ({
