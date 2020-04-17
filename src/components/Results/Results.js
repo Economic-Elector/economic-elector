@@ -17,7 +17,7 @@ class Results extends Component {
         console.log('userData:', this.props.reduxState.budget.userBudget)
 
         const pastData = this.props.reduxState.budget.pastBudget
-        const userData = this.props.reduxState
+        const userStuff = this.props.reduxState
         // const pastData = this.props.reduxState.budget.userBudget.budget
         // const for bar graphs using react-vis
         const userData = [{ x: 'Law Enforc', y: 1231}, { x: 'Parks/Rec', y: 12000 }, { x: 'PublicWorks', y: 50000 }, { x: 'First Responders', y: 50000 }, { x: 'Community Dev', y: 50000 }, { x: 'Administration', y: 50000 }, { x: 'Education', y: 50000 }];
