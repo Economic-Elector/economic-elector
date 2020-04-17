@@ -62,13 +62,16 @@ class AdminElection extends Component {
     // removeCandidate deletes candidate from this election
     // call to sagas to make DELETE call to "candidates" table
     // must send with it the election ID
-    removeCandidate = () => {
+    removeCandidate = (event, id) => {
         console.log('in AdminElection page, removeCandidate');
+        console.log('candidate id', id);
+        
         this.props.dispatch({
             type: 'DELETE_CANDIDATE_FROM_LIST',
-            payload: this.props.reduxState
+            payload: id,
         });
     }
+
     //everything in h1,h2,h2 will come from "elections" DB table
     //everything in the table body will come from "candidates" and "budget_allocation" DB tables
     render = () => {
@@ -79,9 +82,9 @@ class AdminElection extends Component {
                         {JSON.stringify(this.props.reduxState.elections.election)}
                         {JSON.stringify(this.props.reduxState.elections.electionId)}
                     </li>
-                </ul>
+                </ul> */}
                 <h3>JUST PUTTING THIS HERE TO CELEBRATE</h3>
-                <h3>{JSON.stringify(this.props.reduxState.candidates.allCandidates)}</h3> */}
+                <h3>{JSON.stringify(this.props.reduxState.candidates.allCandidates)}</h3>
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>
                 <h3>{this.props.reduxState.elections.election.date}</h3>
@@ -111,7 +114,7 @@ class AdminElection extends Component {
                             <td>{election.budget[66]}</td><td>{election.budget[67]}</td><td>{election.budget[68]}</td>
                             <td>{election.budget[69]}</td><td>{election.budget[70]}</td>
                             <button onClick={this.editCandidate}>Edit</button>
-                            <button onClick={this.removeCandidate}>Remove</button></tr>))}
+                            <button onClick={(event) => this.removeCandidate(event, election.id)}>Remove</button></tr>))}
                     </tbody>
                 </table>
                 
