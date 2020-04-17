@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 class Candidate extends Component {
 
+    
 
 
     render() {

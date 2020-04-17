@@ -21,7 +21,8 @@ class Budget extends Component {
             administration: '',
             education: '',
             total: ''
-        }
+        },
+        
     }
 
     componentDidMount = () => {
@@ -42,16 +43,11 @@ class Budget extends Component {
   }
 
     handleBudgetChange = (event, typeOf) => {
-        this.setState({
-            budget: {
-                ...this.state.budget,
-                [typeOf]: event.target.value
-            }
-        })
         let tempTotal = parseFloat(parseFloat(this.state.budget.lawEnforcement) + parseFloat(this.state.budget.parksRec) + parseFloat(this.state.budget.publicWorks) + parseFloat(this.state.budget.firstResponders) + parseFloat(this.state.budget.communityDev) + parseFloat(this.state.budget.administration) + parseFloat(this.state.budget.education));
         this.setState({
             budget: {
                 ...this.state.budget,
+                [typeOf]: event.target.value,
                 total: tempTotal
             }
         })
