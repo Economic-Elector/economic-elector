@@ -12,9 +12,6 @@ CREATE TABLE "user" (
     "admin" boolean 
 );
 
-INSERT INTO "user"
-VALUES (1, 'duncan', 'duncan', true);
-
 CREATE TABLE "elections"(
 	"id" SERIAL PRIMARY KEY,
 	"name" VARCHAR, 

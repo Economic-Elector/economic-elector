@@ -7,9 +7,9 @@ import './Footer.css'
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 const Footer = () => (
-  <footer>
-    &copy; Economic Elector
-  </footer>
+    <footer>
+        &copy; Economic Elector
+    </footer>
 );
 
 export default Footer;

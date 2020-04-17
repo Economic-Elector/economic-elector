@@ -29,8 +29,8 @@ class Results extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.reduxState.budget.results.map(candidate => (<tr key={candidate.id}><Candidate candidate={candidate} budget={this.props.reduxState.budget.userBudget.budget}/></tr>))}
-                    </tbody>    
+                        {this.props.reduxState.budget.results.map(candidate => (<tr key={candidate.id}><Candidate candidate={candidate} budget={this.props.reduxState.budget.userBudget.budget} /></tr>))}
+                    </tbody>
                 </table>
             </div>
         );
