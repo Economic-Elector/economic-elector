@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Budget.css'
 import BudgetItem from '../BudgetItem/BudgetItem';
-
+import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, VerticalBarSeries, LabelSeries } from 'react-vis';
 
 class Budget extends Component {
 
@@ -22,7 +22,7 @@ class Budget extends Component {
             education: '',
             total: ''
         },
-        
+
     }
 
     componentDidMount = () => {
@@ -38,9 +38,9 @@ class Budget extends Component {
     }
 
     handleBack = () => {
-      console.log("going back....way back");
-      this.props.history.push('/home');
-  }
+        console.log("going back....way back", this.props.history);
+        this.props.history.push('/home');
+    }
 
     handleBudgetChange = (event, typeOf) => {
         let tempTotal = parseFloat(parseFloat(this.state.budget.lawEnforcement) + parseFloat(this.state.budget.parksRec) + parseFloat(this.state.budget.publicWorks) + parseFloat(this.state.budget.firstResponders) + parseFloat(this.state.budget.communityDev) + parseFloat(this.state.budget.administration) + parseFloat(this.state.budget.education));
@@ -67,26 +67,26 @@ class Budget extends Component {
 
     // once server and db is setup needs to be dynamic
     render() {
-
-        // const for bar graphs using react-vis
-
-
-
         return (
             <div className="center_just">
 
-                <button class="left_just" onclick={this.handleBack}>Back to Elections</button>
+                <button class="left_just" onClick={this.handleBack}>Back to Elections</button>
+
+                <h3>{this.props.reduxState.elections.election.name}</h3>
+
+                <h3>{this.props.reduxState.elections.election.location}</h3>
+
+                <h3>{this.props.reduxState.elections.election.date}</h3>
+
                 <div className='budgetForm'>
 
-                    <h3><u>Create Your Budget Preferences</u></h3>
-
+                    <h4>Create Your Budget Preferences</h4> <br />
 
                     <div class="center_just">
 
                         <label>Law Enforcement</label>
                         <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
                         <br />
-
 
                         <label>Parks/Rec</label>
                         <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
@@ -108,22 +108,22 @@ class Budget extends Component {
                         <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'administration')} />
                         <br />
 
-
                         <label>Education</label>
                         <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'education')} />
                         <br />
 
                     </div>
+
                     <div class="left_just">
-                        <h3><u>Current Budget</u></h3>
+                        <h4><center>Current Budget</center></h4>
                         {this.props.reduxState.budget.pastBudget.map((item) => (<p><BudgetItem item={item} /></p>))}
                     </div>
+
                 </div>
 
                 <button class="center_just" onClick={this.findCandidate}>Find My Candidate</button>
 
-
-
+                
 
             </div>
         )

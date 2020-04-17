@@ -23,7 +23,6 @@ class Results extends Component {
         const num = parseInt(betterthing)
         console.log('thing:', num)
         const userStuff = this.props.reduxState.budget.userBudget.budget
-        
         // const pastData = this.props.reduxState.budget.userBudget.budget
         // const for bar graphs using react-vis
         const userData = [{ x: 'Law Enforc', y: Number(userStuff.lawEnforcement)}, { x: 'Parks/Rec', y: Number(userStuff.parksRec) }, { x: 'PublicWorks', y: Number(userStuff.publicWorks) }, { x: 'First Responders', y: Number(userStuff.firstResponders) }, { x: 'Community Dev', y: Number(userStuff.communityDev) }, { x: 'Administration', y: Number(userStuff.administration) }, { x: 'Education', y: Number(userStuff.education) }];
