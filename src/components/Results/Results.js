@@ -9,7 +9,12 @@ import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, VerticalB
 import './Results.css'
 
 class Results extends Component {
+    
+    
+
     render() {
+
+        
         // const for bar graphs using react-vis
         const userData = [{ x: 'Law Enforc', y: 10000 }, { x: 'Parks/Rec', y: 12000 }, { x: 'PublicWorks', y: 50000 }, { x: 'First Responders', y: 50000 }, { x: 'Community Dev', y: 50000 }, { x: 'Administration', y: 50000 }, { x: 'Education', y: 50000 }];
 
@@ -40,7 +45,7 @@ class Results extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.reduxState.budget.results.map(candidate => (<tr key={candidate.id}><Candidate candidate={candidate} budget={this.props.reduxState.budget.userBudget.budget} /></tr>))}
+                        {this.props.reduxState.candidates.allCandidates.map(candidate => (<tr key={candidate.id}><Candidate candidate={candidate} /></tr>))}
                     </tbody>
                 </table>
                 <div class="graph_just">

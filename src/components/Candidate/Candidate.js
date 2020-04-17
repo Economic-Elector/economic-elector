@@ -8,20 +8,22 @@ import { connect } from 'react-redux';
 class Candidate extends Component {
 
 
+
     render() {
+        console.log('candidate:', this.props.candidate.budget[1]);
         console.log('item', this.props.item)
         return (
             <>
                 <td>{this.props.candidate.name}</td>
                 <td>Total Difference</td>
                 <td>Total Budget</td>
-                <td>{this.props.budget.lawEnforcement}</td>
-                <td>{this.props.budget.parksRec}</td>
-                <td>{this.props.budget.publicWorks}</td>
-                <td>{this.props.budget.firstResponders}</td>
-                <td>{this.props.budget.communityDev}</td>
-                <td>{this.props.budget.administration}</td>
-                <td>{this.props.budget.education}</td>
+                <td>{this.props.candidate.budget[1]}</td>
+                <td>{this.props.candidate.budget[2]}</td>
+                <td>{this.props.candidate.budget[3]}</td>
+                <td>{this.props.candidate.budget[4]}</td>
+                <td>{this.props.candidate.budget[5]}</td>
+                <td>{this.props.candidate.budget[6]}</td>
+                <td>{this.props.candidate.budget[7]}</td>
             </>
         )
     }

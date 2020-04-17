@@ -63,6 +63,7 @@ class Budget extends Component {
         let userBudget = this.state;
         this.props.dispatch({ type: 'FIND_CANDIDATE', payload: this.props.reduxState.elections.election.id });
         this.props.dispatch({ type: 'SET_USER_BUDGET', payload: userBudget });
+        this.props.dispatch({ type: 'FETCH_CANDIDATES', payload: this.props.reduxState.elections.election.id });
         console.log("Finding Candidate Comparing to...", this.props.reduxState);
     }
 
