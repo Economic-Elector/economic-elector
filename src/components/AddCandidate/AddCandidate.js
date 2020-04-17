@@ -32,7 +32,8 @@ class AddCandidate extends Component {
                                 name: this.state.name,
                                 email: this.state.email,
                                 incumbent: this.state.incumbent,
-                                budget: this.state.budget
+                                budget: this.state.budget,
+                                election_id: this.props.reduxState.elections.election.id
         }
         this.props.dispatch({ type: 'ADD_CANDIDATE', payload: newCandidate })
     }

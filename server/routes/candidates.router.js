@@ -69,7 +69,7 @@ router.get('/:candidate_id', (req, res) => {
 router.post('/', (req, res) => { 
     //the query returns the candidate_id, so it can be used to make the budget post at /budget
     const query = "INSERT INTO candidates (election_id, name, running_for, email, incumbent) VALUES ($1, $2, $3, $4, $5) RETURNING id"
-    values = [req.params.election_id, req.body.name, req.body.running_for, req.body.email, req.body.incumbent]
+    values = [req.body.election_id, req.body.name, req.body.running_for, req.body.email, req.body.incumbent]
     pool.query(query, values)
     .then((result) => {
         res.send(result);

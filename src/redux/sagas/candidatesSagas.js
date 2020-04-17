@@ -11,7 +11,7 @@ function* postCandidate(action) {
    
     try {
         console.log(action.payload);
-        //the response should be the candidate id
+        //the response should be the candidate id        
         let response = yield axios.post('/api/candidates', action.payload)
         console.log(response.data.rows[0].id, "should be the candidate ID");
         let candidate_id = response.data.rows[0].id
