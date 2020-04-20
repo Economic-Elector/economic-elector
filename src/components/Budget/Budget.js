@@ -51,7 +51,6 @@ class Budget extends Component {
                 total: tempTotal
             }
         })
-        console.log(this.state);
     }
 
     findCandidate = () => {

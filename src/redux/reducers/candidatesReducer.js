@@ -10,7 +10,17 @@ const allCandidates = (state = [], action) => {
     }
 };
 
+const sortCandidates = (state = [], action) => {
+    switch (action.type) {
+        case 'SORT_CANDIDATES':
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
 
 export default combineReducers({
     allCandidates,
+    sortCandidates,
 });

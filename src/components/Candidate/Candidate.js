@@ -7,7 +7,13 @@ import { connect } from 'react-redux';
 
 class Candidate extends Component {
 
-    
+    totalDiff = () => {
+        for( let i=0; i<this.props.diff.length; i++){
+            if(this.props.candidate.difference == this.props.diff[i].diff){
+                return this.props.diff[i].diff
+            }
+        }
+    }
 
 
     render() {
@@ -16,7 +22,7 @@ class Candidate extends Component {
         return (
             <>
                 <td>{this.props.candidate.name}</td>
-                <td>Total Difference</td>
+                <td>{this.totalDiff()}</td>
                 <td>Total Budget</td>
                 <td>{this.props.candidate.budget[1]}</td>
                 <td>{this.props.candidate.budget[2]}</td>

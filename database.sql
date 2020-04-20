@@ -59,7 +59,7 @@ VALUES ('Parks and Rec', 2020, 1),
 ('First Responders', 1000, 1),
 ('Public Works', 6400, 1),
 ('Administration', 2444000, 1),
-('Community Development', 1000000000000, 1);
+('Community Development', 1000000, 1);
 
 INSERT INTO "budget_allocation"("candidate_id", "budget_category_id", "amount")
 VALUES(1, 1, 500),
