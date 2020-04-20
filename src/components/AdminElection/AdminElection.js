@@ -16,8 +16,8 @@ class AdminElection extends Component {
     }
 
     componentDidMount() {
-        // this.getLastElection();
-        this.getCandidateList();   
+        //this.getElection();
+        // this.getCandidateList();   
     }
 
     // call to sagas to GET last election using the RETURNING id from the POST on AdminNewElection page
@@ -38,11 +38,16 @@ class AdminElection extends Component {
     getCandidateList = () => {
         this.props.reduxState.elections.electionId &&
         this.props.dispatch({
-            type: 'FETCH_CANDIDATE_LIST',
+            type: 'FETCH_CANDIDATES',
             payload: this.props.reduxState.elections.electionId
         });
     }
-
+    getElection = () =>{
+        this.props.dispatch({
+            type: 'FETCH_BUDGET',
+            payload: this.props.reduxState.elections.electionId
+        });
+    }
     sumOfBudget = () => {
        
     }
@@ -111,14 +116,14 @@ class AdminElection extends Component {
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    {/* <tbody>
                         {this.props.reduxState.candidates.allCandidates.map(election => (<tr><td>{election.name}</td>
                             <td>{election.totalBudget}</td><td>{election.budget[64]}</td><td>{election.budget[65]}</td>
                             <td>{election.budget[66]}</td><td>{election.budget[67]}</td><td>{election.budget[68]}</td>
                             <td>{election.budget[69]}</td><td>{election.budget[70]}</td>
                             <button onClick={this.editCandidate}>Edit</button>
                             <button onClick={(event) => this.removeCandidate(event, election.id)}>Remove</button></tr>))}
-                    </tbody>
+                    </tbody> */}
                 </table>
             </div>
         )
