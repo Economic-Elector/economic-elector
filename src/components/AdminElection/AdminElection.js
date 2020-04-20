@@ -111,14 +111,14 @@ class AdminElection extends Component {
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    {/* <tbody>
                         {this.props.reduxState.candidates.allCandidates.map(election => (<tr><td>{election.name}</td>
-                            <td>{election.totalBudget}</td><td>{election.budget[64]}</td><td>{election.budget[65]}</td>
-                            <td>{election.budget[66]}</td><td>{election.budget[67]}</td><td>{election.budget[68]}</td>
-                            <td>{election.budget[69]}</td><td>{election.budget[70]}</td>
+                            <td>{election.totalBudget}</td><td>{election.budget[113]}</td><td>{election.budget[114]}</td>
+                            <td>{election.budget[115]}</td><td>{election.budget[116]}</td><td>{election.budget[117]}</td>
+                            <td>{election.budget[118]}</td><td>{election.budget[119]}</td>
                             <button onClick={this.editCandidate}>Edit</button>
                             <button onClick={(event) => this.removeCandidate(event, election.id)}>Remove</button></tr>))}
-                    </tbody>
+                    </tbody> */}
                 </table>
                 
             </div>
