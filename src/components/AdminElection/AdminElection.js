@@ -17,7 +17,7 @@ class AdminElection extends Component {
 
     componentDidMount() {
         // this.getLastElection();
-        this.getCandidateList();   
+        // this.getCandidateList();   
     }
 
     // call to sagas to GET last election using the RETURNING id from the POST on AdminNewElection page
@@ -38,7 +38,7 @@ class AdminElection extends Component {
     getCandidateList = () => {
         this.props.reduxState.elections.electionId &&
         this.props.dispatch({
-            type: 'FETCH_CANDIDATE_LIST',
+            type: 'FETCH_CANDIDATES',
             payload: this.props.reduxState.elections.electionId
         });
     }
@@ -78,6 +78,7 @@ class AdminElection extends Component {
     //everything in h1,h2,h2 will come from "elections" DB table
     //everything in the table body will come from "candidates" and "budget_allocation" DB tables
     render = () => {
+        let categories = this.props.reduxState.budget.pastBudget;
         return (
             <div className="newElection">
                 {/* <ul>
@@ -98,7 +99,15 @@ class AdminElection extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Candidate Name</th>
+                            <th>Name</th>
+                            {categories &&
+                                categories.map((category) => {
+                                    return (
+                                        <th>{category.name}</th>
+                                    )
+                                })
+                            }
+                            {/* <th>Candidate Name</th>
                             <th>Total Budget</th>
                             <th>Parks and Rec</th>
                             <th>Law Enforcement</th>
@@ -108,16 +117,27 @@ class AdminElection extends Component {
                             <th>Admin</th>
                             <th>Community Dev</th>
                             <th></th>
-                            <th></th>
+                            <th></th> */}
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.reduxState.candidates.allCandidates.map(election => (<tr><td>{election.name}</td>
+                        {this.props.reduxState.candidates.allCandidates.map(candidate => (
+                            <tr>
+                                <td>{candidate.name}</td>
+                                {categories.map((category) => {
+                                    return (
+                                        <td>{candidate.budget[category.id]}</td>
+                                    )
+                                })}
+                                <button onClick={this.editCandidate}>Edit</button>
+                                <button onClick={(event) => this.removeCandidate(event, candidate.id)}>Remove</button>
+                            </tr>))}
+                        {/* {this.props.reduxState.candidates.allCandidates.map(election => (<tr><td>{election.name}</td>
                             <td>{election.totalBudget}</td><td>{election.budget[64]}</td><td>{election.budget[65]}</td>
                             <td>{election.budget[66]}</td><td>{election.budget[67]}</td><td>{election.budget[68]}</td>
                             <td>{election.budget[69]}</td><td>{election.budget[70]}</td>
                             <button onClick={this.editCandidate}>Edit</button>
-                            <button onClick={(event) => this.removeCandidate(event, election.id)}>Remove</button></tr>))}
+                            <button onClick={(event) => this.removeCandidate(event, election.id)}>Remove</button></tr>))} */}
                     </tbody>
                 </table>
                 
