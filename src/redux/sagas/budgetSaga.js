@@ -1,12 +1,11 @@
 import axios from 'axios';
-import { put, takeLatest, takeEvery} from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_USER" actions
 function* fetchBudget(action) {
-    console.log(action.payload) 
-    try {       
+    try {
         const response = yield axios.get(`/api/elections/budget/${action.payload}`);
-        console.log('past budget coming from the server:', response.data)
+
         // now that the session has given us a user object
         // with an id and username set the client-side user object to let
         // the client-side code know the user is logged in
@@ -26,18 +25,18 @@ function* findResults(action) {
 }
 
 function* userBudget(action) {
-    yield put({ type: 'SET_USER_BUDGET', payload: action.payload })
+    put({ type: 'SET_USER_BUDGET', payload: action.payload })
 }
 
 function* currentElection(action) {
-    yield put({ type: 'SET_CURRENT', payload: action.payload });
+    put({ type: 'SET_CURRENT', payload: action.payload });
 }
 
 function* userSaga() {
-    yield takeEvery('FETCH_BUDGET', fetchBudget);
-    yield takeEvery('CURRENT_ELECTION', currentElection);
-    yield takeEvery('FIND_CANDIDATE', findResults);
-    yield takeEvery('SET_USER_BUDGET', userBudget);
+    yield takeLatest('FETCH_BUDGET', fetchBudget);
+    yield takeLatest('CURRENT_ELECTION', currentElection);
+    yield takeLatest('FIND_CANDIDATE', findResults);
+    yield takeLatest('SET_USER_BUDGET', userBudget);
 }
 
 export default userSaga;

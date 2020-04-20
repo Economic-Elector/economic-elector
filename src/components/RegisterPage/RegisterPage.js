@@ -45,7 +45,7 @@ class RegisterPage extends Component {
                     <div>
                         <label htmlFor="username">
                             Username:
-                            <input
+              <input
                                 type="text"
                                 name="username"
                                 value={this.state.username}
@@ -56,7 +56,7 @@ class RegisterPage extends Component {
                     <div>
                         <label htmlFor="password">
                             Password:
-                            <input
+              <input
                                 type="password"
                                 name="password"
                                 value={this.state.password}
@@ -80,7 +80,7 @@ class RegisterPage extends Component {
                         onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
                     >
                         Login
-                    </button>
+          </button>
                 </center>
             </div>
         );

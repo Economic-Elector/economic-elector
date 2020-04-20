@@ -8,9 +8,7 @@ import './Footer.css'
 
 const Footer = () => (
     <footer>
-        <center>
-            &copy; Economic Elector
-        </center>
+        &copy; Economic Elector
     </footer>
 );
 
