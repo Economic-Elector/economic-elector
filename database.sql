@@ -31,7 +31,7 @@ CREATE TABLE "candidates"(
 CREATE TABLE "budget_categories"(
 	"id" SERIAL PRIMARY KEY,
 	"name" VARCHAR,
-	"past_allocation" MONEY,
+	"past_allocation" INT,
 	"election_id" integer REFERENCES "elections"
 
 );
@@ -41,7 +41,7 @@ CREATE TABLE "budget_allocation"(
 	"id" SERIAL PRIMARY KEY,
 	"candidate_id" integer REFERENCES "candidates",
 	"budget_category_id" integer REFERENCES "budget_categories",
-	"amount" MONEY
+	"amount" INT
 );
 
 -- here are some queries to hardcode an election into the database
