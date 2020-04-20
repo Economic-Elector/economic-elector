@@ -2,9 +2,9 @@ import axios from 'axios';
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 
 function* candidatesSagas() {
-    yield takeEvery('ADD_CANDIDATE', postCandidate);
-    yield takeEvery('FETCH_CANDIDATES', fetchCandidates)
-    yield takeEvery('DELETE_CANDIDATE_FROM_LIST', deleteCandidate)
+    yield takeLatest('ADD_CANDIDATE', postCandidate);
+    yield takeLatest('FETCH_CANDIDATES', fetchCandidates)
+    yield takeLatest('DELETE_CANDIDATE_FROM_LIST', deleteCandidate)
 }
 
 function* postCandidate(action) {
