@@ -39,7 +39,7 @@ class AdminElectionListItem extends Component {
                     <br />
                     {election.date}
                 </div>
-                <button onClick={() => this.props.dispatch({type: "DELETE_ELECTION", payload: election.id})}/>
+                <button onClick={() => this.props.dispatch({type: "DELETE_ELECTION", payload: election.id})}>Delete Election</button>
             </div>
         )
     }
