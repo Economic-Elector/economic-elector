@@ -17,7 +17,7 @@ class AdminElection extends Component {
 
     componentDidMount() {
         // this.getLastElection();
-        this.getCandidateList();   
+        // this.getCandidateList();   
     }
 
     // call to sagas to GET last election using the RETURNING id from the POST on AdminNewElection page
@@ -38,7 +38,7 @@ class AdminElection extends Component {
     getCandidateList = () => {
         this.props.reduxState.elections.electionId &&
         this.props.dispatch({
-            type: 'FETCH_CANDIDATE_LIST',
+            type: 'FETCH_CANDIDATES',
             payload: this.props.reduxState.elections.electionId
         });
     }

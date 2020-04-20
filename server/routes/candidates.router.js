@@ -20,34 +20,39 @@ router.get('/allBudgets/:election_id', (req, res) => {
     JOIN budget_categories ON budget_categories.election_id = ${req.params.election_id}
     ORDER BY budget_allocation.candidate_id ASC;`
     pool.query(query)
-        .then((result) => {            
-            let allocations = result.rows;
-            let candidateId = allocations[0].candidate_id
-            let candidateAllocations = {};
-            let candidateObject = {}
-            let amount;
-            for(let i =0; i <allocations.length; i++){
-                if(allocations[i].candidate_id === candidateId){
-                    amount = allocations[i].amount;
-                    candidateObject = {
-                        ...candidateObject,
-                        [allocations[i].budget_category_id]: amount
-                    }
-                    candidateAllocations = {
-                        ...candidateAllocations,
-                        [allocations[i].candidate_id]: candidateObject
-                    }
+        .then((result) => {
+            if(result.rows.length > 0){
+                          
+                let allocations = result.rows;
+                let candidateId = allocations[0].candidate_id
+                let candidateAllocations = {};
+                let candidateObject = {}
+                let amount;
+                for(let i =0; i <allocations.length; i++){
+                    if(allocations[i].candidate_id === candidateId){
+                        amount = allocations[i].amount;
+                        candidateObject = {
+                            ...candidateObject,
+                            [allocations[i].budget_category_id]: amount
+                        }
+                        candidateAllocations = {
+                            ...candidateAllocations,
+                            [allocations[i].candidate_id]: candidateObject
+                        }
+                        
+                    } else{
+                        candidateId = allocations[i].candidate_id;
+                        amount = allocations[i].amount;
+                        candidateObject = {
+                            [allocations[i].budget_category_id]: amount
+                        }
+                    } 
                     
-                } else{
-                    candidateId = allocations[i].candidate_id;
-                    amount = allocations[i].amount;
-                    candidateObject = {
-                        [allocations[i].budget_category_id]: amount
-                    }
-                } 
-                
+                }
+                res.send(candidateAllocations);
+            } else{
+                res.sendStatus(200);
             }
-            res.send(candidateAllocations);
         }).catch((error) => {
             console.log("Error in candidate.router GET allBudgets function", error);
             res.sendStatus(500);
