@@ -10,13 +10,10 @@ import './Results.css'
 
 class Results extends Component {
     
-    
-
     render() {
         console.log('pastBudget:', this.props.reduxState.budget.pastBudget)
         console.log('userData:', this.props.reduxState.budget.userBudget.budget)
         
-
         const pastData = this.props.reduxState.budget.pastBudget
         const thing = pastData[0].past_allocation.substr(1)
         const betterthing = thing.substr(0 , 5)
@@ -59,7 +56,7 @@ class Results extends Component {
                     </tbody>
                 </table>
                 <div class="graph_just">
-                    <XYPlot  xType="ordinal" width={700} height={700}>
+                    <XYPlot xType="ordinal" width={700} height={700}>
                         <VerticalGridLines />
                         <HorizontalGridLines />
                         <XAxis tickLabelAngle={-20} />

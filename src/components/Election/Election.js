@@ -48,6 +48,7 @@ class Election extends Component {
                 {election.name}
                 <br />
                 {election.date}
+                <hr />
             </div>
         )
     }
