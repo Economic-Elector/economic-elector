@@ -133,7 +133,9 @@ class AdminElection extends Component {
                                 return(
                                     <td>{candidate.budget[category.id]}</td>
                                 )
-                            })}    
+                            })}
+                            <button onClick={this.editCandidate}>Edit</button>
+                            <button onClick={(event) => this.removeCandidate(event, candidate.id)}>Remove</button>     
                         </tr>))}
                     </tbody>
                 </table>
