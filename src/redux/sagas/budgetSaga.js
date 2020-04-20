@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_USER" actions
 function* fetchBudget(action) {
-    try {
+    try {        
         const response = yield axios.get(`/api/elections/budget/${action.payload}`);
 
         // now that the session has given us a user object
