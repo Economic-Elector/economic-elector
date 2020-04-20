@@ -63,9 +63,12 @@ class Results extends Component {
         console.log('diffID ARRAY: ',diffID)
         // sorts candidates by difference
         console.log('candidates w/ totalDiff', candidates)
+
+        // ****SORT****
         const sortedCand = candidates.sort(this.compare);
         console.log('sorted', sortedCand);
-
+        
+        // *Dispatch*
         this.props.dispatch({ type: 'SORT_CANDIDATES', payload: sortedCand });
 
         
