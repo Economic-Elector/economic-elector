@@ -104,6 +104,7 @@ class AdminElection extends Component {
                 <table>
                     <thead>
                         <tr>
+                            <th>Name</th>
                             {categories&&
                                 categories.map((category)=>{
                                     return(
@@ -124,33 +125,24 @@ class AdminElection extends Component {
                             <th></th> */}
                         </tr>
                     </thead>
-<<<<<<< HEAD
-                    {/* <tbody>
-                        {this.props.reduxState.candidates.allCandidates.map(election => (<tr><td>{election.name}</td>
-                            <td>{election.totalBudget}</td><td>{election.budget[113]}</td><td>{election.budget[114]}</td>
-                            <td>{election.budget[115]}</td><td>{election.budget[116]}</td><td>{election.budget[117]}</td>
-                            <td>{election.budget[118]}</td><td>{election.budget[119]}</td>
-                            <button onClick={this.editCandidate}>Edit</button>
-                            <button onClick={(event) => this.removeCandidate(event, election.id)}>Remove</button></tr>))}
-                    </tbody> */}
-=======
                     <tbody>
-                        {/* {this.props.reduxState.candidates.allCandidates.map(election => (<tr><td>{election.name}</td>
+                        {this.props.reduxState.candidates.allCandidates.map(candidate => (
+                        <tr>
+                            <td>{candidate.name}</td>
                             {categories.map((category)=>{
                                 return(
-                                    <td>{category.name}</td>
+                                    <td>{candidate.budget[category.id]}</td>
                                 )
                             })}
 
                             
-                            <td>{election.totalBudget}</td><td>{election.budget[64]}</td><td>{election.budget[65]}</td>
+                            {/* <td>{election.totalBudget}</td><td>{election.budget[64]}</td><td>{election.budget[65]}</td>
                             <td>{election.budget[66]}</td><td>{election.budget[67]}</td><td>{election.budget[68]}</td>
                             <td>{election.budget[69]}</td><td>{election.budget[70]}</td>
                             <button onClick={this.editCandidate}>Edit</button>
-                            <button onClick={(event) => this.removeCandidate(event, election.id)}>Remove</button>
-                            </tr>))} */}
+                            <button onClick={(event) => this.removeCandidate(event, election.id)}>Remove</button> */}
+                            </tr>))}
                     </tbody>
->>>>>>> 95474719d8626c8dd42e0e285c5121de810fe6f9
                 </table>
             </div>
         )
