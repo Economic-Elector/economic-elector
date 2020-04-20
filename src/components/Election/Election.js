@@ -45,6 +45,8 @@ class Election extends Component {
         let election = this.props.election;
         return (
             <div onClick={() => this.handleClick(this)} className="Election">
+                {election.location}
+                <br />
                 {election.name}
                 <br />
                 {election.date}

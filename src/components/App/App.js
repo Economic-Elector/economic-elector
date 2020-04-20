@@ -11,8 +11,6 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-
 import Home from '../Home/Home';
 import Budget from '../Budget/Budget';
 import Results from '../Results/Results';
@@ -24,8 +22,6 @@ import AdminElection from '../AdminElection/AdminElection';
 import AddCandidate from '../AddCandidate/AddCandidate';
 import AdminNewElection from '../AdminNewElection/AdminNewElection';
 import RegisterPage from '../RegisterPage/RegisterPage';
-
-
 
 import './App.css';
 
