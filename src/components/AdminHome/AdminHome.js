@@ -3,12 +3,6 @@
 // Lastly, the admin can logout of their account by clicking the logout button in the header.
 
 import React, { Component } from 'react';
-import {
-    HashRouter as Router,
-    Route,
-    Redirect,
-    Switch,
-} from 'react-router-dom';
 import axios from 'axios';
 import AdminElectionListItem from './AdminElectionListItem'
 

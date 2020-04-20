@@ -16,12 +16,11 @@ class Results extends Component {
         return dif
     }
     
-    
+
     render() {
         console.log('pastBudget:', this.props.reduxState.budget.pastBudget)
         console.log('userData:', this.props.reduxState.budget.userBudget.budget)
         
-
         const pastData = this.props.reduxState.budget.pastBudget
         const userStuff = this.props.reduxState.budget.userBudget.budget
 

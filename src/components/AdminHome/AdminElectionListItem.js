@@ -20,10 +20,10 @@ class AdminElectionListItem extends Component {
             type: 'SET_ELECTION',
             payload: election
         })
-        this.props.dispatch({
-            type: 'FETCH_CANDIDATES',
-            payload: election.id
-        })
+        // this.props.dispatch({
+        //     type: 'FETCH_CANDIDATES',
+        //     payload: election.id
+        // })
         this.props.history.push(`/adminElection`);
     }
 
@@ -31,10 +31,15 @@ class AdminElectionListItem extends Component {
     render = () => {
         let election = this.props.election;
         return (
-            <div onClick={() => this.handleClick(election)} className="Election">
-                {election.name}
-                <br />
-                {election.date}
+            <div>
+                <div onClick={() => this.handleClick(election)} className="Election">
+                    {election.location}
+                    <br />
+                    {election.name}
+                    <br />
+                    {election.date}
+                </div>
+                <button onClick={() => this.props.dispatch({type: "DELETE_ELECTION", payload: election.id})}>Delete Election</button>
             </div>
         )
     }
