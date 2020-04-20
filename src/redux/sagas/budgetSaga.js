@@ -25,11 +25,11 @@ function* findResults(action) {
 }
 
 function* userBudget(action) {
-    put({ type: 'SET_USER_BUDGET', payload: action.payload })
+    yield put({ type: 'SET_USER_BUDGET', payload: action.payload })
 }
 
 function* currentElection(action) {
-    put({ type: 'SET_CURRENT', payload: action.payload });
+    yield put({ type: 'SET_CURRENT', payload: action.payload });
 }
 
 function* userSaga() {

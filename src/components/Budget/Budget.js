@@ -7,7 +7,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Budget.css'
 import BudgetItem from '../BudgetItem/BudgetItem';
-import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, VerticalBarSeries, LabelSeries } from 'react-vis';
 
 class Budget extends Component {
 

@@ -56,7 +56,7 @@ class AdminElection extends Component {
     // bring user to add Add Candidate/Edit Candidate page
     // probably need to pass with it the election ID
     editCandidate = () => {
-        this.props.history.push('/addCandidate')
+        this.props.history.push('/editCandidate');
     }
 
     // removeCandidate deletes candidate from this election
@@ -120,7 +120,6 @@ class AdminElection extends Component {
                             <button onClick={(event) => this.removeCandidate(event, election.id)}>Remove</button></tr>))}
                     </tbody>
                 </table>
-                
             </div>
         )
     }
