@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './BudgetItem.css'
 import { connect } from 'react-redux';
 
 // Item that displays things about the clicked on election
@@ -8,10 +8,15 @@ import { connect } from 'react-redux';
 class BudgetItem extends Component {
 
     render() {
-        console.log('item', this.props.item)
+         // formatter
+         const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2
+        })
         return (
-            <div>
-                {this.props.item.name}{this.props.item.past_allocation}
+            <div class="over">
+                {this.props.item.name}: {formatter.format(this.props.item.past_allocation)}
             </div>
         )
     }

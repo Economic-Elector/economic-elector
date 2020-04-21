@@ -63,4 +63,30 @@ router.get('/budget/:id', (req, res) => {
       });
 });
 
+router.delete('/deleteElection/:id', (req, res) => {
+
+    console.log('in deleteElection, req.params.id', req.params.id);
+
+    ; (async () => {
+        const client = await pool.connect()
+        try {
+            await client.query('BEGIN')
+            let queryText = 'DELETE FROM "budget_categories" WHERE election_id=$1';
+            await client.query(queryText, [req.params.id]);
+            queryText = 'DELETE FROM "elections" WHERE id=$1';
+            await client.query(queryText, [req.params.id]);
+            await client.query('COMMIT')
+        } catch (error) {
+            await client.query('ROLLBACK')
+            throw error
+        } finally {
+            res.sendStatus(200)
+            //must release the client at the end
+            //or else the client will remain unavailable if you
+            //want to use it again?
+            client.release()
+        }
+    })().catch(e => console.error(e.stack))
+});
+
 module.exports = router;
