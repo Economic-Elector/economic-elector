@@ -19,6 +19,14 @@ function* postNewElection(action) {
         yield put({
             type: 'SET_ELECTION', payload: election
         })
+        yield put({
+            type: 'SET_ALL_CANDIDATES',
+            payload: []
+        })
+        yield put({
+            type: 'FETCH_BUDGET',
+            payload: election.id
+        })
     }
     catch (error) {
         console.log(error);

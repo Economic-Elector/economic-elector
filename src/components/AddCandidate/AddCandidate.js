@@ -63,7 +63,6 @@ class AddCandidate extends Component {
                 }
             }       
         })
-        console.log(this.state);
 
     }
 
