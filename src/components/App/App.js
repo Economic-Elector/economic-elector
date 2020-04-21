@@ -22,6 +22,7 @@ import AddCandidate from '../AddCandidate/AddCandidate';
 import AdminNewElection from '../AdminNewElection/AdminNewElection';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import EditCandidate from '../editCandidate/editCandidate'
+import EditElection from '../EditElection/EditElection';
 import './App.css';
 
 class App extends Component {
@@ -113,6 +114,11 @@ class App extends Component {
                             exact
                             path="/adminNewElection"
                             component={AdminNewElection}
+                        />
+                        <ProtectedRoute
+                            exact
+                            path="/editElection"
+                            component={EditElection}
                         />
                         {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
