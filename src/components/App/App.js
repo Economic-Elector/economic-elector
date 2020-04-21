@@ -21,6 +21,7 @@ import AdminElection from '../AdminElection/AdminElection';
 import AddCandidate from '../AddCandidate/AddCandidate';
 import AdminNewElection from '../AdminNewElection/AdminNewElection';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import EditCandidate from '../editCandidate/editCandidate'
 import './App.css';
 
 class App extends Component {
@@ -97,6 +98,11 @@ class App extends Component {
                             exact
                             path="/addCandidate"
                             component={AddCandidate}
+                        />
+                        <ProtectedRoute
+                            exact
+                            path="/editCandidate"
+                            component={EditCandidate}
                         />
                         <ProtectedRoute
                             exact

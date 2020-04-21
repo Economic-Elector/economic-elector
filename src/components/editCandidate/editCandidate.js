@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 
 class EditCandidate extends Component {
 
+    componentDidMount = () => {
+
+    }
+
     state = {
         name: '',
         email: '',
@@ -20,7 +24,7 @@ class EditCandidate extends Component {
             email: this.state.email,
             incumbent: this.state.incumbent,
             budget: this.state.budget,
-            election_id: this.props.reduxState.elections.election.id
+            id: this.props.location.candidateId
         }
         
         this.props.dispatch({ type: 'EDIT_CANDIDATE', payload: newCandidate })
