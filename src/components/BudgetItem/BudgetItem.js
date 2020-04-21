@@ -15,7 +15,7 @@ class BudgetItem extends Component {
             minimumFractionDigits: 2
         })
         return (
-            <div class="center_just">
+            <div class="over">
                 {this.props.item.name}: {formatter.format(this.props.item.past_allocation)}
             </div>
         )
