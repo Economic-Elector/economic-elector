@@ -38,6 +38,9 @@ class EditElection extends Component {
         this.props.dispatch({type:'EDIT_ELECTION', payload: this.state});
         this.props.history.push('/adminElection');
     }
+    cancel = () =>{
+        this.props.history.push('/adminElection');
+    }
     render = () => {
         let election = this.props.reduxState.elections.election;
         return (
@@ -71,6 +74,7 @@ class EditElection extends Component {
                     </div>)
                 })}
                 <button onClick={this.submit}>Submit Changes</button>
+                <button onClick={this.cancel}>Cancel</button>
             </div>
         )
     }
