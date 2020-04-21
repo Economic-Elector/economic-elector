@@ -95,10 +95,12 @@ router.put('/editElection/:id', (req, res) =>{
     ; (async () => {
         const client = await pool.connect()
         try {
+            //using transactions to update both tables in one go
             await client.query('BEGIN')
             let queryText = `UPDATE elections SET (name, location, date) = ($1, $2, $3) WHERE id = ${req.params.id}`;
             await client.query(queryText, [req.body.name, req.body.location, req.body.date]);
             let budgetArray = req.body.budgetArray;
+            //loops through the budgetArray and updates the budget_categories table with the new values
             for(let i = 0; i < budgetArray.length; i++){
                 queryText = `UPDATE budget_categories SET past_allocation = $1 WHERE id = ${budgetArray[i].id}`
                 await client.query(queryText, [budgetArray[i].past_allocation]);
