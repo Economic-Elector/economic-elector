@@ -47,8 +47,6 @@ class Election extends Component {
             <div onClick={() => this.handleClick(this)} className="Election">
                 {election.name}
                 <br />
-                {election.location}
-                <br />
                 {election.date}
             </div>
         )

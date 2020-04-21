@@ -9,7 +9,7 @@ class Candidate extends Component {
 
     totalDiff = () => {
         for( let i=0; i<this.props.diff.length; i++){
-            if(this.props.candidate.difference === this.props.diff[i].diff){
+            if(this.props.candidate.difference == this.props.diff[i].diff){
                 return this.props.diff[i].diff
             }
         }

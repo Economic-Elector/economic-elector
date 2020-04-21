@@ -1,7 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Footer from '../Footer/Footer';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import UserPage from '../UserPage/UserPage';
+import InfoPage from '../InfoPage/InfoPage';
+
+import Home from '../Home/Home';
+import Budget from '../Budget/Budget';
+import Results from '../Results/Results';
+import AdminLogin from '../AdminLogin/AdminLogin';
+import LoginPage from '../LoginPage/LoginPage';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import AdminHome from '../AdminHome/AdminHome';
+import AdminElection from '../AdminNewElection/AdminNewElection';
+import AddCandidate from '../AddCandidate/AddCandidate';
+import NewElection from '../NewElection/NewElection';
+import RegisterPage from '../RegisterPage/RegisterPage';
 import './Nav.css';
 
 const Nav = (props) => (

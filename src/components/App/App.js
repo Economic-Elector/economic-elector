@@ -11,6 +11,8 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import UserPage from '../UserPage/UserPage';
+import InfoPage from '../InfoPage/InfoPage';
+
 import Home from '../Home/Home';
 import Budget from '../Budget/Budget';
 import Results from '../Results/Results';
