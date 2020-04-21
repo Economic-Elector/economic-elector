@@ -4,8 +4,6 @@
 //form, the admin can click the “Create Election” button to finish creating the election, or press “Cancel” button to cancel the process 
 //and return to the Admin Home (2). Clicking “Create Election” will create the election, and then bring the admin to the 
 //Admin Election View (4) for that specific election.
-
-
 import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
