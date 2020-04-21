@@ -5,7 +5,6 @@ import {
     Redirect,
     Switch,
 } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -22,9 +21,6 @@ import AdminElection from '../AdminElection/AdminElection';
 import AddCandidate from '../AddCandidate/AddCandidate';
 import AdminNewElection from '../AdminNewElection/AdminNewElection';
 import RegisterPage from '../RegisterPage/RegisterPage';
-
-
-
 import './App.css';
 
 class App extends Component {

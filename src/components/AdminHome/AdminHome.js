@@ -5,7 +5,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import AdminElectionListItem from './AdminElectionListItem'
-
 import { connect } from 'react-redux';
 
 
