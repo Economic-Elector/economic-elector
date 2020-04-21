@@ -31,9 +31,16 @@ class AdminElection extends Component {
 
     // bring user to editCandidate page
     // probably need to pass with it the election ID
-    editCandidate = () => {
-        this.props.history.push('/editCandidate')
+    editCandidate = (event, id) => {
+        console.log('editCandidate id:', id);
+        
+        this.props.history.push({
+            pathname: '/editCandidate',
+            candidateId: id
+        });
     }
+
+   
 
     // removeCandidate deletes candidate from this election
     // call to sagas to make DELETE call to "candidates" table
@@ -85,7 +92,7 @@ class AdminElection extends Component {
                                         <td>{candidate.budget[category.id]}</td>
                                     )
                                 })}
-                                <button onClick={this.editCandidate}>Edit</button>
+                                <button onClick={(event) => this.editCandidate(event, candidate.id)}>Edit</button>
                                 <button onClick={(event) => this.removeCandidate(event, candidate.id)}>Remove</button>
                             </tr>))}
                     </tbody>
