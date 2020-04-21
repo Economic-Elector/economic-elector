@@ -6,7 +6,6 @@
 // except the inputs will be filled with values for the admin to change. Changing the values and then pressing submit will save the changes made for the candidate.
 
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 import './AddCandidate.css';
 

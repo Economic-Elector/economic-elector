@@ -16,31 +16,7 @@ class AdminElection extends Component {
     }
 
     componentDidMount() {
-        // this.getLastElection();
-        // this.getCandidateList();   
-    }
-
-    // call to sagas to GET last election using the RETURNING id from the POST on AdminNewElection page
-    // use returning ID from redux: electionId
-    // to get NameOfElection, Location, Date, from elections DB table then display these 3 items on DOM in h1,h2,h2
-    // getLastElection = () => {
-    //     this.props.dispatch({
-    //         type: 'FETCH_ELECTION',
-    //         payload: this.props.reduxState.elections.electionId
-    //     });
-    // }
-
-    // call to sagas to GET candidate List for election ID from "candidates" table and add to redux
-    // create function to provide sum of candidate budget 
-    // call to sagas to GET Candidates budget catagories from the "budget_allocation"  table and add to redux
-    // display all these things on DOM in table
-    // important - need to discuss DB budget catagories with team member that created component AddCandidate
-    getCandidateList = () => {
-        this.props.reduxState.elections.electionId &&
-        this.props.dispatch({
-            type: 'FETCH_CANDIDATES',
-            payload: this.props.reduxState.elections.electionId
-        });
+    
     }
 
     sumOfBudget = () => {
@@ -53,18 +29,23 @@ class AdminElection extends Component {
         this.props.history.push('/addCandidate')
     }
 
-    // bring user to add Add Candidate/Edit Candidate page
+    // bring user to editCandidate page
     // probably need to pass with it the election ID
-    editCandidate = () => {
-        this.props.history.push('/addCandidate')
+    editCandidate = (event, id) => {
+        console.log('editCandidate id:', id);
+        
+        this.props.history.push({
+            pathname: '/editCandidate',
+            candidateId: id
+        });
     }
+
+   
 
     // removeCandidate deletes candidate from this election
     // call to sagas to make DELETE call to "candidates" table
     // must send with it the election ID
     removeCandidate = (event, id) => {
-        console.log('in AdminElection page, removeCandidate');
-        console.log('candidate id', id);
         let obj = {
             candidate: id,
             electionId: this.props.reduxState.elections.election.id
@@ -84,14 +65,7 @@ class AdminElection extends Component {
         let categories = this.props.reduxState.budget.pastBudget;
         return (
             <div className="newElection">
-                {/* <ul>
-                    <li>
-                        {JSON.stringify(this.props.reduxState.elections.election.id)}
-                        {JSON.stringify(this.props.reduxState.elections.electionId)}
-                    </li>
-                </ul>
-                <h3>JUST PUTTING THIS HERE TO CELEBRATE</h3>
-                <h3>{JSON.stringify(this.props.reduxState.candidates.elections)}</h3> */}
+                {/* <h3>{JSON.stringify(this.props.reduxState.candidates.elections)}</h3> */} 
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>
                 <h3>{this.props.reduxState.elections.election.date}</h3>
@@ -110,17 +84,6 @@ class AdminElection extends Component {
                                     )
                                 })
                             }
-                            {/* <th>Candidate Name</th>
-                            <th>Total Budget</th>
-                            <th>Parks and Rec</th>
-                            <th>Law Enforcement</th>
-                            <th>Education</th>
-                            <th>First Responders</th>
-                            <th>Public Works</th>
-                            <th>Admin</th>
-                            <th>Community Dev</th>
-                            <th></th>
-                            <th></th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -132,15 +95,9 @@ class AdminElection extends Component {
                                         <td>{candidate.budget[category.id]}</td>
                                     )
                                 })}
-                                <button onClick={this.editCandidate}>Edit</button>
+                                <button onClick={(event) => this.editCandidate(event, candidate.id)}>Edit</button>
                                 <button onClick={(event) => this.removeCandidate(event, candidate.id)}>Remove</button>
                             </tr>))}
-                        {/* {this.props.reduxState.candidates.allCandidates.map(election => (<tr><td>{election.name}</td>
-                            <td>{election.totalBudget}</td><td>{election.budget[64]}</td><td>{election.budget[65]}</td>
-                            <td>{election.budget[66]}</td><td>{election.budget[67]}</td><td>{election.budget[68]}</td>
-                            <td>{election.budget[69]}</td><td>{election.budget[70]}</td>
-                            <button onClick={this.editCandidate}>Edit</button>
-                            <button onClick={(event) => this.removeCandidate(event, election.id)}>Remove</button></tr>))} */}
                     </tbody>
                 </table>
                 
@@ -154,6 +111,3 @@ const mapStateToProps = (reduxState) => ({
 });
 
 export default connect(mapStateToProps)(AdminElection);
-
-
-

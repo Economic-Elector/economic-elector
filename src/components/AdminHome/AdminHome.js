@@ -3,15 +3,8 @@
 // Lastly, the admin can logout of their account by clicking the logout button in the header.
 
 import React, { Component } from 'react';
-import {
-    HashRouter as Router,
-    Route,
-    Redirect,
-    Switch,
-} from 'react-router-dom';
 import axios from 'axios';
 import AdminElectionListItem from './AdminElectionListItem'
-
 import { connect } from 'react-redux';
 
 
@@ -46,8 +39,9 @@ class AdminHome extends Component {
     render() {
         return (
             <div class="def_style">
-                <h2>Your Elections</h2>
+                <h2>Available Elections</h2>
                 <button onClick={this.addNewElection}>Add New Election</button>
+                <br /><br />
                 <ul>
                     {this.state.elections.map((election) => {
                         return (

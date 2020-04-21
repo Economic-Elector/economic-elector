@@ -29,7 +29,7 @@ function* userBudget(action) {
 }
 
 function* currentElection(action) {
-    put({ type: 'SET_CURRENT', payload: action.payload });
+    yield put({ type: 'SET_CURRENT', payload: action.payload });
 }
 
 function* userSaga() {
