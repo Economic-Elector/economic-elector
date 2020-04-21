@@ -84,31 +84,31 @@ class Budget extends Component {
                     <div class="center_just">
 
                         <label>Law Enforcement</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
+                        <input placeholder="Law Enforcement" onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
                         <br />
 
                         <label>Parks/Rec</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
+                        <input placeholder="Parks/Rec" onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
                         <br />
 
                         <label>Public Works</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
+                        <input placeholder="Public Works" onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
                         <br />
 
                         <label>First Responders</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'firstResponders')} />
+                        <input placeholder="First Responders" onChange={(event) => this.handleBudgetChange(event, 'firstResponders')} />
                         <br />
 
                         <label>Community Development</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
+                        <input placeholder="Community Development" onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
                         <br />
 
                         <label>Administration</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'administration')} />
+                        <input placeholder="Administration" onChange={(event) => this.handleBudgetChange(event, 'administration')} />
                         <br />
 
                         <label>Education</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'education')} />
+                        <input placeholder="Education" onChange={(event) => this.handleBudgetChange(event, 'education')} />
                         <br />
 
                     </div>
@@ -121,7 +121,7 @@ class Budget extends Component {
                 </div>
 
                 <button class="center_just" onClick={this.findCandidate}>Find My Candidate</button>
-
+            
                 
 
             </div>
