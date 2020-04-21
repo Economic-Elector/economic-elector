@@ -40,8 +40,9 @@ class AdminHome extends Component {
     render() {
         return (
             <div class="def_style">
-                <h2>Your Elections</h2>
+                <h2>Available Elections</h2>
                 <button onClick={this.addNewElection}>Add New Election</button>
+                <br /><br />
                 <ul>
                     {this.state.elections.map((election) => {
                         return (
