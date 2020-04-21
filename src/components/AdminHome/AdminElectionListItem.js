@@ -47,7 +47,6 @@ class AdminElectionListItem extends Component {
         
         return (
             <div onClick={() => this.handleClick(election)} className="Election">
-                
                 {election.name}
                 <br />
                 {election.location}
