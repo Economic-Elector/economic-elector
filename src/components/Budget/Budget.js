@@ -65,6 +65,7 @@ class Budget extends Component {
 
     // once server and db is setup needs to be dynamic
     render() {
+
         return (
             <div className="center_just">
 
