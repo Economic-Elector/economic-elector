@@ -151,6 +151,3 @@ const mapStateToProps = (reduxState) => ({
 });
 
 export default connect(mapStateToProps)(AdminElection);
-
-
-

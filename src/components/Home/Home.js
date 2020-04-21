@@ -7,7 +7,6 @@ import ElectionList from '../ElectionList/ElectionList';
 import axios from 'axios';
 import './Home.css'
 
-
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`

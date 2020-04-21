@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 
 // Item that displays things about the clicked on election
