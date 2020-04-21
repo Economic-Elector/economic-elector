@@ -46,11 +46,12 @@ class AdminElectionListItem extends Component {
         let election = this.props.election;
         
         return (
+            <div>
             <div onClick={() => this.handleClick(election)} className="Election">
                 {election.name}
                 <br />
                 {election.location}
-                <br />
+                </div>
                 {election.date}
                 <br />
                 <button onClick={(event) => this.handleDeleteElection(event, election.id)}>Delete Election</button>

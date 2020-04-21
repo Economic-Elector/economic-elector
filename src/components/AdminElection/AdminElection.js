@@ -10,18 +10,6 @@ import '../App/App.css';
 import { connect } from 'react-redux';
 
 class AdminElection extends Component {
-    state = {
-        totalBudget: 0,
-      
-    }
-
-    componentDidMount() {
-    
-    }
-
-    sumOfBudget = () => {
-       
-    }
 
     // bring user to add Add Candidate/Edit Candidate page
     // probably need to pass with it the election ID
@@ -39,8 +27,6 @@ class AdminElection extends Component {
             candidateId: id
         });
     }
-
-   
 
     // removeCandidate deletes candidate from this election
     // call to sagas to make DELETE call to "candidates" table
