@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class EditCandidate extends Component {
 
     componentDidMount = () => {
-
+       this.findCandidate();
     }
 
     state = {
@@ -16,7 +16,20 @@ class EditCandidate extends Component {
 
         }
     }
-
+    findCandidate = () =>{
+        let candidates = this.props.reduxState.candidates.allCandidates
+        for(let i = 0; i<candidates.length; i++){
+            if (candidates[i].id === this.props.location.candidateId) {
+                this.setState ({
+                    ... this.state,
+                    name: candidates[i].name,
+                    email: candidates[i].email,
+                    incumbent: candidates[i].incumbent,
+                    budget: candidates[i].budget
+                })
+            }
+        }
+    }
     handleAdd = () => {
         console.log("Edit candidate", this.state);
         let newCandidate = {
@@ -44,9 +57,8 @@ class EditCandidate extends Component {
         this.setState({
             budget: {
                 ...this.state.budget,
-                [typeOf]: {
-                    ...this.state.budget[typeOf],
-                    id: id,
+                [id]: {
+                    ...this.state.budget[id],
                     amount: event.target.value
                 }
             }
@@ -69,11 +81,11 @@ class EditCandidate extends Component {
                 <h2>Edit Candidate</h2>
 
                 <label>Name</label>
-                <input placeholder="First and Last Name" onChange={(event) => this.handleChange(event, 'name')} />
+                <input value={this.state.name} placeholder="First and Last Name" onChange={(event) => this.handleChange(event, 'name')} />
                 <br />
 
                 <label>Email</label>
-                <input placeholder="Email" onChange={(event) => this.handleChange(event, 'email')} />
+                <input value={this.state.email} placeholder="Email" onChange={(event) => this.handleChange(event, 'email')} />
                 <br />
 
                 <label>Incumbent?</label>
@@ -84,7 +96,7 @@ class EditCandidate extends Component {
                 {this.state.categories.map((category) => {
                     return (<div>
                         <label>{category.name}</label>
-                        <input placeholder={category.name} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
+                        <input placeholder={category.name}  value={this.state.budget[category.id]} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
                         <br />
                     </div>)
                 })}
