@@ -47,20 +47,21 @@ class EditCandidate extends Component {
 
     //handles the change of name and email inputs
     handleChange = (event, typeOf) => {
+        console.log(event.target.value);
+        
         this.setState({
             [typeOf]: event.target.value
         })
     }
 
     //handles change of budget inputs
-    handleBudgetChange = (event, id, typeOf) => {
+    handleBudgetChange = (event, id) => {
+        console.log(event.target.value);
+        console.log(id)
         this.setState({
             budget: {
                 ...this.state.budget,
-                [id]: {
-                    ...this.state.budget[id],
-                    amount: event.target.value
-                }
+                [id]: event.target.value
             }
         })
         console.log(this.state);
@@ -81,11 +82,11 @@ class EditCandidate extends Component {
                 <h2>Edit Candidate</h2>
 
                 <label>Name</label>
-                <input value={this.state.name} placeholder="First and Last Name" onChange={(event) => this.handleChange(event, 'name')} />
+                <input value={this.state.name} onChange={(event) => this.handleChange(event, 'name')} />
                 <br />
 
                 <label>Email</label>
-                <input value={this.state.email} placeholder="Email" onChange={(event) => this.handleChange(event, 'email')} />
+                <input value={this.state.email} onChange={(event) => this.handleChange(event, 'email')} />
                 <br />
 
                 <label>Incumbent?</label>
@@ -96,7 +97,7 @@ class EditCandidate extends Component {
                 {this.state.categories.map((category) => {
                     return (<div>
                         <label>{category.name}</label>
-                        <input placeholder={category.name}  value={this.state.budget[category.id]} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
+                        <input placeholder={category.name}  value={this.state.budget[category.id]} type='number' onChange={(event) => this.handleBudgetChange(event, category.id)} />
                         <br />
                     </div>)
                 })}
