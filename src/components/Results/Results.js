@@ -79,16 +79,16 @@ class Results extends Component {
                 <table class="graph_just">
                     <thead>
                         <tr>
-                            <th>Candidate Name</th>
-                            <th>Total Difference</th>
-                            <th>Total Budget</th>
-                            <th>Law Enforcement</th>
-                            <th>Parks and Rec</th>
-                            <th>Public Works</th>
-                            <th>First Responders</th>
-                            <th>Community Dev</th>
-                            <th>Admin</th>
-                            <th>Education</th>
+                            <th>Candidate Name </th>
+                            <th>Total Difference </th>
+                            <th>Total Budget </th>
+                            <th>Law Enforcement </th>
+                            <th>Parks and Rec </th>
+                            <th>Public Works </th>
+                            <th>First Responders </th>
+                            <th>Community Dev </th>
+                            <th>Admin </th>
+                            <th>Education </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -112,8 +112,8 @@ class Results extends Component {
                             />
                         <VerticalGridLines />
                         <HorizontalGridLines />
-                        <XAxis tickLabelAngle={-15} />
-                        <YAxis />
+                        <XAxis tickLabelAngle={-10} />
+                        <YAxis left={25}/>
                         <BarSeries data={userData} />
                         <BarSeries data={currentData} />
                         <LabelSeries data={labelData} />
