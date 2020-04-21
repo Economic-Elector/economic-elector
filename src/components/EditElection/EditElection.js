@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 class EditElection extends Component {
     state = {
+        id: this.props.reduxState.elections.election.id,
         name: this.props.reduxState.elections.election.name,
         location: this.props.reduxState.elections.election.location,
         date: this.props.reduxState.elections.election.date,
@@ -32,6 +33,10 @@ class EditElection extends Component {
         this.setState({
             budgetArray: newBudgetArray
         })
+    }
+    submit = () =>{
+        this.props.dispatch({type:'EDIT_ELECTION', payload: this.state});
+        this.props.history.push('/adminElection');
     }
     render = () => {
         let election = this.props.reduxState.elections.election;

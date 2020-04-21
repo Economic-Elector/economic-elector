@@ -4,7 +4,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* electionsSagas() {
     yield takeLatest('INPUT_NEW_ELECTION', postNewElection);
     yield takeLatest('FETCH_ELECTION', fetchElection);
-    yield takeLatest('DELETE_ELECTION', deleteElection)
+    yield takeLatest('DELETE_ELECTION', deleteElection);
+    yield takeLatest('EDIT_ELECTION', editElection)
 }
 
 // POST to create new election row in elections table of DB
@@ -54,6 +55,30 @@ function* deleteElection(action) {
     } catch (error) {
         console.log(error);
     }
+}
+function* editElection(action){
+    try {
+
+        yield Axios({
+            method: 'PUT',
+            url: `/api/elections/editElection/${action.payload.id}`,
+            data: action.payload
+        })
+
+        yield put({
+            type: 'SET_ELECTION',
+            payload: {
+                        id: action.payload.id,
+                        name: action.payload.name,
+                        location: action.payload.location,
+                        date: action.payload.date
+                    }
+            })
+        yield put({type: 'FETCH_BUDGET', payload: action.payload.id});
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 
 export default electionsSagas;
