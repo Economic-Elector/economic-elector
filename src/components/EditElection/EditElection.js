@@ -24,12 +24,16 @@ class EditElection extends Component {
     }
     //handles change of budget inputs
     handleBudgetChange = (event, id) => {
+        //create a copy of the array in state
         const newBudgetArray = this.state.budgetArray.slice();
+        //loop through it and match the category id with the id coming from the input
         for (let i = 0; i < newBudgetArray.length; i++) {
             if (newBudgetArray[i].id === id){
                 newBudgetArray[i].past_allocation = event.target.value
             }
         }
+        //set the budgetArray in the state to the new array 
+        //with the updated allocation
         this.setState({
             budgetArray: newBudgetArray
         })
