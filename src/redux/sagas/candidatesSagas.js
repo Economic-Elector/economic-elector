@@ -32,6 +32,7 @@ function* postCandidate(action) {
             //then we send it to be posted
             yield axios.post('/api/candidates/budget', categoryInfo);
         }
+        yield put({type: 'FETCH_CANDIDATES', payload: action.payload.election_id});
     } catch (error) {
         console.log(error);
     }

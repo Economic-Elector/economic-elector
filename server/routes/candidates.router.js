@@ -21,8 +21,7 @@ router.get('/allBudgets/:election_id', (req, res) => {
     ORDER BY budget_allocation.candidate_id ASC;`
     pool.query(query)
         .then((result) => {
-            if(result.rows.length > 0){
-                          
+            if(result.rows.length > 0){         
                 let allocations = result.rows;
                 let candidateId = allocations[0].candidate_id
                 let candidateAllocations = {};
