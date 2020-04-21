@@ -75,6 +75,9 @@ class AdminElection extends Component {
         });
     }
 
+    editElection = () =>{
+        this.props.history.push('/editElection');
+    }
     //everything in h1,h2,h2 will come from "elections" DB table
     //everything in the table body will come from "candidates" and "budget_allocation" DB tables
     render = () => {
@@ -92,7 +95,7 @@ class AdminElection extends Component {
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>
                 <h3>{this.props.reduxState.elections.election.date}</h3>
-                <button onClick={this.editCandidate}>Edit</button>
+                <button onClick={this.editElection}>Edit Election</button>
                 <br></br><br></br>
                 <button onClick={this.addCandidate}>Add Candidate</button>
                 <br></br><br></br>
