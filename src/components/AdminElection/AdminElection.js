@@ -40,21 +40,28 @@ class AdminElection extends Component {
             type: 'DELETE_CANDIDATE_FROM_LIST',
             payload: obj
         });
+        
     }
 
     editElection = () =>{
         this.props.history.push('/editElection');
     }
+
+    handleBack = () => {
+        this.props.history.push('/adminHome');
+    }
     //everything in h1,h2,h2 will come from "elections" DB table
     //everything in the table body will come from "candidates" and "budget_allocation" DB tables
     render = () => {
         let categories = this.props.reduxState.budget.pastBudget;
+        let candidates = this.props.reduxState.candidates.allCandidates;
         return (
             <div className="newElection">
+                <button className="left_just" onClick={this.handleBack}>Back to elections</button>
                 {/* <h3>{JSON.stringify(this.props.reduxState.candidates.elections)}</h3> */} 
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>
-                <h3>{this.props.reduxState.elections.election.date}</h3>
+                <br />
                 <button onClick={this.editElection}>Edit Election</button>
                 <br></br><br></br>
                 <button onClick={this.addCandidate}>Add Candidate</button>
@@ -73,7 +80,7 @@ class AdminElection extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.reduxState.candidates.allCandidates.map(candidate => (
+                        {candidates.map(candidate => (
                             <tr>
                                 <td>{candidate.name}</td>
                                 {categories.map((category) => {

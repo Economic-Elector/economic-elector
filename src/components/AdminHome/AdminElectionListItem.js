@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 class AdminElectionListItem extends Component {
-    state = {
-
-    }
 
     handleClick = (election) => {
         console.log(election.id)
@@ -39,6 +36,7 @@ class AdminElectionListItem extends Component {
             type: 'DELETE_ELECTION',
             payload: obj
         });
+        window.location.reload(false);
     }
 
 
