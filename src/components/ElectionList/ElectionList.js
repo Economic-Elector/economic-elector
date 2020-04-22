@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import '../App/App.css';
 import Election from '../Election/Election';
 import { connect } from 'react-redux';
+import { List, ListItem } from '@material-ui/core';
 
 class ElectionList extends Component {
     render() {
         return (
             <div className="ElectionList">
-                <ul>
-                    {this.props.electionList.map(election => (<li key={election.id}><Election election={election} /></li>))}
-                </ul>
-                
+                <List>
+                    {this.props.electionList.map(election => (<ListItem key={election.id}><Election election={election} /></ListItem>))}
+                </List>
             </div>
         );
     }

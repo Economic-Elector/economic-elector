@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import AdminElectionListItem from './AdminElectionListItem'
 import { connect } from 'react-redux';
-
+import { Button, List } from '@material-ui/core';
 
 class AdminHome extends Component {
     state = {
@@ -41,19 +41,16 @@ class AdminHome extends Component {
             <div class="def_style">
                 <h1>Available Elections</h1>
                 <br />
-                <button onClick={this.addNewElection}>Add New Election</button>
+                <Button onClick={this.addNewElection}>Add New Election</Button>
                 <br /><br />
-                <ul>
+                <List>
                     {this.state.elections.map((election) => {
                         return (
                             //need to fix this. it goes to the user's budget page when you click the election
                             <AdminElectionListItem election={election} />
                         )
                     })}
-                </ul>
-
-
-
+                </List>
             </div>
         )
     }

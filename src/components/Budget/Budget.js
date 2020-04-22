@@ -1,12 +1,13 @@
-// The budget page will contain a user input form to enter personal budget preferences. It will also display the current budget alongside the user inputed budget. 
-// The user can input any number they want into a budget input. But, they will have the current budget to reference so that they can come up with realistic numbers. 
-// This data will be displayed in a bar chart showing the budget breakdown. Once the user has clicked the “Find My Candidate” button, they will be brought to the Results View (3).
+// The budget page will contain a user Input form to enter personal budget preferences. It will also display the current budget alongside the user Inputed budget. 
+// The user can Input any number they want into a budget Input. But, they will have the current budget to reference so that they can come up with realistic numbers. 
+// This data will be displayed in a bar chart showing the budget breakdown. Once the user has clicked the “Find My Candidate” Button, they will be brought to the Results View (3).
 
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Budget.css'
 import BudgetItem from '../BudgetItem/BudgetItem';
+import { Input, Button, InputLabel } from '@material-ui/core';
 
 class Budget extends Component {
 
@@ -69,7 +70,7 @@ class Budget extends Component {
         return (
             <div className="center_just">
 
-                <button class="left_just" onClick={this.handleBack}>Back to Elections</button>
+                <Button onClick={this.handleBack}>Back to Elections</Button>
 
                 <h1>{this.props.reduxState.elections.election.name}</h1>
 
@@ -85,33 +86,45 @@ class Budget extends Component {
 
                     <div class="center_just">
 
-                        <label>Law Enforcement</label>
-                        <input placeholder="Law Enforcement" onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
+                        <InputLabel> Law Enforcement:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
+                        </InputLabel>
+
                         <br />
 
-                        <label>Parks/Rec</label>
-                        <input placeholder="Parks/Rec" onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
+                        <InputLabel> Parks and Recreation:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
+                        </InputLabel>
+
                         <br />
 
-                        <label>Public Works</label>
-                        <input placeholder="Public Works" onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
+                        <InputLabel> Public Works:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
+                        </InputLabel>
+
                         <br />
 
-                        <label>First Responders</label>
-                        <input placeholder="First Responders" onChange={(event) => this.handleBudgetChange(event, 'firstResponders')} />
+                        <InputLabel> First Responders:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'firstResponders')} />
+                        </InputLabel>
+
                         <br />
 
-                        <label>Community Development</label>
-                        <input placeholder="Community Development" onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
+                        <InputLabel> Community Development: 
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
+                        </InputLabel>
+
                         <br />
 
-                        <label>Administration</label>
-                        <input placeholder="Administration" onChange={(event) => this.handleBudgetChange(event, 'administration')} />
+                        <InputLabel> Administration: 
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'administration')} />
+                        </InputLabel>
+
                         <br />
 
-                        <label>Education</label>
-                        <input placeholder="Education" onChange={(event) => this.handleBudgetChange(event, 'education')} />
-                        <br />
+                        <InputLabel> Education: 
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'education')} />
+                        </InputLabel>
 
                     </div>
 
@@ -122,9 +135,7 @@ class Budget extends Component {
 
                 </div>
 
-                <button class="center_just" onClick={this.findCandidate}>Find My Candidate</button>
-            
-                
+                <Button onClick={this.findCandidate}>Find My Candidate</Button>
 
             </div>
         )

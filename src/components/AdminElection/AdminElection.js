@@ -8,6 +8,7 @@
 import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
+import { Button, Table, TableHead, TableBody, TableCell, TableRow } from '@material-ui/core';
 
 class AdminElection extends Component {
 
@@ -61,38 +62,42 @@ class AdminElection extends Component {
                 {/* <h3>{JSON.stringify(this.props.reduxState.candidates.elections)}</h3> */} 
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>
+                <h3>{this.props.reduxState.elections.election.date}</h3>
+                <Button onClick={this.editElection}>Edit Election</Button>
+
                 <br />
-                <button onClick={this.editElection}>Edit Election</button>
+          
                 <br></br><br></br>
-                <button onClick={this.addCandidate}>Add Candidate</button>
+                <Button onClick={this.addCandidate}>Add Candidate</Button>
                 <br></br><br></br>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Name</TableCell>
                             {categories &&
                                 categories.map((category) => {
                                     return (
-                                        <th>{category.name}</th>
+                                        <TableCell>{category.name}</TableCell>
                                     )
                                 })
                             }
-                        </tr>
-                    </thead>
-                    <tbody>
+
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {candidates.map(candidate => (
-                            <tr>
-                                <td>{candidate.name}</td>
+                            <TableRow>
+                                <TableCell variant="head" >{candidate.name}</TableCell>
                                 {categories.map((category) => {
                                     return (
-                                        <td>{candidate.budget[category.id]}</td>
+                                        <TableCell variant="head" >{candidate.budget[category.id]}</TableCell>
                                     )
                                 })}
-                                <button onClick={(event) => this.editCandidate(event, candidate.id)}>Edit</button>
-                                <button onClick={(event) => this.removeCandidate(event, candidate.id)}>Remove</button>
-                            </tr>))}
-                    </tbody>
-                </table>
+                                <Button onClick={(event) => this.editCandidate(event, candidate.id)}>Edit</Button>
+                                <Button onClick={(event) => this.removeCandidate(event, candidate.id)}>Remove</Button>
+                            </TableRow>))}
+                    </TableBody>
+                </Table>
                 
             </div>
         )

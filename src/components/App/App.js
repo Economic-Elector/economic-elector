@@ -33,14 +33,13 @@ class App extends Component {
     render() {
         return (
             <Router>
-
                 <div>
                     <Nav />
                     <Switch>
                         {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
                         <Redirect exact from="/" to="/home" />
                         {/* Visiting localhost:3000/about will show the about page.
-            This is a route anyone can see, no login necessary */}
+                        This is a route anyone can see, no login necessary */}
                         <Route
                             exact
                             path="/home"

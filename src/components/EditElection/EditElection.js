@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Input, InputLabel, Button } from '@material-ui/core';
 
 class EditElection extends Component {
     state = {
@@ -22,11 +23,11 @@ class EditElection extends Component {
         })
         //console.log(this.state[typeOf]);
     }
-    //handles change of budget inputs
+    //handles change of budget Inputs
     handleBudgetChange = (event, id) => {
         //create a copy of the array in state
         const newBudgetArray = this.state.budgetArray.slice();
-        //loop through it and match the category id with the id coming from the input
+        //loop through it and match the category id with the id coming from the Input
         for (let i = 0; i < newBudgetArray.length; i++) {
             if (newBudgetArray[i].id === id){
                 newBudgetArray[i].past_allocation = event.target.value
@@ -58,35 +59,37 @@ class EditElection extends Component {
                 <h1>{name}</h1>
                 <h3>{location}</h3>
                 <br />
+
                 <h2>Edit Election</h2>
-                <label>
+          
+                <InputLabel>
                     <b>Election Office:</b>
-                    <input value={this.state.name} onChange={(event) => this.handleChange(event, 'name')}/>
-                </label>
+                    <Input value={this.state.name} onChange={(event) => this.handleChange(event, 'name')}/>
+                </InputLabel>
                 <br/>
-                <label>
+                <InputLabel>
                     <b>Location:</b>
-                    <input value={this.state.location} onChange={(event) => this.handleChange(event, 'location')}/>
-                </label>
+                    <Input value={this.state.location} onChange={(event) => this.handleChange(event, 'location')}/>
+                </InputLabel>
                 <br />
-                <label>
+                <InputLabel>
                     <b>Date:</b>
-                    <input type='date' value={this.state.date} onChange={(event) => this.handleChange(event, 'date')}/>
-                </label>
+                    <Input type='date' value={this.state.date} onChange={(event) => this.handleChange(event, 'date')}/>
+                </InputLabel>
                 <br />
 
                 <h2>Edit Budget</h2>
                 {this.state.budgetArray.map((budget) => {
                     return (<div>
-                        <label>{budget.name}</label>
-                        <input value={budget.past_allocation} type='number'
+                        <InputLabel>{budget.name}</InputLabel>
+                        <Input value={budget.past_allocation} type='number'
                             onChange={(event) => this.handleBudgetChange(event, budget.id)} 
                         />
                         <br />
                     </div>)
                 })}
-                <button onClick={this.submit}>Submit Changes</button>
-                <button onClick={this.cancel}>Cancel</button>
+                <Button onClick={this.submit}>Submit Changes</Button>
+                <Button onClick={this.cancel}>Cancel</Button>
             </div>
         )
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { TableCell } from '@material-ui/core';
 
 // Item that displays things about the clicked on election
 // item is the election past budget information from the pastElection reducer
@@ -14,10 +15,6 @@ class Candidate extends Component {
         }
     }
 
-    
-
-
-
     render() {
         //turns number into currency
         const formatter = new Intl.NumberFormat('en-US', {
@@ -31,16 +28,16 @@ class Candidate extends Component {
         const totalBudget = Number(this.props.candidate.budget[1] + this.props.candidate.budget[2] + this.props.candidate.budget[3] + this.props.candidate.budget[4] + this.props.candidate.budget[5] + this.props.candidate.budget[6] + this.props.candidate.budget[7])
             return(
             <>
-                <td>{this.props.candidate.name}</td>
-                <td>{formatter.format(this.totalDiff())}</td>
-                <td>{formatter.format(totalBudget)}</td>
-                <td>{formatter.format(this.props.candidate.budget[1])}</td>
-                <td>{formatter.format(this.props.candidate.budget[2])}</td>
-                <td>{formatter.format(this.props.candidate.budget[3])}</td>
-                <td>{formatter.format(this.props.candidate.budget[4])}</td>
-                <td>{formatter.format(this.props.candidate.budget[5])}</td>
-                <td>{formatter.format(this.props.candidate.budget[6])}</td>
-                <td>{formatter.format(this.props.candidate.budget[7])}</td>
+                <TableCell>{this.props.candidate.name}</TableCell>
+                <TableCell>{formatter.format(this.totalDiff())}</TableCell>
+                <TableCell>{formatter.format(totalBudget)}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[1])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[2])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[3])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[4])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[5])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[6])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[7])}</TableCell>
             </>
         )
     }
