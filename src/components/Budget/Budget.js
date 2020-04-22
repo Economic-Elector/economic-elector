@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Budget.css'
 import BudgetItem from '../BudgetItem/BudgetItem';
-import { InputLabel, Input, Button } from '@material-ui/core';
+import { Input, Button } from '@material-ui/core';
 
 class Budget extends Component {
 
@@ -70,7 +70,7 @@ class Budget extends Component {
         return (
             <div className="center_just">
 
-                <Button class="left_just" onClick={this.handleBack}>Back to Elections</Button>
+                <Button onClick={this.handleBack}>Back to Elections</Button>
 
                 <h3>{this.props.reduxState.elections.election.name}</h3>
 
@@ -84,31 +84,24 @@ class Budget extends Component {
 
                     <div class="center_just">
 
-                        <InputLabel>Law Enforcement</InputLabel>
                         <Input placeholder="Law Enforcement" onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
                         <br />
 
-                        <InputLabel>Parks/Rec</InputLabel>
                         <Input placeholder="Parks and Rec" onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
                         <br />
 
-                        <InputLabel>Public Works</InputLabel>
                         <Input placeholder="Public Works" onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
                         <br />
 
-                        <InputLabel>First Responders</InputLabel>
                         <Input placeholder="First Responders" onChange={(event) => this.handleBudgetChange(event, 'firstResponders')} />
                         <br />
 
-                        <InputLabel>Community Development</InputLabel>
-                        <Input placeholder="Community Development" onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
+                        <Input placeholder="Community Dev" onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
                         <br />
 
-                        <InputLabel>Administration</InputLabel>
                         <Input placeholder="Administration" onChange={(event) => this.handleBudgetChange(event, 'administration')} />
                         <br />
 
-                        <InputLabel>Education</InputLabel>
                         <Input placeholder="Education" onChange={(event) => this.handleBudgetChange(event, 'education')} />
                         <br />
 
@@ -121,9 +114,7 @@ class Budget extends Component {
 
                 </div>
 
-                <Button class="center_just" onClick={this.findCandidate}>Find My Candidate</Button>
-
-                
+                <Button onClick={this.findCandidate}>Find My Candidate</Button>
 
             </div>
         )

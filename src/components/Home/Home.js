@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import React, {Component} from 'react';
 import ElectionList from '../ElectionList/ElectionList';
 import axios from 'axios';
-import './Home.css'
+import './Home.css';
+import { Button } from '@material-ui/core';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -51,7 +52,7 @@ class Home extends Component {
                 
                  </div>
            
-                <button className="float_right" onClick={this.goAdminPage}>ADMIN</button>
+                <Button className="float_right" onClick={this.goAdminPage}>ADMIN</Button>
 
             </div>
         )

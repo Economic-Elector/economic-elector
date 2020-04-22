@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Input, InputLabel, Button } from '@material-ui/core';
 
 class EditCandidate extends Component {
 
@@ -80,29 +81,29 @@ class EditCandidate extends Component {
             <div class="def_style">
                 <h2>Edit Candidate</h2>
 
-                <label>Name</label>
-                <input value={this.state.name} placeholder="First and Last Name" onChange={(event) => this.handleChange(event, 'name')} />
+                <InputLabel>Name</InputLabel>
+                <Input value={this.state.name} placeholder="First and Last Name" onChange={(event) => this.handleChange(event, 'name')} />
                 <br />
 
-                <label>Email</label>
-                <input value={this.state.email} placeholder="Email" onChange={(event) => this.handleChange(event, 'email')} />
+                <InputLabel>Email</InputLabel>
+                <Input value={this.state.email} placeholder="Email" onChange={(event) => this.handleChange(event, 'email')} />
                 <br />
 
-                <label>Incumbent?</label>
-                <input type="checkbox" value={this.state.incumbent} onChange={() => this.handleCheck()} />
+                <InputLabel>Incumbent?</InputLabel>
+                <Input type="checkbox" value={this.state.incumbent} onChange={() => this.handleCheck()} />
 
                 <h2>Candidate's Proposed Budget</h2>
 
                 {this.state.categories.map((category) => {
                     return (<div>
-                        <label>{category.name}</label>
-                        <input placeholder={category.name}  value={this.state.budget[category.id]} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
+                        <InputLabel>{category.name}</InputLabel>
+                        <Input placeholder={category.name}  value={this.state.budget[category.id]} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
                         <br />
                     </div>)
                 })}
 
-                <button onClick={this.handleAdd} >Edit Candidate</button>
-                <button onClick={this.handleCancel} >Cancel</button>
+                <Button onClick={this.handleAdd} >Edit Candidate</Button>
+                <Button onClick={this.handleCancel} >Cancel</Button>
 
             </div>
         )
