@@ -8,6 +8,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './AddCandidate.css';
+import { Input } from '@material-ui/core';
 
 class AddCandidate extends Component {
     state = {
@@ -81,22 +82,22 @@ class AddCandidate extends Component {
                 <h2>Add Candidate</h2>
 
                 <label>Name</label>
-                <input placeholder="first and last name" onChange={(event) => this.handleChange(event, 'name')} />
+                <Input placeholder="first and last name" onChange={(event) => this.handleChange(event, 'name')} />
                 <br />
 
                 <label>Email</label>
-                <input placeholder="email" onChange={(event) => this.handleChange(event, 'email')} />
+                <Input placeholder="email" onChange={(event) => this.handleChange(event, 'email')} />
                 <br />
 
                 <label>Incumbent?</label>
-                <input type="checkbox" value={this.state.incumbent} onChange={() => this.handleCheck()} />
+                <Input type="checkbox" value={this.state.incumbent} onChange={() => this.handleCheck()} />
 
                 <h2>Candidate's Proposed Budget</h2>
 
                 {this.state.categories.map((category) => {
                     return(<div>
                         <label>{category.name}</label>
-                        <input placeholder={category.name} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
+                        <Input placeholder={category.name} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
                         <br />
                     </div>)
                 })}
