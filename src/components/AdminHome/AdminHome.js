@@ -40,6 +40,7 @@ class AdminHome extends Component {
         return (
             <div class="def_style">
                 <h2>Available Elections</h2>
+                <br />
                 <button onClick={this.addNewElection}>Add New Election</button>
                 <br /><br />
                 <ul>
