@@ -37,7 +37,8 @@ class EditCandidate extends Component {
             email: this.state.email,
             incumbent: this.state.incumbent,
             budget: this.state.budget,
-            id: this.props.location.candidateId
+            id: this.props.location.candidateId,
+            election_id: this.props.reduxState.elections.election.id
         }
         
         this.props.dispatch({ type: 'EDIT_CANDIDATE', payload: newCandidate })
