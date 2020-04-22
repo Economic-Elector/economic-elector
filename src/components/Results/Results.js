@@ -123,6 +123,10 @@ class Results extends Component {
                         <BarSeries data={currentData} />
                         <LabelSeries data={labelData} />
                     </XYPlot>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <button height="50px" width="100px" onClick={window.print}>Print My Ballot</button>
                 </div>
             </div>
         );
