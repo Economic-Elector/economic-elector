@@ -77,8 +77,8 @@ function* deleteCandidate(action) {
 function* editCandidate(action) {
     console.log("in editCandidate, here's your payload ", action.payload);
     try {
-        axios.put(`/api/candidates/editCandidate/${action.payload.id}`, action.payload);
-        yield put({ type: 'FETCH_CANDIDATES', payload: 1 });
+        yield axios.put(`/api/candidates/editCandidate/${action.payload.id}`, action.payload);
+        yield put({ type: 'FETCH_CANDIDATES', payload: action.payload.election_id })
     } catch (error) {
         console.log(error);
     }

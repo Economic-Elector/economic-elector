@@ -134,52 +134,53 @@ router.delete('/deleteCandidate/:id', (req, res) => {
 });
 
 router.put('/editCandidate/:id', (req, res) => {
-    console.log("in router.put, here's your req.body", req.body)
-    // (async () => {
-    //     const client = await pool.connect()
-    //     try {
-    //         await client.query('BEGIN')
-    //         let queryText = "";
-    //         await client.query(queryText);
-    //         queryText = "";
-    //         await client.query(queryText);
-    //         await client.query('COMMIT')
-    //     } catch (error) {
-    //         await client.query('ROLLBACK')
-    //         throw error
-    //     } finally {
-    //         res.sendStatus(200)
-    //         client.release()
-    //     }
-    // })
+    console.log('hello');
+    
+    ; (async () => {
+        const client = await pool.connect()
+        console.log("in router.put, here's your req.body", req.body)
+
+        try {
+            await client.query('BEGIN')
+            let queryText = `UPDATE candidates SET (name, email, incumbent) = ($1, $2, $3) WHERE id = ${req.params.id};`;
+            await client.query(queryText, [req.body.name, req.body.email, req.body.incumbent]);
+            for (const category in req.body.budget) {
+                //inside the for in loop, we build a new object to send to the db
+                //it holds the category name, the amount of money the candidate is allocating, and the candidate id
+                console.log(category);
+
+                categoryInfo = { category_id: category, amount: req.body.budget[category], candidate_id: req.params.id }
+                console.log(categoryInfo);
+                queryText = `UPDATE budget_allocation SET amount = $1 WHERE budget_category_id = ${categoryInfo.category_id} AND candidate_id = ${req.params.id};`
+                await client.query(queryText, [categoryInfo.amount]);
+            }
+            await client.query('COMMIT')
+        } catch (error) {
+            await client.query('ROLLBACK')
+            throw error
+        } finally {
+            res.sendStatus(200)
+            client.release()
+        }
+        })().catch(e => console.error(e.stack))
 })
 
-//i was trying to work on a way to combine these two posts. i'll just leave it here, commented out. doesn't quite work yet.
-// router.post('/', (req, res) => { 
-//     ;(async () => {
-//             const client = await pool.connect()
-//             //using transactions to send multiple INSERTS in one post
-//             try {
-//                 await client.query('BEGIN')
-//                 //this query will return the newly created candidate's id
-//                 let query = "INSERT INTO candidates (election_id, name, running_for, email, incumbent) VALUES ($1, $2, $3, $4, $5) RETURNING id"
-//                 let response = await client.query(query, [1, 'Duncan', 'Chief of Police', '123@gmail.com', false]);
-//                 //assign the candidate's id to variable 'candidate_id'
-//                 let candidate_id = response.rows[0].id;
-//                 console.log(candidate_id, 'this is the canidate id');
-//                 let testArray
-//                 //[req.params.election_id, req.body.name, req.body.running_for, req.body.email, req.body.incumbent]
-//                 query = "INSERT INTO budget_allocation (candidate_id, budget_category_id, amount) VALUES ($1, $2, $3)";
-//                 await client.query(query, [candidate_id, 1, 400])
-//                 await client.query('COMMIT')
-//             } catch (error) {
-//                 await client.query('ROLLBACK')
-//                 throw error
-//             } finally {
-//                 res.sendStatus(200)
-//                 client.release()
-//             }
-//         })().catch(e => console.error(e.stack))
-//     });
+    // let candidate_id = action.payload.id
+    // //we loop through the object that was sent from the AddCandidate view
+    // //using a "for... in" loop. this loop will send a post request for each budget allocation 
+    // // to the server.
+    // console.log(action.payload.budget);
+    // let categoryInfo = {};
+    // for (const category in action.payload.budget) {
+    //     //inside the for in loop, we build a new object to send to the server
+    //     //it holds the category name, the amount of money the candidate is allocating, and the candidate id
+    //     console.log(category);
+
+    //     categoryInfo = { category_id: category, amount: action.payload.budget[category], candidate_id: candidate_id }
+    //     console.log(categoryInfo);
+
+    //     //then we send it to be posted
+    //     yield axios.put('/api/candidates/editCandidate', categoryInfo);
+
 
 module.exports = router;

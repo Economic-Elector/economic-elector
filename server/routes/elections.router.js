@@ -6,7 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/all', (req, res) => {
-    pool.query('SELECT * FROM "elections";').then((result) => {
+    pool.query('SELECT * FROM "elections" ORDER BY date ASC;').then((result) => {
         res.send(result.rows);
     }).catch((error) => {
         console.log('Error in /all GET', error)
