@@ -46,12 +46,22 @@ class EditElection extends Component {
     cancel = () =>{
         this.props.history.push('/adminElection');
     }
+    handleBack = () => {
+        this.props.history.push('/adminElection');
+    }
     render = () => {
         let election = this.props.reduxState.elections.election;
+        let name = this.props.reduxState.elections.election.name;
+        let location = this.props.reduxState.elections.election.location;
         return (
-            <div>
-                <h2>{election.name}</h2>
+            <div className="newElection">
+                <button className="left_just" onClick={this.handleBack}>Back to {name} election</button>
+                <h1>{name}</h1>
+                <h3>{location}</h3>
                 <br />
+
+                <h2>Edit Election</h2>
+          
                 <InputLabel>
                     <b>Election Office:</b>
                     <Input value={this.state.name} onChange={(event) => this.handleChange(event, 'name')}/>
@@ -68,7 +78,7 @@ class EditElection extends Component {
                 </InputLabel>
                 <br />
 
-                <h2>Budget</h2>
+                <h2>Edit Budget</h2>
                 {this.state.budgetArray.map((budget) => {
                     return (<div>
                         <InputLabel>{budget.name}</InputLabel>

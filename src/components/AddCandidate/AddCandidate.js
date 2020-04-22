@@ -51,6 +51,10 @@ class AddCandidate extends Component {
         })
     }
 
+    handleBack = () => {
+        this.props.history.push('/adminElection');
+    }
+
     //handles change of budget inputs
     handleBudgetChange = (event, id, typeOf) => {
         this.setState({
@@ -77,12 +81,19 @@ class AddCandidate extends Component {
     }
 
     render() {
+        let name = this.props.reduxState.elections.election.name;
+        let location = this.props.reduxState.elections.election.location;
         return (
             <div class="def_style">
+                <button className="left_just" onClick={this.handleBack}>Back to {name} election</button>
+                <h1>{name}</h1>
+                <h3>{location}</h3>
+                <br />
                 <h2>Add Candidate</h2>
 
                 <InputLabel>Name</InputLabel>
                 <Input placeholder="first and last name" onChange={(event) => this.handleChange(event, 'name')} />
+
                 <br />
 
                 <InputLabel>Email</InputLabel>

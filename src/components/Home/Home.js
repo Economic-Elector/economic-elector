@@ -46,10 +46,14 @@ class Home extends Component {
         return(
             <div>
                 <div className="center_just">
+                    <br />
                 <a href="https://myballotmn.sos.state.mn.us/">Which elections can I vote in?</a>
-                <h3>Upcoming Elections</h3>
-                <ElectionList electionList={this.state.elections}/>
+                <br />
+                <h2>Choose an upcoming Election</h2>
+                <br />
                 
+                <ElectionList electionList={this.state.elections}/>
+                    
                  </div>
            
                 <Button className="float_right" onClick={this.goAdminPage}>ADMIN</Button>

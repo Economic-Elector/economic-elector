@@ -5,9 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
 class AdminElectionListItem extends Component {
-    state = {
-
-    }
 
     handleClick = (election) => {
         console.log(election.id)
@@ -40,6 +37,7 @@ class AdminElectionListItem extends Component {
             type: 'DELETE_ELECTION',
             payload: obj
         });
+        window.location.reload(false);
     }
 
 

@@ -38,7 +38,8 @@ class EditCandidate extends Component {
             email: this.state.email,
             incumbent: this.state.incumbent,
             budget: this.state.budget,
-            id: this.props.location.candidateId
+            id: this.props.location.candidateId,
+            election_id: this.props.reduxState.elections.election.id
         }
         
         this.props.dispatch({ type: 'EDIT_CANDIDATE', payload: newCandidate })
@@ -48,20 +49,21 @@ class EditCandidate extends Component {
 
     //handles the change of name and email inputs
     handleChange = (event, typeOf) => {
+        console.log(event.target.value);
+        
         this.setState({
             [typeOf]: event.target.value
         })
     }
 
     //handles change of budget inputs
-    handleBudgetChange = (event, id, typeOf) => {
+    handleBudgetChange = (event, id) => {
+        console.log(event.target.value);
+        console.log(id)
         this.setState({
             budget: {
                 ...this.state.budget,
-                [id]: {
-                    ...this.state.budget[id],
-                    amount: event.target.value
-                }
+                [id]: event.target.value
             }
         })
         console.log(this.state);
@@ -76,9 +78,19 @@ class EditCandidate extends Component {
 
     }
 
+    handleBack = () => {
+        this.props.history.push('/adminElection');
+    }
+
     render() {
+        let name = this.props.reduxState.elections.election.name;
+        let location = this.props.reduxState.elections.election.location;
         return (
             <div class="def_style">
+                <button className="left_just" onClick={this.handleBack}>Back to {name} election</button>
+                <h1>{name}</h1>
+                <h3>{location}</h3>
+                <br />
                 <h2>Edit Candidate</h2>
 
                 <InputLabel>Name</InputLabel>
@@ -87,6 +99,7 @@ class EditCandidate extends Component {
 
                 <InputLabel>Email</InputLabel>
                 <Input value={this.state.email} placeholder="Email" onChange={(event) => this.handleChange(event, 'email')} />
+
                 <br />
 
                 <InputLabel>Incumbent?</InputLabel>
@@ -98,6 +111,7 @@ class EditCandidate extends Component {
                     return (<div>
                         <InputLabel>{category.name}</InputLabel>
                         <Input placeholder={category.name}  value={this.state.budget[category.id]} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
+
                         <br />
                     </div>)
                 })}
