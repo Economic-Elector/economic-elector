@@ -1,12 +1,13 @@
 //On this page, the admin will enter in all the needed information to create a new election. This will include the election office, 
 //location, and date that it is taking place. Additionally, the admin will be asked to enter in the budget distribution of the prior year. 
 //This is so the users will be able to see what the budget distribution has been in the past, just as a reference. At the bottom of the 
-//form, the admin can click the “Create Election” button to finish creating the election, or press “Cancel” button to cancel the process 
+//form, the admin can click the “Create Election” Button to finish creating the election, or press “Cancel” Button to cancel the process 
 //and return to the Admin Home (2). Clicking “Create Election” will create the election, and then bring the admin to the 
 //Admin Election View (4) for that specific election.
 import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
+import { FormControl, FormLabel, Input, Button } from '@material-ui/core';
 
 class AdminNewElection extends Component {
 
@@ -49,7 +50,7 @@ class AdminNewElection extends Component {
             this.state.newElection.administration === '' ||
             this.state.newElection.education === '') {
 
-            alert('Please make a selection for all inputs');
+            alert('Please make a selection for all Inputs');
 
         } else {
 
@@ -84,28 +85,28 @@ class AdminNewElection extends Component {
 
     render = () => {
         return (
-            <form onSubmit={this.addNewElection} className="newElection">
+            <FormControl onSubmit={this.addNewElection} className="newElection">
 
                 <h1>New Election</h1>
 
-                <label>
+                <FormLabel>
                     <b>Election Office:</b>
-                    <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'office')}></input>
-                </label>
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'office')}></Input>
+                </FormLabel>
 
                 <br /><br />
 
-                <label>
+                <FormLabel>
                     <b>Location:</b>
-                    <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'location')}></input>
-                </label>
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'location')}></Input>
+                </FormLabel>
 
                 <br /><br />
 
-                <label>
+                <FormLabel>
                     <b>Date:</b>
-                    <input type='date' placeholder="date" value={this.state.value} onChange={(event) => this.handleNameChange(event, 'date')}></input>
-                </label>
+                    <Input type='date' placeholder="date" value={this.state.value} onChange={(event) => this.handleNameChange(event, 'date')}></Input>
+                </FormLabel>
 
                 <br /><br />
 
@@ -113,56 +114,56 @@ class AdminNewElection extends Component {
 
                 <br></br>
 
-                <label>
+                <FormLabel>
                     <b>Law Enforcement:</b>
-                    <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'lawEnforcement')}></input>
-                </label>
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'lawEnforcement')}></Input>
+                </FormLabel>
 
                 <br /><br />
 
-                <label>
+                <FormLabel>
                     <b>Parks/Rec:</b>
-                    <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'parksRec')}></input>
-                </label>
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'parksRec')}></Input>
+                </FormLabel>
 
                 <br /><br />
 
-                <label>
+                <FormLabel>
                     <b>Public Works:</b>
-                    <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'publicWorks')}></input>
-                </label>
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'publicWorks')}></Input>
+                </FormLabel>
 
                 <br /><br />
 
-                <label>
+                <FormLabel>
                     <b>First Responders:</b>
-                    <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'firstResponders')}></input>
-                </label>
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'firstResponders')}></Input>
+                </FormLabel>
 
                 <br /><br />
 
-                <label>
+                <FormLabel>
                     <b>Community Development:</b>
-                    <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'communityDev')}></input>
-                </label>
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'communityDev')}></Input>
+                </FormLabel>
 
                 <br /><br />
 
-                <label>
+                <FormLabel>
                     <b>Administration:</b>
-                    <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'administration')}></input>
-                </label>
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'administration')}></Input>
+                </FormLabel>
 
                 <br /><br />
 
-                <label>
+                <FormLabel>
                     <b>Education:</b>
-                    <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'education')}></input>
-                </label>
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'education')}></Input>
+                </FormLabel>
 
                 <br /><br />
 
-                <input
+                <Input
                     className="create-election"
                     type="submit"
                     name="submit"
@@ -171,9 +172,9 @@ class AdminNewElection extends Component {
 
                 <br /><br />
 
-                <button className="center" type="reset"><b>Cancel</b></button>
+                <Button className="center" type="reset"><b>Cancel</b></Button>
 
-            </form>
+            </FormControl>
         )
     }
 }

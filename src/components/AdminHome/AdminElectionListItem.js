@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 class AdminElectionListItem extends Component {
     state = {
@@ -44,18 +45,19 @@ class AdminElectionListItem extends Component {
 
     render = () => {
         let election = this.props.election;
-        
+
         return (
             <div>
-            <div onClick={() => this.handleClick(election)} className="Election">
-                {election.name}
-                <br />
-                {election.location}
+                <div onClick={() => this.handleClick(election)} className="Election">
+                    {election.name}
+                    <br />
+                    {election.location}
+                    <br />
+                    {election.date}
+                    <br />
+                    <Button onClick={(event) => this.handleDeleteElection(event, election.id)}>Delete Election</Button>
                 </div>
-                {election.date}
-                <br />
-                <button onClick={(event) => this.handleDeleteElection(event, election.id)}>Delete Election</button>
-                <br /><br />
+                <hr className="ruler" />
             </div>
         )
     }

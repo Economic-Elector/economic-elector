@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './AddCandidate.css';
-import { Input } from '@material-ui/core';
+import { Input, InputLabel, Button } from '@material-ui/core';
 
 class AddCandidate extends Component {
     state = {
@@ -81,29 +81,29 @@ class AddCandidate extends Component {
             <div class="def_style">
                 <h2>Add Candidate</h2>
 
-                <label>Name</label>
+                <InputLabel>Name</InputLabel>
                 <Input placeholder="first and last name" onChange={(event) => this.handleChange(event, 'name')} />
                 <br />
 
-                <label>Email</label>
+                <InputLabel>Email</InputLabel>
                 <Input placeholder="email" onChange={(event) => this.handleChange(event, 'email')} />
                 <br />
 
-                <label>Incumbent?</label>
+                <InputLabel>Incumbent?</InputLabel>
                 <Input type="checkbox" value={this.state.incumbent} onChange={() => this.handleCheck()} />
 
                 <h2>Candidate's Proposed Budget</h2>
 
                 {this.state.categories.map((category) => {
                     return(<div>
-                        <label>{category.name}</label>
+                        <InputLabel>{category.name}</InputLabel>
                         <Input placeholder={category.name} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
                         <br />
                     </div>)
                 })}
 
-                <button onClick={this.handleAdd} >Add Candidate</button>
-                <button onClick={this.handleCancel} >Cancel</button>
+                <Button onClick={this.handleAdd} >Add Candidate</Button>
+                <Button onClick={this.handleCancel} >Cancel</Button>
 
             </div>
         )
