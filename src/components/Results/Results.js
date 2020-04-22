@@ -15,6 +15,9 @@ class Results extends Component {
         let dif = a.difference - b.difference;
         return dif
     }
+    handleBack = () => {
+        this.props.history.push('/home');
+    }
     
     
     render() {
@@ -74,8 +77,10 @@ class Results extends Component {
         
 
         return (
+            
             <div className="CandidateList">
-                <h2>Your Results</h2>
+                <button class="left_just" onClick={this.handleBack}>Back to Elections</button>
+                <h1>Your Results</h1>
                 <table class="graph_just">
                     <thead>
                         <tr>

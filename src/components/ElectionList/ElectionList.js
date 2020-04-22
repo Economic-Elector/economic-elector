@@ -10,6 +10,7 @@ class ElectionList extends Component {
                 <ul>
                     {this.props.electionList.map(election => (<li key={election.id}><Election election={election} /></li>))}
                 </ul>
+                
             </div>
         );
     }
