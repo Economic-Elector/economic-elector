@@ -39,7 +39,7 @@ class AdminHome extends Component {
     render() {
         return (
             <div class="def_style">
-                <h2>Available Elections</h2>
+                <h1>Available Elections</h1>
                 <br />
                 <button onClick={this.addNewElection}>Add New Election</button>
                 <br /><br />
