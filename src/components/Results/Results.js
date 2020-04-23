@@ -44,17 +44,17 @@ class Results extends Component {
 
         console.log('candidates', this.props.reduxState.candidates.allCandidates);
         const candidates = this.props.reduxState.candidates.allCandidates;
-
+        const categories = this.props.reduxState.budget.pastBudget;
         // Finds the total difference between user info and candidate
         let diffID = [];
         for( let i=0; i<candidates.length; i++ ){
-            let lawDiff = Math.abs( Number(userStuff.lawEnforcement) - candidates[i].budget[2] );
-            let parksDiff = Math.abs( Number(userStuff.parksRec) - candidates[i].budget[1] );
-            let publicDiff = Math.abs( Number(userStuff.publicWorks) - candidates[i].budget[5] );
-            let firstDiff = Math.abs( Number(userStuff.firstResponders) - candidates[i].budget[4] );
-            let commDiff = Math.abs( Number(userStuff.communityDev) - candidates[i].budget[7] );
-            let adminDiff = Math.abs( Number(userStuff.administration) - candidates[i].budget[6] );
-            let educDiff = Math.abs( Number(userStuff.education) - candidates[i].budget[3] );
+            let lawDiff = Math.abs(Number(userStuff.lawEnforcement) - candidates[i].budget[categories[1].id] );
+            let parksDiff = Math.abs( Number(userStuff.parksRec) - candidates[i].budget[categories[0].id] );
+            let publicDiff = Math.abs(Number(userStuff.publicWorks) - candidates[i].budget[categories[4].id] );
+            let firstDiff = Math.abs(Number(userStuff.firstResponders) - candidates[i].budget[categories[3].id] );
+            let commDiff = Math.abs(Number(userStuff.communityDev) - candidates[i].budget[categories[6].id] );
+            let adminDiff = Math.abs(Number(userStuff.administration) - candidates[i].budget[categories[5].id] );
+            let educDiff = Math.abs(Number(userStuff.education) - candidates[i].budget[categories[2].id] );
             let totalDiff = Number( lawDiff + parksDiff + publicDiff + firstDiff + commDiff + adminDiff + educDiff );
             candidates[i].difference = totalDiff
             diffID.push({
@@ -81,7 +81,7 @@ class Results extends Component {
             <div className="CandidateList">
                 <button class="left_just" onClick={this.handleBack}>Back to Elections</button>
                 <h1>Your Results</h1>
-                <table class="graph_just">
+                <table class="candidates_just">
                     <thead>
                         <tr>
                             <th>Candidate Name </th>
