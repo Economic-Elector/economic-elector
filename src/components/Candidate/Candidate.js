@@ -24,20 +24,21 @@ class Candidate extends Component {
         })
         
         console.log('candidate:', this.props.candidate.budget[1]);
-        console.log('item', this.props.item)
-        const totalBudget = Number(this.props.candidate.budget[1] + this.props.candidate.budget[2] + this.props.candidate.budget[3] + this.props.candidate.budget[4] + this.props.candidate.budget[5] + this.props.candidate.budget[6] + this.props.candidate.budget[7])
+        console.log('item', this.props.item) 
+        const categories = this.props.reduxState.budget.pastBudget;
+        const totalBudget = Number(this.props.candidate.budget[categories[0].id] + this.props.candidate.budget[categories[1].id] + this.props.candidate.budget[categories[2].id] + this.props.candidate.budget[categories[3].id] + this.props.candidate.budget[categories[4].id] + this.props.candidate.budget[categories[5].id] + this.props.candidate.budget[categories[6].id])
             return(
             <>
                 <TableCell>{this.props.candidate.name}</TableCell>
                 <TableCell>{formatter.format(this.totalDiff())}</TableCell>
                 <TableCell>{formatter.format(totalBudget)}</TableCell>
-                <TableCell>{formatter.format(this.props.candidate.budget[1])}</TableCell>
-                <TableCell>{formatter.format(this.props.candidate.budget[2])}</TableCell>
-                <TableCell>{formatter.format(this.props.candidate.budget[3])}</TableCell>
-                <TableCell>{formatter.format(this.props.candidate.budget[4])}</TableCell>
-                <TableCell>{formatter.format(this.props.candidate.budget[5])}</TableCell>
-                <TableCell>{formatter.format(this.props.candidate.budget[6])}</TableCell>
-                <TableCell>{formatter.format(this.props.candidate.budget[7])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[categories[0].id])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[categories[1].id])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[categories[2].id])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[categories[3].id])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[categories[4].id])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[categories[5].id])}</TableCell>
+                <TableCell>{formatter.format(this.props.candidate.budget[categories[6].id])}</TableCell>
             </>
         )
     }
