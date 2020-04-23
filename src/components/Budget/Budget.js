@@ -82,13 +82,9 @@ class Budget extends Component {
 
                 <div className='budgetForm'>
 
-                    <h2>Create Your Budget Preferences</h2> <br />
+                    <div class="right_just">
 
-                    <div class="center_just">
-
-                        <InputLabel> Law Enforcement:
-                            <Input onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
-                        </InputLabel>
+                        <h2>Create Your Budget Preferences</h2> 
 
                         <br />
 
@@ -98,8 +94,14 @@ class Budget extends Component {
 
                         <br />
 
-                        <InputLabel> Public Works:
-                            <Input onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
+                        <InputLabel> Law Enforcement:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
+                        </InputLabel>
+
+                        <br />
+
+                        <InputLabel> Education:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'education')} />
                         </InputLabel>
 
                         <br />
@@ -110,20 +112,20 @@ class Budget extends Component {
 
                         <br />
 
-                        <InputLabel> Community Development: 
-                            <Input onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
+                        <InputLabel> Public Works:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
                         </InputLabel>
 
                         <br />
 
-                        <InputLabel> Administration: 
+                        <InputLabel> Administration:
                             <Input onChange={(event) => this.handleBudgetChange(event, 'administration')} />
                         </InputLabel>
 
                         <br />
 
-                        <InputLabel> Education: 
-                            <Input onChange={(event) => this.handleBudgetChange(event, 'education')} />
+                        <InputLabel> Community Development: 
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
                         </InputLabel>
 
                     </div>
@@ -138,6 +140,7 @@ class Budget extends Component {
                 <Button onClick={this.findCandidate}>Find My Candidate</Button>
 
             </div>
+
         )
     }
 }
