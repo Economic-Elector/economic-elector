@@ -32,11 +32,24 @@ function* currentElection(action) {
     yield put({ type: 'SET_CURRENT', payload: action.payload });
 }
 
+function* addCategory(action){
+    console.log(action.payload);
+    let info = action.payload;
+    try{
+        yield axios.post(`/api/category/add/${action.payload.election_id}`, {name: info.name, amount: info.amount, candidates: action.payload.candidates})
+    
+    }catch(error){
+        console.log('error in addCategory saga', error);
+    }
+}
+
 function* userSaga() {
     yield takeLatest('FETCH_BUDGET', fetchBudget);
     yield takeLatest('CURRENT_ELECTION', currentElection);
     yield takeLatest('FIND_CANDIDATE', findResults);
     yield takeLatest('SET_USER_BUDGET', userBudget);
+    yield takeLatest('ADD_NEW_CATEGORY', addCategory);
+
 }
 
 export default userSaga;

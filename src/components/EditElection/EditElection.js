@@ -75,7 +75,12 @@ class EditElection extends Component {
         console.log(this.state.newCategoryName);
         this.props.dispatch({
             type: 'ADD_NEW_CATEGORY',
-            payload: this.state.newCategory
+            payload: {
+                election_id: this.props.reduxState.elections.election.id,
+                name: this.state.newCategory.name,
+                amount: this.state.newCategory.amount,
+                candidates: this.props.reduxState.candidates.allCandidates
+            }
         })
         console.log(this.state);
 
