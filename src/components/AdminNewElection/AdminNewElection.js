@@ -22,7 +22,7 @@ class AdminNewElection extends Component {
             communityDev: '',
             administration: '',
             education: '',
-        }
+        },
     }
 
     handleNameChange = (event, param) => {

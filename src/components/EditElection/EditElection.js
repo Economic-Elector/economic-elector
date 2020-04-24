@@ -10,7 +10,12 @@ class EditElection extends Component {
         name: this.props.reduxState.elections.election.name,
         location: this.props.reduxState.elections.election.location,
         date: this.props.reduxState.elections.election.date,
-        budgetArray: []
+        budgetArray: [],
+        addCategoryToggle: false,
+        newCategory: {
+            name: '',
+            amount: ''
+        }
     }
     componentDidMount = () =>{
         this.setState({
@@ -49,10 +54,58 @@ class EditElection extends Component {
     handleBack = () => {
         this.props.history.push('/adminElection');
     }
+    addCategoryToggle = () => {
+        this.setState({
+            addCategoryToggle: !this.state.addCategoryToggle
+        })
+    }
+
+    handleNewCategoryChange = (event, typeOf) => {
+        this.setState({
+            newCategory:{
+                ...this.state.newCategory,
+                [typeOf]: event.target.value
+            }
+        })
+        console.log(this.state.newCategoryName);
+
+    }
+
+    addCategory = () => {
+        console.log(this.state.newCategoryName);
+        this.props.dispatch({
+            type: 'ADD_NEW_CATEGORY',
+            payload: this.state.newCategory
+        })
+        console.log(this.state);
+
+    }
     render = () => {
         let election = this.props.reduxState.elections.election;
         let name = this.props.reduxState.elections.election.name;
         let location = this.props.reduxState.elections.election.location;
+        
+        let addCategory;
+        if (this.state.addCategoryToggle) {
+            addCategory = (
+                <div>
+                    <label>
+                        <b>Category Name:</b>
+                        <input onChange={(event) => this.handleNewCategoryChange(event, 'name')}></input>
+                    </label>
+                    <label>
+                        <b>Amount of Budget:</b>
+                        <input onChange={(event) => this.handleNewCategoryChange(event, 'amount')}></input>
+                    </label>
+                    <button type='button' onClick={this.addCategory}>Add</button>
+                    <button onClick={this.addCategoryToggle}>Cancel</button>
+                </div>
+            );
+        } else {
+            addCategory = (
+                <button onClick={this.addCategoryToggle}>Add Category</button>
+            );
+        }
         return (
             <div className="newElection">
                 <button className="left_just" onClick={this.handleBack}>Back to {name} election</button>
@@ -88,6 +141,9 @@ class EditElection extends Component {
                         <br />
                     </div>)
                 })}
+                <br/>
+                {addCategory}
+                <br/>
                 <Button onClick={this.submit}>Submit Changes</Button>
                 <Button onClick={this.cancel}>Cancel</Button>
             </div>
