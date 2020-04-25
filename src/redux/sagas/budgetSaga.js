@@ -34,7 +34,14 @@ function* currentElection(action) {
 
 function* sendBudgetRequest(action){
     console.log(action.payload);
-    
+    try{
+        let candidate = action.payload.candidate;
+        let election = action.payload.election
+        let message = `<h2> Hello ${candidate.name}, please send us your proposed budget for the ${election.name} position you are running for</h2>`
+        yield axios.post(`/api/email`, {candidate: candidate, message: message});
+    } catch (error) {
+        console.log('error in emailingcandidates', error);
+    }
 }
 
 function* userSaga() {
