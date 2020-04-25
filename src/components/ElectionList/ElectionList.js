@@ -8,11 +8,11 @@ import '../Home/Home.css'
 class ElectionList extends Component {
     render() {
         return (
-            <div className="ElectionList">
-                <List>
-                    {this.props.electionList.map(election => (<ListItem key={election.id}><Election election={election} /></ListItem>))}
-                </List>
-            </div>
+        
+            <List>
+                {this.props.electionList.map(election => (<ListItem key={election.id}><Election election={election} /></ListItem>))}
+            </List>
+            
         );
     }
 }
