@@ -51,6 +51,11 @@ class AdminElection extends Component {
     handleBack = () => {
         this.props.history.push('/adminHome');
     }
+
+    requestBudget = (candidate) =>{
+        console.log('request');
+        this.props.dispatch({ type: 'SEND_BUDGET_REQUEST', payload: { candidate: candidate, election: this.props.reduxState.elections.election, categories: this.props.reduxState.budget.pastBudget}})
+    }
     //everything in h1,h2,h2 will come from "elections" DB table
     //everything in the table body will come from "candidates" and "budget_allocation" DB tables
     render = () => {
@@ -93,6 +98,7 @@ class AdminElection extends Component {
                                         <TableCell variant="head" >{candidate.budget[category.id]}</TableCell>
                                     )
                                 })}
+                                <Button onClick={()=>this.requestBudget(candidate)}>Request Budget</Button>
                                 <Button onClick={(event) => this.editCandidate(event, candidate.id)}>Edit</Button>
                                 <Button onClick={(event) => this.removeCandidate(event, candidate.id)}>Remove</Button>
                             </TableRow>))}

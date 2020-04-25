@@ -32,6 +32,19 @@ function* currentElection(action) {
     yield put({ type: 'SET_CURRENT', payload: action.payload });
 }
 
+
+function* sendBudgetRequest(action){
+    console.log(action.payload);
+    try{
+        let candidate = action.payload.candidate;
+        let election = action.payload.election
+        let message = `<h2> Hello ${candidate.name}, please send us your proposed budget for the ${election.name} position you are running for</h2>`
+        yield axios.post(`/api/email`, {candidate: candidate, message: message});
+    } catch (error) {
+        console.log('error in emailingcandidates', error);
+    }
+}
+
 function* addCategory(action){
     console.log(action.payload);
     let info = action.payload;
@@ -54,11 +67,13 @@ function* removeCategory(action){
         console.log('error removeCategory in budgetSaga', error);
     }
 }
+
 function* userSaga() {
     yield takeLatest('FETCH_BUDGET', fetchBudget);
     yield takeLatest('CURRENT_ELECTION', currentElection);
     yield takeLatest('FIND_CANDIDATE', findResults);
     yield takeLatest('SET_USER_BUDGET', userBudget);
+    yield takeLatest('SEND_BUDGET_REQUEST', sendBudgetRequest);
     yield takeLatest('ADD_NEW_CATEGORY', addCategory);
     yield takeLatest('REMOVE_CATEGORY', removeCategory);
 
