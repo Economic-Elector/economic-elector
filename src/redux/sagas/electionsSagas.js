@@ -6,8 +6,18 @@ function* electionsSagas() {
     yield takeLatest('FETCH_ELECTION', fetchElection);
     yield takeLatest('DELETE_ELECTION', deleteElection);
     yield takeLatest('EDIT_ELECTION', editElection)
+    yield takeLatest('FETCH_ALL_ELECTIONS', fetchAllElections)
 }
 
+function* fetchAllElections(action){
+    try{
+        const response = Axios.get('/api/elections/all');
+        yield put({type: 'SET_ALL_ELECTIONS', payload: response})
+    }catch(error){
+        console.log('error getting all elections', error);
+        
+    }
+}
 // POST to create new election row in elections table of DB
 // response provides the RETURNING newElection id which is used
 // to dispay on next page
@@ -51,7 +61,7 @@ function* deleteElection(action) {
     console.log('in deleteElection saga, ID:', action.payload);
     try {
         yield Axios.delete(`/api/elections/deleteElection/${action.payload.electionId}`);
-        // yield put({ type: 'FETCH_ELECTION', payload: action.payload.electionId })
+        yield put({ type: 'FETCH_ALL_ELECTIONS' })
     } catch (error) {
         console.log(error);
     }

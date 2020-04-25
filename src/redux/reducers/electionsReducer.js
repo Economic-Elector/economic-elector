@@ -20,7 +20,18 @@ const election = (state = {}, action) => {
             return state;
     }
 };
+
+const allElections = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_ALL_ELECTIONS':
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
 export default combineReducers({
     electionId,
-    election
+    election,
+    allElections
 });

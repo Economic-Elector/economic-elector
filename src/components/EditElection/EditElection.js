@@ -85,6 +85,18 @@ class EditElection extends Component {
         console.log(this.state);
 
     }
+
+    removeCategory = (id) =>{
+        console.log(id);
+        this.props.dispatch({ 
+            type: 'REMOVE_CATEGORY', 
+            payload: { 
+                election_id: this.props.reduxState.elections.election.id,
+                budget_category_id: id, 
+                candidates: this.props.reduxState.candidates.allCandidates
+            }
+        })
+    }
     render = () => {
         let election = this.props.reduxState.elections.election;
         let name = this.props.reduxState.elections.election.name;
@@ -143,6 +155,7 @@ class EditElection extends Component {
                         <Input value={budget.past_allocation} type='number'
                             onChange={(event) => this.handleBudgetChange(event, budget.id)} 
                         />
+                        <button onClick = {()=>this.removeCategory(budget.id)}>Remove Category</button>
                         <br />
                     </div>)
                 })}
