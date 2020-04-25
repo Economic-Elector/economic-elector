@@ -22,6 +22,13 @@ class EditElection extends Component {
             budgetArray: this.props.reduxState.budget.pastBudget
         })        
     }
+    componentDidUpdate = (prevProps) =>{
+        if (this.props.reduxState.budget.pastBudget !== prevProps.reduxState.budget.pastBudget) {
+            this.setState({
+                budgetArray: this.props.reduxState.budget.pastBudget
+            })
+        }
+    }
     handleChange = (event, typeOf) =>{
         this.setState({
             [typeOf]: event.target.value
@@ -82,7 +89,7 @@ class EditElection extends Component {
                 candidates: this.props.reduxState.candidates.allCandidates
             }
         })
-        console.log(this.state);
+        this.addCategoryToggle();
 
     }
 
@@ -96,6 +103,7 @@ class EditElection extends Component {
                 candidates: this.props.reduxState.candidates.allCandidates
             }
         })
+        
     }
     render = () => {
         let election = this.props.reduxState.elections.election;

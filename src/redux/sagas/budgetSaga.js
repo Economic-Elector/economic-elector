@@ -37,7 +37,8 @@ function* addCategory(action){
     let info = action.payload;
     try{
         yield axios.post(`/api/category/add/${action.payload.election_id}`, {name: info.name, amount: info.amount, candidates: action.payload.candidates})
-    
+        yield put({ type: 'FETCH_BUDGET', payload: action.payload.election_id })
+
     }catch(error){
         console.log('error in addCategory saga', error);
     }
