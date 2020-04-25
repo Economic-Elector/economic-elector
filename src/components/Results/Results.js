@@ -15,6 +15,9 @@ class Results extends Component {
         let dif = a.difference - b.difference;
         return dif
     }
+    handleBack = () => {
+        this.props.history.push('/home');
+    }
     
     
     render() {
@@ -24,6 +27,13 @@ class Results extends Component {
 
         const pastData = this.props.reduxState.budget.pastBudget
         const userStuff = this.props.reduxState.budget.userBudget.budget
+
+        // formatter
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2
+        })
 
         // const for bar graphs using react-vis
         const userData = [{ x: 'Law Enforc', y: Number(userStuff.lawEnforcement)}, { x: 'Parks/Rec', y: Number(userStuff.parksRec) }, { x: 'PublicWorks', y: Number(userStuff.publicWorks) }, { x: 'First Responders', y: Number(userStuff.firstResponders) }, { x: 'Community Dev', y: Number(userStuff.communityDev) }, { x: 'Administration', y: Number(userStuff.administration) }, { x: 'Education', y: Number(userStuff.education) }];
@@ -41,17 +51,17 @@ class Results extends Component {
 
         console.log('candidates', this.props.reduxState.candidates.allCandidates);
         const candidates = this.props.reduxState.candidates.allCandidates;
-
+        const categories = this.props.reduxState.budget.pastBudget;
         // Finds the total difference between user info and candidate
         let diffID = [];
         for( let i=0; i<candidates.length; i++ ){
-            let lawDiff = Math.abs( Number(userStuff.lawEnforcement) - candidates[i].budget[2] );
-            let parksDiff = Math.abs( Number(userStuff.parksRec) - candidates[i].budget[1] );
-            let publicDiff = Math.abs( Number(userStuff.publicWorks) - candidates[i].budget[5] );
-            let firstDiff = Math.abs( Number(userStuff.firstResponders) - candidates[i].budget[4] );
-            let commDiff = Math.abs( Number(userStuff.communityDev) - candidates[i].budget[7] );
-            let adminDiff = Math.abs( Number(userStuff.administration) - candidates[i].budget[6] );
-            let educDiff = Math.abs( Number(userStuff.education) - candidates[i].budget[3] );
+            let lawDiff = Math.abs(Number(userStuff.lawEnforcement) - candidates[i].budget[categories[1].id] );
+            let parksDiff = Math.abs( Number(userStuff.parksRec) - candidates[i].budget[categories[0].id] );
+            let publicDiff = Math.abs(Number(userStuff.publicWorks) - candidates[i].budget[categories[4].id] );
+            let firstDiff = Math.abs(Number(userStuff.firstResponders) - candidates[i].budget[categories[3].id] );
+            let commDiff = Math.abs(Number(userStuff.communityDev) - candidates[i].budget[categories[6].id] );
+            let adminDiff = Math.abs(Number(userStuff.administration) - candidates[i].budget[categories[5].id] );
+            let educDiff = Math.abs(Number(userStuff.education) - candidates[i].budget[categories[2].id] );
             let totalDiff = Number( lawDiff + parksDiff + publicDiff + firstDiff + commDiff + adminDiff + educDiff );
             candidates[i].difference = totalDiff
             diffID.push({
@@ -70,13 +80,15 @@ class Results extends Component {
         
         // *Dispatch*
         this.props.dispatch({ type: 'SORT_CANDIDATES', payload: sortedCand });
-
+        console.log('userStuff: ', userStuff)
         
 
         return (
+            
             <div className="CandidateList">
-                <h2>Your Results</h2>
-                <table class="graph_just">
+                <button class="left_just" onClick={this.handleBack}>Back to Elections</button>
+                <h1>Your Results</h1>
+                <table class="candidates_just">
                     <thead>
                         <tr>
                             <th>Candidate Name </th>
@@ -92,6 +104,18 @@ class Results extends Component {
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>Your Budget</td>
+                            <td>N/A</td>
+                            <td>{formatter.format(userStuff.total)}</td>
+                            <td>{formatter.format(userStuff.lawEnforcement)}</td>
+                            <td>{formatter.format(userStuff.parksRec)}</td>
+                            <td>{formatter.format(userStuff.publicWorks)}</td>
+                            <td>{formatter.format(userStuff.firstResponders)}</td>
+                            <td>{formatter.format(userStuff.communityDev)}</td>
+                            <td>{formatter.format(userStuff.administration)}</td>
+                            <td>{formatter.format(userStuff.education)}</td>
+                        </tr>
                         {this.props.reduxState.candidates.sortCandidates.map(candidate => (<tr key={candidate.id}><Candidate diff={diffID} candidate={candidate} /></tr>))}
                     </tbody>
                 </table>
@@ -118,6 +142,10 @@ class Results extends Component {
                         <BarSeries data={currentData} />
                         <LabelSeries data={labelData} />
                     </XYPlot>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <button height="50px" width="100px" onClick={window.print}>Print My Ballot</button>
                 </div>
             </div>
         );

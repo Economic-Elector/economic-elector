@@ -2,7 +2,7 @@
     text-align: center;
     align-items: center;
     margin: auto;
-    display: block;
+    /* display: block; */
 
 }
 
@@ -30,3 +30,8 @@ ul {
     float: right;
 }
 
+.ElectionList{
+    text-align: center;
+    width: 30%;
+    margin: auto;
+}

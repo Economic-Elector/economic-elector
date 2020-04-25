@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, InputLabel, Input } from '@material-ui/core';
 
 class LoginPage extends Component {
     state = {
@@ -43,26 +44,26 @@ class LoginPage extends Component {
                 <form onSubmit={this.login}>
                     <h1>Login</h1>
                     <div>
-                        <label htmlFor="username">
+                        <InputLabel htmlFor="username">
                             Username:
-              <input
+              <Input
                                 type="text"
                                 name="username"
                                 value={this.state.username}
                                 onChange={this.handleInputChangeFor('username')}
                             />
-                        </label>
+                        </InputLabel>
                     </div>
                     <div>
-                        <label htmlFor="password">
+                        <InputLabel htmlFor="password">
                             Password:
-              <input
+              <Input
                                 type="password"
                                 name="password"
                                 value={this.state.password}
                                 onChange={this.handleInputChangeFor('password')}
                             />
-                        </label>
+                        </InputLabel>
                     </div>
                     <div>
                         <input
@@ -74,13 +75,13 @@ class LoginPage extends Component {
                     </div>
                 </form>
                 <center>
-                    <button
+                    <Button
                         type="button"
                         className="link-button"
                         onClick={() => { this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' }) }}
                     >
                         Register
-          </button>
+          </Button>
                 </center>
             </div>
         );

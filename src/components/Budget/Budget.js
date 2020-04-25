@@ -1,12 +1,13 @@
-// The budget page will contain a user input form to enter personal budget preferences. It will also display the current budget alongside the user inputed budget. 
-// The user can input any number they want into a budget input. But, they will have the current budget to reference so that they can come up with realistic numbers. 
-// This data will be displayed in a bar chart showing the budget breakdown. Once the user has clicked the “Find My Candidate” button, they will be brought to the Results View (3).
+// The budget page will contain a user Input form to enter personal budget preferences. It will also display the current budget alongside the user Inputed budget. 
+// The user can Input any number they want into a budget Input. But, they will have the current budget to reference so that they can come up with realistic numbers. 
+// This data will be displayed in a bar chart showing the budget breakdown. Once the user has clicked the “Find My Candidate” Button, they will be brought to the Results View (3).
 
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Budget.css'
 import BudgetItem from '../BudgetItem/BudgetItem';
+import { Input, Button, InputLabel } from '@material-ui/core';
 
 class Budget extends Component {
 
@@ -69,62 +70,77 @@ class Budget extends Component {
         return (
             <div className="center_just">
 
-                <button class="left_just" onClick={this.handleBack}>Back to Elections</button>
+                <Button onClick={this.handleBack}>Back to Elections</Button>
 
-                <h3>{this.props.reduxState.elections.election.name}</h3>
+                <h1>{this.props.reduxState.elections.election.name}</h1>
 
                 <h3>{this.props.reduxState.elections.election.location}</h3>
 
                 <h3>{this.props.reduxState.elections.election.date}</h3>
 
+                <br />
+
                 <div className='budgetForm'>
 
-                    <h4>Create Your Budget Preferences</h4> <br />
+                    <div class="right_just">
 
-                    <div class="center_just">
+                        <h2>Create Your Budget Preferences</h2> 
 
-                        <label>Law Enforcement</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
                         <br />
 
-                        <label>Parks/Rec</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
+                        <InputLabel> Parks and Recreation:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
+                        </InputLabel>
+
                         <br />
 
-                        <label>Public Works</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
+                        <InputLabel> Law Enforcement:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
+                        </InputLabel>
+
                         <br />
 
-                        <label>First Responders</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'firstResponders')} />
+                        <InputLabel> Education:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'education')} />
+                        </InputLabel>
+
                         <br />
 
-                        <label>Community Development</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
+                        <InputLabel> First Responders:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'firstResponders')} />
+                        </InputLabel>
+
                         <br />
 
-                        <label>Administration</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'administration')} />
+                        <InputLabel> Public Works:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
+                        </InputLabel>
+
                         <br />
 
-                        <label>Education</label>
-                        <input placeholder="$default" onChange={(event) => this.handleBudgetChange(event, 'education')} />
+                        <InputLabel> Administration:
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'administration')} />
+                        </InputLabel>
+
                         <br />
+
+                        <InputLabel> Community Development: 
+                            <Input onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />
+                        </InputLabel>
 
                     </div>
 
                     <div class="left_just">
-                        <h4><center>Current Budget</center></h4>
+                        <h2><center>Current Budget</center></h2>
                         {this.props.reduxState.budget.pastBudget.map((item) => (<p><BudgetItem item={item} /></p>))}
                     </div>
 
                 </div>
 
-                <button class="center_just" onClick={this.findCandidate}>Find My Candidate</button>
-
-                
+                <Button onClick={this.findCandidate}>Find My Candidate</Button>
 
             </div>
+
         )
     }
 }

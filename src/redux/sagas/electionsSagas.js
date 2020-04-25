@@ -4,9 +4,21 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* electionsSagas() {
     yield takeLatest('INPUT_NEW_ELECTION', postNewElection);
     yield takeLatest('FETCH_ELECTION', fetchElection);
-    yield takeLatest('DELETE_ELECTION', deleteElection)
+    yield takeLatest('DELETE_ELECTION', deleteElection);
+    yield takeLatest('EDIT_ELECTION', editElection)
+    yield takeLatest('FETCH_ALL_ELECTIONS', fetchAllElections)
 }
 
+function* fetchAllElections(action){
+    try{
+        const response = yield Axios.get('/api/elections/all');
+        console.log(response);
+        yield put({type: 'SET_ALL_ELECTIONS', payload: response.data})
+    }catch(error){
+        console.log('error getting all elections', error);
+        
+    }
+}
 // POST to create new election row in elections table of DB
 // response provides the RETURNING newElection id which is used
 // to dispay on next page
@@ -50,10 +62,34 @@ function* deleteElection(action) {
     console.log('in deleteElection saga, ID:', action.payload);
     try {
         yield Axios.delete(`/api/elections/deleteElection/${action.payload.electionId}`);
-        // yield put({ type: 'FETCH_ELECTION', payload: action.payload.electionId })
+        yield put({ type: 'FETCH_ALL_ELECTIONS' })
     } catch (error) {
         console.log(error);
     }
+}
+function* editElection(action){
+    try {
+
+        yield Axios({
+            method: 'PUT',
+            url: `/api/elections/editElection/${action.payload.id}`,
+            data: action.payload
+        })
+
+        yield put({
+            type: 'SET_ELECTION',
+            payload: {
+                        id: action.payload.id,
+                        name: action.payload.name,
+                        location: action.payload.location,
+                        date: action.payload.date
+                    }
+            })
+        yield put({type: 'FETCH_BUDGET', payload: action.payload.id});
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 
 export default electionsSagas;

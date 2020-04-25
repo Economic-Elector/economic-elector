@@ -21,6 +21,8 @@ import AdminElection from '../AdminElection/AdminElection';
 import AddCandidate from '../AddCandidate/AddCandidate';
 import AdminNewElection from '../AdminNewElection/AdminNewElection';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import EditCandidate from '../editCandidate/editCandidate'
+import EditElection from '../EditElection/EditElection';
 import './App.css';
 
 class App extends Component {
@@ -31,14 +33,13 @@ class App extends Component {
     render() {
         return (
             <Router>
-
                 <div>
                     <Nav />
                     <Switch>
                         {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
                         <Redirect exact from="/" to="/home" />
                         {/* Visiting localhost:3000/about will show the about page.
-            This is a route anyone can see, no login necessary */}
+                        This is a route anyone can see, no login necessary */}
                         <Route
                             exact
                             path="/home"
@@ -100,6 +101,11 @@ class App extends Component {
                         />
                         <ProtectedRoute
                             exact
+                            path="/editCandidate"
+                            component={EditCandidate}
+                        />
+                        <ProtectedRoute
+                            exact
                             path="/adminElection"
                             component={AdminElection}
                         />
@@ -107,6 +113,11 @@ class App extends Component {
                             exact
                             path="/adminNewElection"
                             component={AdminNewElection}
+                        />
+                        <ProtectedRoute
+                            exact
+                            path="/editElection"
+                            component={EditElection}
                         />
                         {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}

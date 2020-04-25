@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { FormControl, FormLabel, Input } from '@material-ui/core';
 
 class AdminLogin extends Component {
     state = {
@@ -35,28 +36,28 @@ class AdminLogin extends Component {
                 {this.props.errors.loginMessage && (
                     <h2 className="alert" role="alert">{this.props.errors.loginMessage}</h2>
                 )}
-                <form onSubmit={this.login}>
+                <FormControl onSubmit={this.login}>
                     <h1>Login</h1>
                     <div>
-                        <label htmlFor="username">
+                        <FormLabel htmlFor="username">
                             Username:
-                            <input  type="text"
+                            <Input  type="text"
                                     name="username"
                                     value={this.state.username}
                                     onChange={this.handleInputChangeFor('username')}
                             />
-                        </label>
+                        </FormLabel>
                     </div>
                     <div>
-                        <label htmlFor="password">
+                        <FormLabel htmlFor="password">
                             Password:
-                            <input
+                            <Input
                                 type="password"
                                 name="password"
                                 value={this.state.password}
                                 onChange={this.handleInputChangeFor('password')}
                             />
-                        </label>
+                        </FormLabel>
                     </div>
                     <div>
                         <input
@@ -66,7 +67,7 @@ class AdminLogin extends Component {
                             value="Log In"
                         />
                     </div>
-                </form>
+                </FormControl>
             </div>
         );
     }

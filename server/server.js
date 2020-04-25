@@ -12,6 +12,10 @@ const userRouter = require('./routes/user.router');
 const electionsRouter = require('./routes/elections.router');
 const candidatesRouter = require('./routes/candidates.router');
 
+const emailRouter = require('./routes/email.router');
+const categoryRouter = require('./routes/category.router');
+
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +31,9 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/elections', electionsRouter);
 app.use('/api/candidates', candidatesRouter);
+app.use('/api/email', emailRouter);
+app.use('/api/category', categoryRouter);
+
 
 // Serve static files
 app.use(express.static('build'));

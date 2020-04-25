@@ -6,7 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/all', (req, res) => {
-    pool.query('SELECT * FROM "elections";').then((result) => {
+    pool.query('SELECT * FROM "elections" ORDER BY date ASC;').then((result) => {
         res.send(result.rows);
     }).catch((error) => {
         console.log('Error in /all GET', error)
@@ -54,7 +54,7 @@ router.post('/newElection', (req, res) => {
     });
 
 router.get('/budget/:id', (req, res) => {
-    const queryText = `SELECT * FROM "budget_categories" WHERE "election_id" = $1;`
+    const queryText = `SELECT * FROM "budget_categories" WHERE "election_id" = $1 ORDER BY id ASC;`
     pool.query(queryText, [req.params.id])
     .then((result) => res.send(result.rows))
     .catch((err) => {
@@ -89,4 +89,33 @@ router.delete('/deleteElection/:id', (req, res) => {
     })().catch(e => console.error(e.stack))
 });
 
+router.put('/editElection/:id', (req, res) =>{
+    console.log(req.body, req.params.id);
+    
+    ; (async () => {
+        const client = await pool.connect()
+        try {
+            //using transactions to update both tables in one go
+            await client.query('BEGIN')
+            let queryText = `UPDATE elections SET (name, location, date) = ($1, $2, $3) WHERE id = ${req.params.id}`;
+            await client.query(queryText, [req.body.name, req.body.location, req.body.date]);
+            let budgetArray = req.body.budgetArray;
+            //loops through the budgetArray and updates the budget_categories table with the new values
+            for(let i = 0; i < budgetArray.length; i++){
+                queryText = `UPDATE budget_categories SET past_allocation = $1 WHERE id = ${budgetArray[i].id}`
+                await client.query(queryText, [budgetArray[i].past_allocation]);
+            }
+            await client.query('COMMIT')
+        } catch (error) {
+            await client.query('ROLLBACK')
+            throw error
+        } finally {
+            res.sendStatus(200)
+            //must release the client at the end
+            //or else the client will remain unavailable if you
+            //want to use it again?
+            client.release()
+        }
+    })().catch(e => console.error(e.stack))
+});
 module.exports = router;
