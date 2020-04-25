@@ -82,35 +82,48 @@ class AdminNewElection extends Component {
 
         this.props.history.push('/adminElection');
     }
+    handleBack = () => {
+        this.props.history.push('/adminHome');
+    }
 
     render = () => {
         return (
-            <form onSubmit={this.addNewElection} >
 
-                <h1>New Election</h1>
+            <div className="newElection">
+                <button className="left_just" onClick={this.handleBack}>Back to elections</button>
+                <form onSubmit={this.addNewElection} className="newElection">
+
+                    <h1>New Election</h1>
+
 
                 <label>
                     Election Office:
                     <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'office')}></Input>
                 </label>
 
-                <br /><br />
+
+                    <br /><br />
+
 
                 <label>
                     Location:
                     <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'location')}></Input>
                 </label>
 
-                <br /><br />
+
+                    <br /><br />
+
 
                 <label>
                     Date:
                     <Input type='date' placeholder="date" value={this.state.value} onChange={(event) => this.handleNameChange(event, 'date')}></Input>
                 </label>
 
-                <br /><br />
 
-                <h1>Prior Year's Budget Distribution</h1>
+                    <br /><br />
+
+                    <h1>Prior Year's Budget Distribution</h1>
+
 
                 <br />
 
@@ -119,62 +132,72 @@ class AdminNewElection extends Component {
                     <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'lawEnforcement')}></Input>
                 </label>
 
-                <br /><br />
+
+                    <br /><br />
 
                 <label>
                     Parks/Rec:
                     <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'parksRec')}></Input>
                 </label>
 
-                <br /><br />
+
+                    <br /><br />
+
 
                 <label>
                     Public Works:
                     <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'publicWorks')}></Input>
                 </label>
 
-                <br /><br />
+
+                    <br /><br />
 
                 <label>
                     First Responders:
                     <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'firstResponders')}></Input>
                 </label>
 
-                <br /><br />
+
+                    <br /><br />
 
                 <label>
                     Community Development:
                     <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'communityDev')}></Input>
                 </label>
 
-                <br /><br />
+
+                    <br /><br />
 
                 <label>
                     Administration:
                     <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'administration')}></Input>
                 </label>
 
-                <br /><br />
+
+                    <br /><br />
 
                 <label>
                     Education:
                     <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'education')}></Input>
                 </label>
 
-                <br /><br />
 
-                <input
-                    className="create-election"
-                    type="submit"
-                    name="submit"
-                    value="Create Election"
-                />
+                    <br /><br />
 
-                <br /><br />
+                    <input
+                        className="create-election"
+                        type="submit"
+                        name="submit"
+                        value="Create Election"
+                    />
+
+                    <br /><br />
 
                 <Button className="center" type="reset"><b>Cancel</b></Button>
 
-            </form>
+
+                </form>
+            </div>
         )
     }
 }

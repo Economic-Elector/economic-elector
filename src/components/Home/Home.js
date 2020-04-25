@@ -47,12 +47,12 @@ class Home extends Component {
             <div>
                 <div className="center_just">
                     <br />
-                <a href="https://myballotmn.sos.state.mn.us/">Which elections can I vote in?</a>
-                <br />
-                <h2>Choose an upcoming Election</h2>
-                <br />
-                
-                <ElectionList electionList={this.state.elections}/>
+                    <a href="https://myballotmn.sos.state.mn.us/">Which elections can I vote in?</a>
+                    <br />
+                    <h2>Choose an upcoming Election</h2>
+                    <br />
+                    
+                    <ElectionList electionList={this.state.elections}/>
                     
                  </div>
            

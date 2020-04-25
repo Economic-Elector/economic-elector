@@ -4,3 +4,11 @@
     margin: auto;
     display: block;
 }
+
+.candidates_just{
+    /* width: 5%; */
+    text-align: center;
+    align-items: left;
+    margin: auto;
+    /* display: block; */
+}
