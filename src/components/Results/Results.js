@@ -28,6 +28,13 @@ class Results extends Component {
         const pastData = this.props.reduxState.budget.pastBudget
         const userStuff = this.props.reduxState.budget.userBudget.budget
 
+        // formatter
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2
+        })
+
         // const for bar graphs using react-vis
         const userData = [{ x: 'Law Enforc', y: Number(userStuff.lawEnforcement)}, { x: 'Parks/Rec', y: Number(userStuff.parksRec) }, { x: 'PublicWorks', y: Number(userStuff.publicWorks) }, { x: 'First Responders', y: Number(userStuff.firstResponders) }, { x: 'Community Dev', y: Number(userStuff.communityDev) }, { x: 'Administration', y: Number(userStuff.administration) }, { x: 'Education', y: Number(userStuff.education) }];
 
@@ -73,7 +80,7 @@ class Results extends Component {
         
         // *Dispatch*
         this.props.dispatch({ type: 'SORT_CANDIDATES', payload: sortedCand });
-
+        console.log('userStuff: ', userStuff)
         
 
         return (
@@ -97,6 +104,18 @@ class Results extends Component {
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>Your Budget</td>
+                            <td>N/A</td>
+                            <td>{formatter.format(userStuff.total)}</td>
+                            <td>{formatter.format(userStuff.lawEnforcement)}</td>
+                            <td>{formatter.format(userStuff.parksRec)}</td>
+                            <td>{formatter.format(userStuff.publicWorks)}</td>
+                            <td>{formatter.format(userStuff.firstResponders)}</td>
+                            <td>{formatter.format(userStuff.communityDev)}</td>
+                            <td>{formatter.format(userStuff.administration)}</td>
+                            <td>{formatter.format(userStuff.education)}</td>
+                        </tr>
                         {this.props.reduxState.candidates.sortCandidates.map(candidate => (<tr key={candidate.id}><Candidate diff={diffID} candidate={candidate} /></tr>))}
                     </tbody>
                 </table>
