@@ -53,8 +53,8 @@ class AdminElectionListItem extends Component {
                     <br />
                     {election.date}
                     <br />
-                    <Button onClick={(event) => this.handleDeleteElection(event, election.id)}>Delete Election</Button>
                 </div>
+                <Button onClick={(event) => this.handleDeleteElection(event, election.id)}>Delete Election</Button>
                 <hr className="ruler" />
             </div>
         )
