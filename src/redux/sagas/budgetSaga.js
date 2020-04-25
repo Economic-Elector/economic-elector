@@ -32,11 +32,17 @@ function* currentElection(action) {
     yield put({ type: 'SET_CURRENT', payload: action.payload });
 }
 
+function* sendBudgetRequest(action){
+    console.log(action.payload);
+    
+}
+
 function* userSaga() {
     yield takeLatest('FETCH_BUDGET', fetchBudget);
     yield takeLatest('CURRENT_ELECTION', currentElection);
     yield takeLatest('FIND_CANDIDATE', findResults);
     yield takeLatest('SET_USER_BUDGET', userBudget);
+    yield takeLatest('SEND_BUDGET_REQUEST', sendBudgetRequest);
 }
 
 export default userSaga;
