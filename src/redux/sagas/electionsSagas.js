@@ -11,8 +11,9 @@ function* electionsSagas() {
 
 function* fetchAllElections(action){
     try{
-        const response = Axios.get('/api/elections/all');
-        yield put({type: 'SET_ALL_ELECTIONS', payload: response})
+        const response = yield Axios.get('/api/elections/all');
+        console.log(response);
+        yield put({type: 'SET_ALL_ELECTIONS', payload: response.data})
     }catch(error){
         console.log('error getting all elections', error);
         

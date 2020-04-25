@@ -6,6 +6,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import AdminElectionListItem from './AdminElectionListItem'
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import { Button, List } from '@material-ui/core';
 
 class AdminHome extends Component {
@@ -13,6 +15,7 @@ class AdminHome extends Component {
         elections: []
     }
     componentDidMount = () => {
+        this.props.dispatch({type:'FETCH_ALL_ELECTIONS'})
         this.getElections();
     }
 
@@ -44,16 +47,25 @@ class AdminHome extends Component {
                 <Button onClick={this.addNewElection}>Add New Election</Button>
                 <br /><br />
                 <List>
-                    {this.state.elections.map((election) => {
+                    {this.props.reduxState.elections.allElections.map((election) => {
                         return (
                             //need to fix this. it goes to the user's budget page when you click the election
                             <AdminElectionListItem election={election} />
                         )
                     })}
+                    {/* {this.state.elections.map((election) => {
+                        return (
+                            //need to fix this. it goes to the user's budget page when you click the election
+                            <AdminElectionListItem election={election} />
+                        )
+                    })} */}
                 </List>
             </div>
         )
     }
 }
 
-export default connect()(AdminHome);
+const mapStateToProps = (reduxState) => ({
+    reduxState
+});
+export default withRouter(connect(mapStateToProps)(AdminHome));
