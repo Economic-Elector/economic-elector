@@ -7,8 +7,9 @@ import axios from 'axios';
 import AdminElectionListItem from './AdminElectionListItem'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import { Button, List } from '@material-ui/core';
+
+import './AdminHome.css';
 
 class AdminHome extends Component {
     state = {
@@ -41,11 +42,12 @@ class AdminHome extends Component {
 
     render() {
         return (
-            <div class="def_style">
+            <div class="standard_container">
                 <h1>Available Elections</h1>
                 <br />
                 <Button onClick={this.addNewElection}>Add New Election</Button>
                 <br /><br />
+                {/* <hr className="ruler" /> */}
                 <List>
                     {this.props.reduxState.elections.allElections.map((election) => {
                         return (

@@ -45,7 +45,7 @@ class AdminElectionListItem extends Component {
         let election = this.props.election;
 
         return (
-            <div>
+            <div className="ElectionHolder">
                 <div onClick={() => this.handleClick(election)} className="Election">
                     {election.name}
                     <br />
@@ -55,7 +55,7 @@ class AdminElectionListItem extends Component {
                     <br />
                 </div>
                 <Button onClick={(event) => this.handleDeleteElection(event, election.id)}>Delete Election</Button>
-                <hr className="ruler" />
+                {/* <hr className="ruler" /> */}
             </div>
         )
     }
