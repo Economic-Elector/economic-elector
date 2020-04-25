@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
+import { Button, Input, InputLabel } from '@material-ui/core';
 
 class AdminNewElection extends Component {
 
@@ -87,83 +88,99 @@ class AdminNewElection extends Component {
 
     render = () => {
         return (
+
             <div className="newElection">
                 <button className="left_just" onClick={this.handleBack}>Back to elections</button>
                 <form onSubmit={this.addNewElection} className="newElection">
 
                     <h1>New Election</h1>
 
-                    <label>
-                        <b>Election Office:</b>
-                        <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'office')}></input>
-                    </label>
+
+                <label>
+                    Election Office:
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'office')}></Input>
+                </label>
+
 
                     <br /><br />
 
-                    <label>
-                        <b>Location:</b>
-                        <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'location')}></input>
-                    </label>
+
+                <label>
+                    Location:
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'location')}></Input>
+                </label>
+
 
                     <br /><br />
 
-                    <label>
-                        <b>Date:</b>
-                        <input type='date' placeholder="date" value={this.state.value} onChange={(event) => this.handleNameChange(event, 'date')}></input>
-                    </label>
+
+                <label>
+                    Date:
+                    <Input type='date' placeholder="date" value={this.state.value} onChange={(event) => this.handleNameChange(event, 'date')}></Input>
+                </label>
+
 
                     <br /><br />
 
                     <h1>Prior Year's Budget Distribution</h1>
 
-                    <br></br>
 
-                    <label>
-                        <b>Law Enforcement:</b>
-                        <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'lawEnforcement')}></input>
-                    </label>
+                <br />
 
-                    <br /><br />
+                <label>
+                    Law Enforcement:
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'lawEnforcement')}></Input>
+                </label>
 
-                    <label>
-                        <b>Parks/Rec:</b>
-                        <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'parksRec')}></input>
-                    </label>
 
                     <br /><br />
 
-                    <label>
-                        <b>Public Works:</b>
-                        <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'publicWorks')}></input>
-                    </label>
+                <label>
+                    Parks/Rec:
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'parksRec')}></Input>
+                </label>
+
 
                     <br /><br />
 
-                    <label>
-                        <b>First Responders:</b>
-                        <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'firstResponders')}></input>
-                    </label>
+
+                <label>
+                    Public Works:
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'publicWorks')}></Input>
+                </label>
+
 
                     <br /><br />
 
-                    <label>
-                        <b>Community Development:</b>
-                        <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'communityDev')}></input>
-                    </label>
+                <label>
+                    First Responders:
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'firstResponders')}></Input>
+                </label>
+
 
                     <br /><br />
 
-                    <label>
-                        <b>Administration:</b>
-                        <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'administration')}></input>
-                    </label>
+                <label>
+                    Community Development:
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'communityDev')}></Input>
+                </label>
+
 
                     <br /><br />
 
-                    <label>
-                        <b>Education:</b>
-                        <input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'education')}></input>
-                    </label>
+                <label>
+                    Administration:
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'administration')}></Input>
+                </label>
+
+
+                    <br /><br />
+
+                <label>
+                    Education:
+                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'education')}></Input>
+                </label>
+
 
                     <br /><br />
 
@@ -176,7 +193,8 @@ class AdminNewElection extends Component {
 
                     <br /><br />
 
-                    <button className="center" type="reset"><b>Cancel</b></button>
+                <Button className="center" type="reset"><b>Cancel</b></Button>
+
 
                 </form>
             </div>

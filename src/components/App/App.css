@@ -1,9 +1,13 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     margin: 0px;
     background-color: #f4f4fc;
 }
 
+h1 {
+    font-variant: small-caps;
+    font-weight: 200;
+}
 
 .alert {
     background-color: #ff4545;
@@ -18,7 +22,6 @@ body {
 }
 
 form {
-    background-color: #dbd5d5;
     width: 30%;
     margin: 20px auto;
     padding: 25px;
