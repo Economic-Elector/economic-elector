@@ -10,12 +10,24 @@ class EditElection extends Component {
         name: this.props.reduxState.elections.election.name,
         location: this.props.reduxState.elections.election.location,
         date: this.props.reduxState.elections.election.date,
-        budgetArray: []
+        budgetArray: [],
+        addCategoryToggle: false,
+        newCategory: {
+            name: '',
+            amount: ''
+        }
     }
     componentDidMount = () =>{
         this.setState({
             budgetArray: this.props.reduxState.budget.pastBudget
         })        
+    }
+    componentDidUpdate = (prevProps) =>{
+        if (this.props.reduxState.budget.pastBudget !== prevProps.reduxState.budget.pastBudget) {
+            this.setState({
+                budgetArray: this.props.reduxState.budget.pastBudget
+            })
+        }
     }
     handleChange = (event, typeOf) =>{
         this.setState({
@@ -49,10 +61,76 @@ class EditElection extends Component {
     handleBack = () => {
         this.props.history.push('/adminElection');
     }
+    addCategoryToggle = () => {
+        this.setState({
+            addCategoryToggle: !this.state.addCategoryToggle
+        })
+    }
+
+    handleNewCategoryChange = (event, typeOf) => {
+        this.setState({
+            newCategory:{
+                ...this.state.newCategory,
+                [typeOf]: event.target.value
+            }
+        })
+        console.log(this.state.newCategoryName);
+
+    }
+
+    addCategory = () => {
+        console.log(this.state.newCategoryName);
+        this.props.dispatch({
+            type: 'ADD_NEW_CATEGORY',
+            payload: {
+                election_id: this.props.reduxState.elections.election.id,
+                name: this.state.newCategory.name,
+                amount: this.state.newCategory.amount,
+                candidates: this.props.reduxState.candidates.allCandidates
+            }
+        })
+        this.addCategoryToggle();
+
+    }
+
+    removeCategory = (id) =>{
+        console.log(id);
+        this.props.dispatch({ 
+            type: 'REMOVE_CATEGORY', 
+            payload: { 
+                election_id: this.props.reduxState.elections.election.id,
+                budget_category_id: id, 
+                candidates: this.props.reduxState.candidates.allCandidates
+            }
+        })
+        
+    }
     render = () => {
         let election = this.props.reduxState.elections.election;
         let name = this.props.reduxState.elections.election.name;
         let location = this.props.reduxState.elections.election.location;
+        
+        let addCategory;
+        if (this.state.addCategoryToggle) {
+            addCategory = (
+                <div>
+                    <label>
+                        <b>Category Name:</b>
+                        <input onChange={(event) => this.handleNewCategoryChange(event, 'name')}></input>
+                    </label>
+                    <label>
+                        <b>Amount of Budget:</b>
+                        <input onChange={(event) => this.handleNewCategoryChange(event, 'amount')}></input>
+                    </label>
+                    <button type='button' onClick={this.addCategory}>Add</button>
+                    <button onClick={this.addCategoryToggle}>Cancel</button>
+                </div>
+            );
+        } else {
+            addCategory = (
+                <button onClick={this.addCategoryToggle}>Add Category</button>
+            );
+        }
         return (
             <div className="newElection">
                 <button className="left_just" onClick={this.handleBack}>Back to {name} election</button>
@@ -85,9 +163,13 @@ class EditElection extends Component {
                         <Input value={budget.past_allocation} type='number'
                             onChange={(event) => this.handleBudgetChange(event, budget.id)} 
                         />
+                        <button onClick = {()=>this.removeCategory(budget.id)}>Remove Category</button>
                         <br />
                     </div>)
                 })}
+                <br/>
+                {addCategory}
+                <br/>
                 <Button onClick={this.submit}>Submit Changes</Button>
                 <Button onClick={this.cancel}>Cancel</Button>
             </div>
