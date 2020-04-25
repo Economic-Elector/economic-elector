@@ -84,7 +84,7 @@ class AddCandidate extends Component {
         let name = this.props.reduxState.elections.election.name;
         let location = this.props.reduxState.elections.election.location;
         return (
-            <div class="def_style">
+            <div class="standard_container">
                 <button className="left_just" onClick={this.handleBack}>Back to {name} election</button>
                 <h1>{name}</h1>
                 <h3>{location}</h3>

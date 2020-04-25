@@ -45,7 +45,7 @@ class Election extends Component {
         let election = this.props.election;
         return (
             <div className="ElectionHolder">
-                <div onClick={() => this.handleClick(this)} className="Election">
+                <div onClick={() => this.handleClick(this)} className="Election" style={{ marginBottom: '10px' }}>
                     {election.name}
                     <br />
                     {election.location}
