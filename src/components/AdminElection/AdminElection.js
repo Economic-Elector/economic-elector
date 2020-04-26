@@ -62,8 +62,9 @@ class AdminElection extends Component {
         let categories = this.props.reduxState.budget.pastBudget;
         let candidates = this.props.reduxState.candidates.allCandidates;
         return (
-            <div className="newElection">
-                <button className="left_just" onClick={this.handleBack}>Back to elections</button>
+
+            <div className="standard_container" style={{ width: '80%' }}>
+                <Button onClick={this.handleBack}>Back to elections</Button>
                 {/* <h3>{JSON.stringify(this.props.reduxState.candidates.elections)}</h3> */} 
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>

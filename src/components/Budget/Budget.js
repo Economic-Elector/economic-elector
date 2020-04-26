@@ -68,7 +68,7 @@ class Budget extends Component {
     render() {
 
         return (
-            <div className="center_just">
+            <div className="standard_container">
 
                 <button className="left_just" onClick={this.handleBack}>Back to Elections</button>
 
@@ -88,9 +88,11 @@ class Budget extends Component {
 
                         <br />
 
-                        <InputLabel> Parks and Recreation:
+                        <div className="budgetInput">
+                            <label> Parks and Recreation:</label>
                             <Input onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
-                        </InputLabel>
+                        </div>
+                        
 
                         <br />
 
@@ -129,6 +131,7 @@ class Budget extends Component {
                         </InputLabel>
 
                     </div>
+
 
                     <div className="right_just">
                         <h2><center>Current Budget</center></h2>

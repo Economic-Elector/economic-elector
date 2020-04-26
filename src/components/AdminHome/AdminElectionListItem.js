@@ -45,7 +45,7 @@ class AdminElectionListItem extends Component {
         let election = this.props.election;
 
         return (
-            <div>
+            <div className="ElectionHolder">
                 <div onClick={() => this.handleClick(election)} className="Election">
                     <b>{election.name}</b>
                     <br />
@@ -54,8 +54,10 @@ class AdminElectionListItem extends Component {
                     {election.date}
                     <br />
                 </div>
+
                 <Button color="secondary" onClick={(event) => this.handleDeleteElection(event, election.id)}>Delete Election</Button>
                 <hr className="ruler" />
+
             </div>
         )
     }

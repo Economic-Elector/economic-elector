@@ -4,9 +4,11 @@ body {
     background-color: #f4f4fc;
 }
 
-h1 {
+
+h1, h2, h3 {
     /* font-variant: small-caps;
     font-weight: 200; */
+
 }
 
 .alert {
@@ -63,13 +65,33 @@ input {
     cursor: pointer;
 }
 
+.ElectionHolder{
+    /* border-top: rgb(220,220,220) 1px solid; */
+    border-bottom: rgb(220,220,220) 1px solid;
+    -webkit-transition : border 500ms ease-out;
+    -moz-transition : border 500ms ease-out;
+    -o-transition : border 500ms ease-out;
+    transition : border 500ms ease-out;
+}
+
+.ElectionHolder:hover{
+    border-bottom : #2f00b0 1px solid;
+}
+
 .Election {
     cursor: pointer;
+    
 }
+
+.Election:hover{
+    color: #2f00b0;
+}
+
 
 .ruler {
     width: 100%;
 }
+
 
 .center_just{
     text-align: center;
@@ -87,4 +109,18 @@ input {
     text-align: right;
     display: block;
     margin-right: 20px;
+}
+/* can use on admin home and user home */
+.standard_container{
+    text-align: center;
+    width: 60%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    background-color: white;
+    border: rgb(220,220,220) 1px solid;
+    border-radius: 5px;
+    box-shadow: 0 8px 40px -12px rgba(0,0,0,0.1);
+
 }

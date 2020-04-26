@@ -8,11 +8,13 @@ import { List, ListItem } from '@material-ui/core';
 class ElectionList extends Component {
     render() {
         return (
+
             <div className="ElectionList">
                 
                     {this.props.electionList.map(election => (<List key={election.id}><Election election={election} /></List>))}
                 
             </div>
+
         );
     }
 }

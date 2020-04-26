@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Input, InputLabel, Button } from '@material-ui/core';
+import { Input, Button } from '@material-ui/core';
 
 class EditCandidate extends Component {
 
@@ -93,24 +93,28 @@ class EditCandidate extends Component {
                 <br />
                 <h2>Edit Candidate</h2>
 
-                <InputLabel>Name</InputLabel>
+                <label>Name: 
                 <Input value={this.state.name} placeholder="First and Last Name" onChange={(event) => this.handleChange(event, 'name')} />
+                </label>
                 <br />
 
-                <InputLabel>Email</InputLabel>
+                <label>Email: 
                 <Input value={this.state.email} placeholder="Email" onChange={(event) => this.handleChange(event, 'email')} />
+                </label>
 
                 <br />
 
-                <InputLabel>Incumbent?</InputLabel>
+                <label>Incumbent?
                 <Input type="checkbox" value={this.state.incumbent} onChange={() => this.handleCheck()} />
+                </label>
 
                 <h2>Candidate's Proposed Budget</h2>
 
                 {this.state.categories.map((category) => {
                     return (<div>
-                        <InputLabel>{category.name}</InputLabel>
+                        <label>{category.name}
                         <Input placeholder={category.name}  value={this.state.budget[category.id]} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
+                        </label>
 
                         <br />
                     </div>)

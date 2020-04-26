@@ -9,6 +9,11 @@
 .nav {
     overflow: hidden;
     background-color: #2f00b0;
+    width: 60%;
+    margin: auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
 }
 
 .nav-link {
