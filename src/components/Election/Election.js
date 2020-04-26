@@ -48,6 +48,7 @@ class Election extends Component {
 
             <div className="ElectionHolder">
                 <div onClick={() => this.handleClick(this)} className="Election" style={{ marginBottom: '10px' }}>
+                    <br />
                     <b>{election.name}</b>
                     <br />
                     <b>{election.location}</b>

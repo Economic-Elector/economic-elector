@@ -29,14 +29,14 @@ class AddCandidate extends Component {
     handleAdd = () => {
         console.log("Add candidate", this.state);
         let newCandidate = {
-                                name: this.state.name,
-                                email: this.state.email,
-                                incumbent: this.state.incumbent,
-                                budget: this.state.budget,
-                                election_id: this.props.reduxState.elections.election.id
+            name: this.state.name,
+            email: this.state.email,
+            incumbent: this.state.incumbent,
+            budget: this.state.budget,
+            election_id: this.props.reduxState.elections.election.id
         }
         this.props.dispatch({ type: 'ADD_CANDIDATE', payload: newCandidate })
-       
+
         this.props.history.push('/adminElection')
     }
 
@@ -61,11 +61,11 @@ class AddCandidate extends Component {
             budget: {
                 ...this.state.budget,
                 [typeOf]: {
-                            ...this.state.budget[typeOf],
-                            id: id,
-                            amount: event.target.value
+                    ...this.state.budget[typeOf],
+                    id: id,
+                    amount: event.target.value
                 }
-            }       
+            }
         })
 
     }
@@ -91,14 +91,14 @@ class AddCandidate extends Component {
                 <br />
                 <h2>Add Candidate</h2>
 
-                <label>Name: 
-                <Input placeholder="first and last name" onChange={(event) => this.handleChange(event, 'name')} />
+                <label>Name:
+                <Input onChange={(event) => this.handleChange(event, 'name')} />
                 </label>
 
                 <br />
 
-                <label>Email: 
-                <Input placeholder="email" onChange={(event) => this.handleChange(event, 'email')} />
+                <label>Email:
+                <Input onChange={(event) => this.handleChange(event, 'email')} />
                 </label>
                 <br />
 
@@ -109,14 +109,14 @@ class AddCandidate extends Component {
                 <h2>Candidate's Proposed Budget</h2>
 
                 {this.state.categories.map((category) => {
-                    return(<div>
+                    return (<div>
                         <label>{category.name}
-                        <Input placeholder={category.name} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
+                            <Input type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
                         </label>
                         <br />
                     </div>)
                 })}
-                <br></br>
+                <br />
                 <Button variant="outlined" color="primary" onClick={this.handleAdd} >Add Candidate</Button><br></br><br></br>
                 <Button variant="outlined" color="secondary" onClick={this.handleCancel} >Cancel</Button>
 
