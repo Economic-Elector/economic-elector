@@ -4,7 +4,7 @@ body {
     background-color: #f4f4fc;
 }
 
-h1 {
+h1, h2, h3 {
     font-variant: small-caps;
     font-weight: 200;
 }

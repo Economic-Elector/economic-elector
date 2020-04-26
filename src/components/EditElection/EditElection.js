@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Input, InputLabel, Button } from '@material-ui/core';
+import { Input, label, Button } from '@material-ui/core';
 
 class EditElection extends Component {
     state = {
@@ -140,29 +140,27 @@ class EditElection extends Component {
 
                 <h2>Edit Election</h2>
           
-                <InputLabel>
-                    <b>Election Office:</b>
+                <label>Election Office: 
                     <Input value={this.state.name} onChange={(event) => this.handleChange(event, 'name')}/>
-                </InputLabel>
+                </label>
                 <br/>
-                <InputLabel>
-                    <b>Location:</b>
+                <label>Location: 
                     <Input value={this.state.location} onChange={(event) => this.handleChange(event, 'location')}/>
-                </InputLabel>
+                </label>
                 <br />
-                <InputLabel>
-                    <b>Date:</b>
+                <label>Date: 
                     <Input type='date' value={this.state.date} onChange={(event) => this.handleChange(event, 'date')}/>
-                </InputLabel>
+                </label>
                 <br />
 
                 <h2>Edit Budget</h2>
                 {this.state.budgetArray.map((budget) => {
                     return (<div>
-                        <InputLabel>{budget.name}</InputLabel>
+                        <label>{budget.name}
                         <Input value={budget.past_allocation} type='number'
                             onChange={(event) => this.handleBudgetChange(event, budget.id)} 
                         />
+                        </label>
                         <button onClick = {()=>this.removeCategory(budget.id)}>Remove Category</button>
                         <br />
                     </div>)

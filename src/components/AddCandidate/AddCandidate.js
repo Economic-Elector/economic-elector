@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './AddCandidate.css';
-import { Input, InputLabel, Button } from '@material-ui/core';
+import { Input, Button } from '@material-ui/core';
 
 class AddCandidate extends Component {
     state = {
@@ -91,24 +91,28 @@ class AddCandidate extends Component {
                 <br />
                 <h2>Add Candidate</h2>
 
-                <InputLabel>Name</InputLabel>
+                <label>Name: 
                 <Input placeholder="first and last name" onChange={(event) => this.handleChange(event, 'name')} />
+                </label>
 
                 <br />
 
-                <InputLabel>Email</InputLabel>
+                <label>Email: 
                 <Input placeholder="email" onChange={(event) => this.handleChange(event, 'email')} />
+                </label>
                 <br />
 
-                <InputLabel>Incumbent?</InputLabel>
+                <label>Incumbent?
                 <Input type="checkbox" value={this.state.incumbent} onChange={() => this.handleCheck()} />
+                </label>
 
                 <h2>Candidate's Proposed Budget</h2>
 
                 {this.state.categories.map((category) => {
                     return(<div>
-                        <InputLabel>{category.name}</InputLabel>
+                        <label>{category.name}
                         <Input placeholder={category.name} type='number' onChange={(event) => this.handleBudgetChange(event, category.id, category.name)} />
+                        </label>
                         <br />
                     </div>)
                 })}
