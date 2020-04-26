@@ -22,3 +22,8 @@
     display: flex;
     width: 50%;
 }
+
+.budgetInput{
+    display: flex;
+    text-align: center;
+}

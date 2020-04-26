@@ -88,9 +88,11 @@ class Budget extends Component {
 
                         <br />
 
-                        <InputLabel> Parks and Recreation:
+                        <div className="budgetInput">
+                            <label> Parks and Recreation:</label>
                             <Input onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
-                        </InputLabel>
+                        </div>
+                        
 
                         <br />
 
@@ -131,7 +133,7 @@ class Budget extends Component {
                     </div>
 
                     <div class="left_just">
-                        <h2><center>Current Budget</center></h2>
+                        <h2 style={{marginBottom: '60px'}}><center>Current Budget</center></h2>
                         {this.props.reduxState.budget.pastBudget.map((item) => (<p><BudgetItem item={item} /></p>))}
                     </div>
 

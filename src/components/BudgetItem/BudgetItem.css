@@ -1,7 +1,9 @@
 .over{
     text-align: left;
     align-items: left;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
     display: block;
 }
 
