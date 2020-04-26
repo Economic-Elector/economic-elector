@@ -68,7 +68,7 @@ class Budget extends Component {
     render() {
 
         return (
-            <div className="center_just">
+            <div className="standard_container">
 
                 <Button onClick={this.handleBack}>Back to Elections</Button>
 

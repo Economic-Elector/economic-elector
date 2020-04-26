@@ -4,9 +4,10 @@
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
 import ElectionList from '../ElectionList/ElectionList';
+import Election from '../Election/Election';
 import axios from 'axios';
 import './Home.css';
-import { Button } from '@material-ui/core';
+import { Button, List } from '@material-ui/core';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -44,17 +45,21 @@ class Home extends Component {
 
     render() {
         return(
-            <div>
-                <div className="center_just">
-                    <br />
-                    <a href="https://myballotmn.sos.state.mn.us/">Which elections can I vote in?</a>
-                    <br />
-                    <h2>Choose an upcoming Election</h2>
-                    <br />
-                    
-                    <ElectionList electionList={this.state.elections}/>
-                    
-                 </div>
+            <div className="standard_container">
+                
+                <a href="https://myballotmn.sos.state.mn.us/">Which elections can I vote in?</a>
+                <br />
+                <h2>Choose an upcoming Election</h2>
+                <br />
+                
+                <List>
+                    {this.state.elections.map((election) => {
+                        return(
+                            <Election election={election} />
+                        )
+                    })}
+                </List>   
+                 
            
                 <Button className="float_right" onClick={this.goAdminPage}>ADMIN</Button>
 
