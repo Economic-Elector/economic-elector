@@ -87,7 +87,7 @@ class Budget extends Component {
                         <h2>Create Your Budget Preferences</h2> 
 
                         <br />
-
+                        
                         <div className="budgetInput">
                             <label> Parks and Recreation:</label>
                             <Input onChange={(event) => this.handleBudgetChange(event, 'parksRec')} />
@@ -95,36 +95,41 @@ class Budget extends Component {
                         
 
                         <br />
-
+                        
                         <InputLabel> Law Enforcement:
                             <Input onChange={(event) => this.handleBudgetChange(event, 'lawEnforcement')} />
                         </InputLabel>
 
                         <br />
+                       
 
                         <InputLabel> Education:
                             <Input onChange={(event) => this.handleBudgetChange(event, 'education')} />
                         </InputLabel>
 
                         <br />
+                        
 
                         <InputLabel> First Responders:
                             <Input onChange={(event) => this.handleBudgetChange(event, 'firstResponders')} />
                         </InputLabel>
 
                         <br />
+                       
 
                         <InputLabel> Public Works:
                             <Input onChange={(event) => this.handleBudgetChange(event, 'publicWorks')} />
                         </InputLabel>
 
                         <br />
+                        
 
                         <InputLabel> Administration:
                             <Input onChange={(event) => this.handleBudgetChange(event, 'administration')} />
                         </InputLabel>
 
                         <br />
+                        
 
                         <InputLabel> Community Development: 
                             <Input onChange={(event) => this.handleBudgetChange(event, 'communityDev')} />

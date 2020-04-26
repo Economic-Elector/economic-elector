@@ -63,7 +63,7 @@ class AdminElection extends Component {
         let candidates = this.props.reduxState.candidates.allCandidates;
         return (
 
-            <div className="standard_container" style={{ width: '80%' }}>
+            <div className="standard_container">
                 <Button onClick={this.handleBack}>Back to elections</Button>
                 {/* <h3>{JSON.stringify(this.props.reduxState.candidates.elections)}</h3> */} 
                 <h1>{this.props.reduxState.elections.election.name}</h1>

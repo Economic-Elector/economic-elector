@@ -86,7 +86,7 @@ class Results extends Component {
 
         return (
             
-            <div className="standard_container" style={{width: '80%'}}>
+            <div className="standard_container">
                 <button class="left_just" onClick={this.handleBack}>Back to Elections</button>
                 <h1>Your Results</h1>
                 <table class="candidates_just">
