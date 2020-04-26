@@ -70,7 +70,7 @@ class Budget extends Component {
         return (
             <div className="center_just">
 
-                <Button onClick={this.handleBack}>Back to Elections</Button>
+                <button className="left_just" onClick={this.handleBack}>Back to Elections</button>
 
                 <h1>{this.props.reduxState.elections.election.name}</h1>
 
@@ -82,7 +82,7 @@ class Budget extends Component {
 
                 <div className='budgetForm'>
 
-                    <div class="right_just">
+                    <div class="left_just">
 
                         <h2>Create Your Budget Preferences</h2> 
 
@@ -130,14 +130,15 @@ class Budget extends Component {
 
                     </div>
 
-                    <div class="left_just">
+                    <div className="right_just">
                         <h2><center>Current Budget</center></h2>
+                        <br />
                         {this.props.reduxState.budget.pastBudget.map((item) => (<p><BudgetItem item={item} /></p>))}
                     </div>
 
                 </div>
 
-                <Button onClick={this.findCandidate}>Find My Candidate</Button>
+                <Button variant="outlined" color="primary" onClick={this.findCandidate}>Find My Candidate</Button>
 
             </div>
 

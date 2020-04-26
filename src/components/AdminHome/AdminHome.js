@@ -44,7 +44,7 @@ class AdminHome extends Component {
             <div class="def_style">
                 <h1>Available Elections</h1>
                 <br />
-                <Button onClick={this.addNewElection}>Add New Election</Button>
+                <Button variant="contained"  color="primary" onClick={this.addNewElection}>Add New Election</Button>
                 <br /><br />
                 <List>
                     {this.props.reduxState.elections.allElections.map((election) => {

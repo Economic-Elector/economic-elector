@@ -5,13 +5,17 @@ body {
 }
 
 h1 {
-    font-variant: small-caps;
-    font-weight: 200;
+    /* font-variant: small-caps;
+    font-weight: 200; */
 }
 
 .alert {
     background-color: #ff4545;
     margin: 50px;
+}
+.left_just{
+    text-align: left;
+    display: block;
 }
 
 .newElection{
@@ -65,4 +69,22 @@ input {
 
 .ruler {
     width: 100%;
+}
+
+.center_just{
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    display: block;
+}
+
+.left_just{
+    text-align: left;
+    display: block;
+}
+
+.right_just{
+    text-align: right;
+    display: block;
+    margin-right: 20px;
 }
