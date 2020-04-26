@@ -155,8 +155,9 @@ class EditElection extends Component {
 
                 <h2>Edit Budget</h2>
                 {this.state.budgetArray.map((budget) => {
-                    return (<div>
-                        <label>{budget.name}
+                    return (
+                    <div>
+                        <label>{budget.name}</label>
                         <Input value={budget.past_allocation} type='number'
                             onChange={(event) => this.handleBudgetChange(event, budget.id)} 
                         />
