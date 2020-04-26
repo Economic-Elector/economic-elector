@@ -68,11 +68,11 @@ class AdminElection extends Component {
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>
                 <h3>{this.props.reduxState.elections.election.date}</h3>
-                <Button color="secondary" onClick={this.editElection}>Edit Election</Button>
+                <Button color="primary" onClick={this.editElection}>Edit Election</Button>
 
                 <br />
           
-                <Button color="secondary" onClick={this.addCandidate}>Add Candidate</Button>
+                <Button color="primary" onClick={this.addCandidate}>Add Candidate</Button>
                 <br></br>
                 <Table>
                     <TableHead>
