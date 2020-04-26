@@ -128,7 +128,7 @@ class EditElection extends Component {
             );
         } else {
             addCategory = (
-                <button onClick={this.addCategoryToggle}>Add Category</button>
+                <Button color="primary"  onClick={this.addCategoryToggle}>Add Category</Button>
             );
         }
         return (
@@ -160,16 +160,18 @@ class EditElection extends Component {
                         <Input value={budget.past_allocation} type='number'
                             onChange={(event) => this.handleBudgetChange(event, budget.id)} 
                         />
-                        </label>
-                        <button onClick = {()=>this.removeCategory(budget.id)}>Remove Category</button>
+
+                        <Button variant="outlined" color="secondary" size="small" onClick = {()=>this.removeCategory(budget.id)}>Remove Category</Button>
+
                         <br />
                     </div>)
                 })}
                 <br/>
                 {addCategory}
                 <br/>
-                <Button onClick={this.submit}>Submit Changes</Button>
-                <Button onClick={this.cancel}>Cancel</Button>
+                <br />
+                <Button variant="outlined" color="primary" onClick={this.submit}>Submit</Button><br /><br />
+                <Button variant="outlined" color="secondary" onClick={this.cancel}>Cancel</Button>
             </div>
         )
     }

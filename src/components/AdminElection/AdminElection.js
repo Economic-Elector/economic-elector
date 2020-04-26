@@ -62,27 +62,27 @@ class AdminElection extends Component {
         let categories = this.props.reduxState.budget.pastBudget;
         let candidates = this.props.reduxState.candidates.allCandidates;
         return (
+
             <div className="standard_container" style={{ width: '80%' }}>
                 <Button onClick={this.handleBack}>Back to elections</Button>
                 {/* <h3>{JSON.stringify(this.props.reduxState.candidates.elections)}</h3> */} 
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>
                 <h3>{this.props.reduxState.elections.election.date}</h3>
-                <Button onClick={this.editElection}>Edit Election</Button>
+                <Button color="primary" onClick={this.editElection}>Edit Election</Button>
 
                 <br />
           
-                <br></br><br></br>
-                <Button onClick={this.addCandidate}>Add Candidate</Button>
-                <br></br><br></br>
+                <Button color="primary" onClick={this.addCandidate}>Add Candidate</Button>
+                <br></br>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Name</TableCell>
+                            <TableCell><b>Name</b></TableCell>
                             {categories &&
                                 categories.map((category) => {
                                     return (
-                                        <TableCell>{category.name}</TableCell>
+                                        <TableCell><b>{category.name}</b></TableCell>
                                     )
                                 })
                             }
@@ -98,9 +98,9 @@ class AdminElection extends Component {
                                         <TableCell variant="head" >{candidate.budget[category.id]}</TableCell>
                                     )
                                 })}
-                                <Button onClick={()=>this.requestBudget(candidate)}>Request Budget</Button>
-                                <Button onClick={(event) => this.editCandidate(event, candidate.id)}>Edit</Button>
-                                <Button onClick={(event) => this.removeCandidate(event, candidate.id)}>Remove</Button>
+                                <Button variant="outlined" color="secondary" onClick={()=>this.requestBudget(candidate)}>Request Budget</Button> 
+                                <Button variant="outlined" color="secondary" onClick={(event) => this.editCandidate(event, candidate.id)}>Edit</Button>
+                                <Button variant="outlined" color="secondary" onClick={(event) => this.removeCandidate(event, candidate.id)}>Remove</Button>
                             </TableRow>))}
                     </TableBody>
                 </Table>

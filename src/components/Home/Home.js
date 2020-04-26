@@ -45,6 +45,7 @@ class Home extends Component {
 
     render() {
         return(
+
             <div className="standard_container">
                 
                 <a href="https://myballotmn.sos.state.mn.us/">Which elections can I vote in?</a>

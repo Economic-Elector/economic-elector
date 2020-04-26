@@ -184,16 +184,18 @@ class AdminNewElection extends Component {
 
                     <br /><br />
 
-                    <input
+                    <Button variant="outlined" color="primary" onClick={this.addNewElection}>Create Election</Button>
+
+                    {/* <input
                         className="create-election"
                         type="submit"
                         name="submit"
                         value="Create Election"
-                    />
+                    /> */}
 
                     <br /><br />
 
-                <Button className="center" type="reset"><b>Cancel</b></Button>
+                    <Button variant="outlined"color="secondary" className="center" type="reset"><b>Cancel</b></Button>
 
 
                 </form>

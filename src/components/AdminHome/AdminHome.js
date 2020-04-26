@@ -45,7 +45,7 @@ class AdminHome extends Component {
             <div class="standard_container">
                 <h1>Available Elections</h1>
                 <br />
-                <Button onClick={this.addNewElection}>Add New Election</Button>
+                <Button variant="contained"  color="primary" onClick={this.addNewElection}>Add New Election</Button>
                 <br /><br />
                 {/* <hr className="ruler" /> */}
                 <List>

@@ -119,9 +119,9 @@ class EditCandidate extends Component {
                         <br />
                     </div>)
                 })}
-
-                <Button onClick={this.handleAdd} >Edit Candidate</Button>
-                <Button onClick={this.handleCancel} >Cancel</Button>
+                <br />
+                <Button variant="outlined" color="primary" onClick={this.handleAdd} >Save</Button> <br /> <br />
+                <Button variant="outlined" color="secondary" onClick={this.handleCancel} >Cancel</Button>
 
             </div>
         )

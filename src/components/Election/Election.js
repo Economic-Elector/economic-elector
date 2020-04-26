@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { List, ListItem } from '@material-ui/core';
 
 class Election extends Component {
     state = {}
@@ -44,11 +45,12 @@ class Election extends Component {
     render = () => {
         let election = this.props.election;
         return (
+
             <div className="ElectionHolder">
                 <div onClick={() => this.handleClick(this)} className="Election" style={{ marginBottom: '10px' }}>
-                    {election.name}
+                    <b>{election.name}</b>
                     <br />
-                    {election.location}
+                    <b>{election.location}</b>
                     <br />
                     {election.date}
                 </div>

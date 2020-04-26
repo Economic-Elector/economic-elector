@@ -16,7 +16,7 @@ class BudgetItem extends Component {
         })
         return (
             <div class="over">
-                {this.props.item.name}: {formatter.format(this.props.item.past_allocation)}
+                {this.props.item.name}: {formatter.format(this.props.item.past_allocation)}<br /><br />
             </div>
         )
     }

@@ -116,9 +116,9 @@ class AddCandidate extends Component {
                         <br />
                     </div>)
                 })}
-
-                <Button onClick={this.handleAdd} >Add Candidate</Button>
-                <Button onClick={this.handleCancel} >Cancel</Button>
+                <br></br>
+                <Button variant="outlined" color="primary" onClick={this.handleAdd} >Add Candidate</Button><br></br><br></br>
+                <Button variant="outlined" color="secondary" onClick={this.handleCancel} >Cancel</Button>
 
             </div>
         )

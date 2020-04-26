@@ -7,6 +7,7 @@ import Candidate from '../Candidate/Candidate';
 import { connect } from 'react-redux';
 import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, VerticalBarSeries, LabelSeries, DiscreteColorLegend } from 'react-vis';
 import './Results.css'
+import { Input, InputLabel, Button } from '@material-ui/core';
 
 class Results extends Component {
 
@@ -103,6 +104,7 @@ class Results extends Component {
                             <th>Education </th>
                         </tr>
                     </thead>
+                    <br></br>
                     <tbody>
                         <tr>
                             <td>Your Budget</td>
@@ -116,10 +118,11 @@ class Results extends Component {
                             <td>{formatter.format(userStuff.administration)}</td>
                             <td>{formatter.format(userStuff.education)}</td>
                         </tr>
+                        <br></br>
                         {this.props.reduxState.candidates.sortCandidates.map(candidate => (<tr key={candidate.id}><Candidate diff={diffID} candidate={candidate} /></tr>))}
                     </tbody>
                 </table>
-                <div class="graph_just">
+                <div className="graph_just">
                     <XYPlot  xType="ordinal" width={700} height={700}>
                         <DiscreteColorLegend
                                 orientation="horizontal"
@@ -145,7 +148,7 @@ class Results extends Component {
                     <br></br>
                     <br></br>
                     <br></br>
-                    <button height="50px" width="100px" onClick={window.print}>Print My Ballot</button>
+                    <Button variant="outlined" color="primary"  height="50px" width="100px" onClick={window.print}>Print My Ballot</Button>
                 </div>
             </div>
         );
