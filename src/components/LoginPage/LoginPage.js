@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, InputLabel, Input } from '@material-ui/core';
+import '../App/App.css';
 
 class LoginPage extends Component {
     state = {
@@ -32,7 +33,7 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="standard_container">
                 {this.props.errors.loginMessage && (
                     <h2
                         className="alert"
