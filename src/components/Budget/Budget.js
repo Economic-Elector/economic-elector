@@ -142,7 +142,7 @@ class Budget extends Component {
 
                     <div className="right_just">
                         <h2><center>Current Budget</center></h2>
-                        <br />
+                        {/* <br /> */}
                         {this.props.reduxState.budget.pastBudget.map((item) => (<p><BudgetItem item={item} /></p>))}
                     </div>
 
