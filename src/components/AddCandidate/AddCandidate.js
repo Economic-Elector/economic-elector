@@ -80,6 +80,13 @@ class AddCandidate extends Component {
 
     }
 
+    //secret button for presentation
+    secretButton = () =>{
+        this.setState({
+            name: 'John Doe',
+            email: 'jDoe@gmail.com'
+        })
+    }
     render() {
         let name = this.props.reduxState.elections.election.name;
         let location = this.props.reduxState.elections.election.location;
@@ -92,16 +99,16 @@ class AddCandidate extends Component {
                 <h1>{name}</h1>
                 <h3>{location}</h3>
                 <br />
-                <h2>Add Candidate</h2>
+                <h2 onClick={this.secretButton}>Add Candidate</h2>
 
                 <label>Name:
-                <Input onChange={(event) => this.handleChange(event, 'name')} />
+                <Input value={this.state.name} onChange={(event) => this.handleChange(event, 'name')} />
                 </label>
 
                 <br />
 
                 <label>Email:
-                <Input onChange={(event) => this.handleChange(event, 'email')} />
+                <Input value={this.state.email} onChange={(event) => this.handleChange(event, 'email')} />
                 </label>
                 <br />
 

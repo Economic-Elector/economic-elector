@@ -86,6 +86,26 @@ class AdminNewElection extends Component {
         this.props.history.push('/adminHome');
     }
 
+    //secret button for our presentation
+    secretButton = () =>{
+        this.setState({
+            newElection: {
+                ...this.state.newElection,
+                office: 'Mayor',
+                location: 'Edina',
+                lawEnforcement: 14517004,
+                parksRec: 12158792,
+                publicWorks: 5872135,
+                firstResponders: 5860604,
+                communityDev: 2320363,
+                administration: 4467514,
+                education: 6320363,
+            }
+        })
+        console.log(this.state.newElection);
+    }
+    
+
     render = () => {
         return (
 
@@ -95,12 +115,12 @@ class AdminNewElection extends Component {
                 </div>
                 <form onSubmit={this.addNewElection} className="newElection">
 
-                    <h1>New Election</h1>
+                    <h1 onClick={this.secretButton}>New Election</h1>
 
 
                 <label>
                     Election Office:
-                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'office')}></Input>
+                    <Input value={this.state.newElection.office} onChange={(event) => this.handleNameChange(event, 'office')}></Input>
                 </label>
 
 
@@ -109,7 +129,7 @@ class AdminNewElection extends Component {
 
                 <label>
                     Location:
-                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'location')}></Input>
+                    <Input value={this.state.newElection.location} onChange={(event) => this.handleNameChange(event, 'location')}></Input>
                 </label>
 
 
@@ -131,7 +151,7 @@ class AdminNewElection extends Component {
 
                 <label>
                     Law Enforcement:
-                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'lawEnforcement')}></Input>
+                    <Input value={this.state.newElection.lawEnforcement} onChange={(event) => this.handleNameChange(event, 'lawEnforcement')}></Input>
                 </label>
 
 
@@ -139,7 +159,7 @@ class AdminNewElection extends Component {
 
                 <label>
                     Parks/Rec:
-                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'parksRec')}></Input>
+                    <Input value={this.state.newElection.parksRec} onChange={(event) => this.handleNameChange(event, 'parksRec')}></Input>
                 </label>
 
 
@@ -148,7 +168,7 @@ class AdminNewElection extends Component {
 
                 <label>
                     Public Works:
-                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'publicWorks')}></Input>
+                    <Input value={this.state.newElection.publicWorks} onChange={(event) => this.handleNameChange(event, 'publicWorks')}></Input>
                 </label>
 
 
@@ -156,7 +176,7 @@ class AdminNewElection extends Component {
 
                 <label>
                     First Responders:
-                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'firstResponders')}></Input>
+                    <Input value={this.state.newElection.firstResponders} onChange={(event) => this.handleNameChange(event, 'firstResponders')}></Input>
                 </label>
 
 
@@ -164,7 +184,7 @@ class AdminNewElection extends Component {
 
                 <label>
                     Community Development:
-                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'communityDev')}></Input>
+                    <Input value={this.state.newElection.communityDev} onChange={(event) => this.handleNameChange(event, 'communityDev')}></Input>
                 </label>
 
 
@@ -172,7 +192,7 @@ class AdminNewElection extends Component {
 
                 <label>
                     Administration:
-                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'administration')}></Input>
+                    <Input value={this.state.newElection.administration} onChange={(event) => this.handleNameChange(event, 'administration')}></Input>
                 </label>
 
 
@@ -180,7 +200,7 @@ class AdminNewElection extends Component {
 
                 <label>
                     Education:
-                    <Input value={this.state.value} onChange={(event) => this.handleNameChange(event, 'education')}></Input>
+                    <Input value={this.state.newElection.education} onChange={(event) => this.handleNameChange(event, 'education')}></Input>
                 </label>
 
 
