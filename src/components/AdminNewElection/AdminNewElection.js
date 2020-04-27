@@ -89,7 +89,7 @@ class AdminNewElection extends Component {
     render = () => {
         return (
 
-            <div className="newElection">
+            <div className="standard_container">
                 <button className="left_just" onClick={this.handleBack}>Back to elections</button>
                 <form onSubmit={this.addNewElection} className="newElection">
 
