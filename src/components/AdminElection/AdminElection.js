@@ -61,6 +61,9 @@ class AdminElection extends Component {
     render = () => {
         let categories = this.props.reduxState.budget.pastBudget;
         let candidates = this.props.reduxState.candidates.allCandidates;
+        let date = new Date(this.props.reduxState.elections.election.date);
+        date = date.toUTCString()
+        date = date.substring(0, 16);
         return (
 
             <div className="standard_container">
@@ -68,7 +71,7 @@ class AdminElection extends Component {
                 {/* <h3>{JSON.stringify(this.props.reduxState.candidates.elections)}</h3> */} 
                 <h1>{this.props.reduxState.elections.election.name}</h1>
                 <h3>{this.props.reduxState.elections.election.location}</h3>
-                <h3>{this.props.reduxState.elections.election.date}</h3>
+                <h3>{date}</h3>
                 <Button color="primary" onClick={this.editElection}>Edit Election</Button>
 
                 <br />

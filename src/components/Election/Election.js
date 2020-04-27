@@ -44,6 +44,9 @@ class Election extends Component {
 
     render = () => {
         let election = this.props.election;
+        let date = new Date(election.date);
+        date = date.toUTCString()
+        date = date.substring(0, 16);
         return (
 
             <div className="ElectionHolder">
@@ -53,7 +56,14 @@ class Election extends Component {
                     <br />
                     <b>{election.location}</b>
                     <br />
-                    {election.date}
+                    {/* {new Intl.DateTimeFormat("en-GB", {
+                        year: "numeric",
+                        month: "long",
+                        day: "2-digit"
+                    }).format(date)} */}
+                    {date}
+                    
+                    
                 </div>
             </div>
         )
