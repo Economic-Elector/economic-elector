@@ -125,7 +125,7 @@ class Results extends Component {
                     </tbody>
                 </table>
                 <div className="graph_just">
-                    <XYPlot  xType="ordinal" width={700} height={700}>
+                    <XYPlot xType="ordinal" width={700} height={700}  margin={{ left: 100 }}>
                         <DiscreteColorLegend
                                 orientation="horizontal"
                                 items={[
