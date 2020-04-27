@@ -87,7 +87,9 @@ class Results extends Component {
         return (
             
             <div className="standard_container">
-                <button class="left_just" onClick={this.handleBack}>Back to Elections</button>
+                <div class="left_just">
+                    <Button color="primary" height="50px" width="100px" onClick={this.handleBack}>Back to Elections</Button>
+                </div>
                 <h1>Your Results</h1>
                 <table class="candidates_just">
                     <thead>
@@ -148,8 +150,8 @@ class Results extends Component {
                     <br></br>
                     <br></br>
                     <br></br>
-                    <Button variant="outlined" color="primary"  height="50px" width="100px" onClick={window.print}>Print My Ballot</Button>
                 </div>
+                <Button style={{ marginBottom: '20px' }} variant="outlined" color="primary" height="50px" width="100px" onClick={window.print}>Print My Ballot</Button>
             </div>
         );
     }
