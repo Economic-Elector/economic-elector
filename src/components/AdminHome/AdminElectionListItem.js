@@ -43,7 +43,9 @@ class AdminElectionListItem extends Component {
 
     render = () => {
         let election = this.props.election;
-
+        let date = new Date(election.date);
+        date = date.toUTCString()
+        date = date.substring(0, 16);
         return (
             <div className="ElectionHolder">
                 <div onClick={() => this.handleClick(election)} className="Election">
@@ -51,7 +53,7 @@ class AdminElectionListItem extends Component {
                     <br />
                     <b> {election.location}</b>
                     <br />
-                    {election.date}
+                    {date}
                     <br />
                 </div>
 

@@ -66,7 +66,9 @@ class Budget extends Component {
 
     // once server and db is setup needs to be dynamic
     render() {
-
+        let date = new Date(this.props.reduxState.elections.election.date);
+        date = date.toUTCString()
+        date = date.substring(0, 16);
         return (
             <div className="standard_container">
 
@@ -76,7 +78,7 @@ class Budget extends Component {
 
                 <h3>{this.props.reduxState.elections.election.location}</h3>
 
-                <h3>{this.props.reduxState.elections.election.date}</h3>
+                <h3>{date}</h3>
 
                 <br />
 
