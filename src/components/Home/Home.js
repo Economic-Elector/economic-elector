@@ -50,7 +50,7 @@ class Home extends Component {
                 
                 <a href="https://myballotmn.sos.state.mn.us/">Which elections can I vote in?</a>
                 <br />
-                <h2>Choose an upcoming Election</h2>
+                <h2>Choose an Upcoming Election</h2>
                 <br />
                 
                 <List>
