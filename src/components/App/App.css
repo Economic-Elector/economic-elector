@@ -66,6 +66,8 @@ input {
     -moz-transition : border 500ms ease-out;
     -o-transition : border 500ms ease-out;
     transition : border 500ms ease-out;
+    width: 23%;
+    margin: auto;
 }
 
 .ElectionHolder:hover{

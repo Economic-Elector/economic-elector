@@ -71,9 +71,9 @@ class Budget extends Component {
         date = date.substring(0, 16);
         return (
             <div className="standard_container">
-
-                <button className="left_just" onClick={this.handleBack}>Back to Elections</button>
-
+                <div class="left_just">
+                    <Button color="primary" height="50px" width="100px" onClick={this.handleBack}>Back to Elections</Button>
+                </div>
                 <h1>{this.props.reduxState.elections.election.name}</h1>
 
                 <h3>{this.props.reduxState.elections.election.location}</h3>
@@ -148,7 +148,7 @@ class Budget extends Component {
 
                 </div>
 
-                <Button variant="outlined" color="primary" onClick={this.findCandidate}>Find My Candidate</Button>
+                <Button style={{ marginBottom: '20px' }} variant="outlined" color="primary" onClick={this.findCandidate}>Find My Candidate</Button>
 
             </div>
 

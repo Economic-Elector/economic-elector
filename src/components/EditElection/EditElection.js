@@ -132,8 +132,10 @@ class EditElection extends Component {
             );
         }
         return (
-            <div className="newElection">
-                <button className="left_just" onClick={this.handleBack}>Back to {name} election</button>
+            <div className="standard_container">
+                <div class="left_just">
+                    <Button color="primary" height="50px" width="100px" onClick={this.handleBack}>Back to {name} election</Button>
+                </div>
                 <h1>{name}</h1>
                 <h3>{location}</h3>
                 <br />
