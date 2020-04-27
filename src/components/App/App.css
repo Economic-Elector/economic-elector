@@ -1,5 +1,6 @@
 body {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    /* font-family: cursive; */
     margin: 0px;
     background-color: #f4f4fc;
 }
@@ -114,4 +115,9 @@ input {
     border: rgb(220,220,220) 1px solid;
     border-radius: 5px;
     box-shadow: 0 8px 40px -12px rgba(0,0,0,0.1);
+    
+}
+
+h1, h2, h3{
+    font-family: 'Roboto', sans-serif;
 }
