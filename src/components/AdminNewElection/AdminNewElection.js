@@ -90,7 +90,9 @@ class AdminNewElection extends Component {
         return (
 
             <div className="standard_container">
-                <button className="left_just" onClick={this.handleBack}>Back to elections</button>
+                <div className="left_just">
+                    <Button color="primary" height="50px" width="100px" onClick={this.handleBack}>Back to elections</Button>
+                </div>
                 <form onSubmit={this.addNewElection} className="newElection">
 
                     <h1>New Election</h1>

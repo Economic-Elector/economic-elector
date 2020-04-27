@@ -85,7 +85,10 @@ class AddCandidate extends Component {
         let location = this.props.reduxState.elections.election.location;
         return (
             <div class="standard_container">
-                <button className="left_just" onClick={this.handleBack}>Back to {name} election</button>
+                <div className="left_just">
+                    <Button  color="primary" height="50px" width="100px" onClick={this.handleBack}>Back to {name} election</Button>
+                </div>
+                
                 <h1>{name}</h1>
                 <h3>{location}</h3>
                 <br />
