@@ -34,15 +34,15 @@ This should open up a window in your default browser that displays the applicati
 * HTML
 * CSS
 * JavaScript
-* [PostgreSQL] (https://www.postgresql.org/)
-* [Express] (https://expressjs.com/)
-* [React] (https://reactjs.org/)
-* [Node.js] (https://nodejs.org/en/)
-* [react-vis] (https://uber.github.io/react-vis/)
-* [Nodemailer] (https://nodemailer.com/about/)
-* [Material-UI] (https://material-ui.com/)
-* [Redux] (https://redux.js.org/)
-* [Sagas] (https://redux-saga.js.org/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Express](https://expressjs.com/)
+* [React](https://reactjs.org/)
+* [Node.js](https://nodejs.org/en/)
+* [react-vis](https://uber.github.io/react-vis/)
+* [Nodemailer](https://nodemailer.com/about/)
+* [Material-UI](https://material-ui.com/)
+* [Redux](https://redux.js.org/)
+* [Sagas](https://redux-saga.js.org/)
 
 ## Acknowledgement
 
