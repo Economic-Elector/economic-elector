@@ -1,7 +1,3 @@
-// On the admin home page, the admin will see all the elections they have created on the website. The admin can click on an election in the list, and then be brought to the Admin Election View (4). 
-// They begin the process of creating a new election by clicking the “Add New Election” button. This button will take them to the Add New Election page (3). 
-// Lastly, the admin can logout of their account by clicking the logout button in the header.
-
 import React, { Component } from 'react';
 import axios from 'axios';
 import AdminElectionListItem from './AdminElectionListItem'
@@ -15,13 +11,14 @@ class AdminHome extends Component {
     state = {
         elections: []
     }
+
     componentDidMount = () => {
         this.props.dispatch({type:'FETCH_ALL_ELECTIONS'})
         this.getElections();
     }
 
     //i just have the axios get request in here instead of in a saga
-    //since we don't to save the data to a reducer. i think?
+    //since we don't to save the data to a reducer. 
     getElections = () => {
         axios({
             method: 'GET',
@@ -36,6 +33,7 @@ class AdminHome extends Component {
             alert(error);
         })
     }
+    //on button click bring admin user to adminNewElection page
     addNewElection = () => {
         this.props.history.push('/adminNewElection')
     }
@@ -47,20 +45,12 @@ class AdminHome extends Component {
                 <br />
                 <Button variant="contained"  color="primary" onClick={this.addNewElection}>Add New Election</Button>
                 <br /><br />
-                {/* <hr className="ruler" /> */}
                 <List>
                     {this.props.reduxState.elections.allElections.map((election) => {
                         return (
-                            //need to fix this. it goes to the user's budget page when you click the election
                             <AdminElectionListItem election={election} />
                         )
                     })}
-                    {/* {this.state.elections.map((election) => {
-                        return (
-                            //need to fix this. it goes to the user's budget page when you click the election
-                            <AdminElectionListItem election={election} />
-                        )
-                    })} */}
                 </List>
             </div>
         )
