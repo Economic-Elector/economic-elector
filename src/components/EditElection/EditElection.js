@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Input, label, Button } from '@material-ui/core';
+import { Input, Button } from '@material-ui/core';
 
 class EditElection extends Component {
     state = {
@@ -106,7 +106,6 @@ class EditElection extends Component {
         
     }
     render = () => {
-        let election = this.props.reduxState.elections.election;
         let name = this.props.reduxState.elections.election.name;
         let location = this.props.reduxState.elections.election.location;
         

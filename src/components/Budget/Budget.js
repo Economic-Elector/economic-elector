@@ -11,6 +11,7 @@ import { Input, Button, InputLabel } from '@material-ui/core';
 
 class Budget extends Component {
 
+    // Input value capture and temp cache before being sent to Reducer
     state = {
         budget: {
             lawEnforcement: '',
@@ -19,29 +20,25 @@ class Budget extends Component {
             firstResponders: '',
             communityDev: '',
             administration: '',
-            education: '',
-            // total: ''
+            education: ''
         },
 
     }
 
-    componentDidMount = () => {
-        console.log('page mount');
-        console.log('props', this.props)
-        console.log('current election', this.props.reduxState.budget.pastBudget)
-    }
-
+    // Pushes to Results only when budget.results is updated ****-- Without reducer does not have data before Results component mount
     componentDidUpdate = (prevProps) => {
         if ((this.props.reduxState.budget.results !== prevProps.reduxState.budget.results)) {
             this.props.history.push(`/Results`);
         }
     }
 
+    // Handles Button to go home
     handleBack = () => {
         console.log("going back....way back", this.props.history);
         this.props.history.push('/home');
     }
 
+    // Handles input change and sets state
     handleBudgetChange = (event, typeOf) => {
         let tempTotal = parseFloat(parseFloat(this.state.budget.lawEnforcement) + parseFloat(this.state.budget.parksRec) + parseFloat(this.state.budget.publicWorks) + parseFloat(this.state.budget.firstResponders) + parseFloat(this.state.budget.communityDev) + parseFloat(this.state.budget.administration) + parseFloat(this.state.budget.education));
         this.setState({
@@ -53,6 +50,7 @@ class Budget extends Component {
         })
     }
 
+    // Handles "Find Candidate Button click" ****-- calculates total user budget and instantiates budget.total for use in results
     findCandidate = () => {
         console.log('STATE IN BUDGET:', this.state.budget)
         let userBudget = this.state;
@@ -67,7 +65,7 @@ class Budget extends Component {
 
 
 
-    // once server and db is setup needs to be dynamic
+    // render in Budget
     render() {
         let date = new Date(this.props.reduxState.elections.election.date);
         date = date.toUTCString()

@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 class BudgetItem extends Component {
 
     render() {
-         // formatter
+         // formatter Turns VARCHAR to MONEY
          const formatter = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',

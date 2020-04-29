@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import HomeIcon from '@material-ui/icons/Home';
-import { Icon } from '@material-ui/core';
 
 const Nav = (props) => (
     <div className="nav">

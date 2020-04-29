@@ -19,6 +19,7 @@ function* fetchAllElections(action){
         
     }
 }
+
 // POST to create new election row in elections table of DB
 // response provides the RETURNING newElection id which is used
 // to dispay on next page
@@ -67,6 +68,7 @@ function* deleteElection(action) {
         console.log(error);
     }
 }
+
 function* editElection(action){
     try {
 
