@@ -7,7 +7,7 @@ import Candidate from '../Candidate/Candidate';
 import { connect } from 'react-redux';
 import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, VerticalBarSeries, LabelSeries, DiscreteColorLegend } from 'react-vis';
 import './Results.css'
-import { Input, InputLabel, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 class Results extends Component {
 
