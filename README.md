@@ -6,7 +6,7 @@ Every candidate said they would support infrastructure, education, no taxes, and
 
 Users can see a list of elections and each candidate in those elections. They can also input their ideal budget and compare it to each candidate's proposed budget.
 
-Administators can see, add, edit, and delete elections as well as candidates.
+Administators can see, add, edit, and delete elections as well as candidates and their budgets.
 
 ## Duration
 
