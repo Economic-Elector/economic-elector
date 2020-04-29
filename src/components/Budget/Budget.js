@@ -20,7 +20,7 @@ class Budget extends Component {
             communityDev: '',
             administration: '',
             education: '',
-            total: ''
+            // total: ''
         },
 
     }
@@ -56,6 +56,9 @@ class Budget extends Component {
     findCandidate = () => {
         console.log('STATE IN BUDGET:', this.state.budget)
         let userBudget = this.state;
+        console.log(userBudget)
+        userBudget.budget.total = parseFloat(parseFloat(this.state.budget.lawEnforcement) + parseFloat(this.state.budget.parksRec) + parseFloat(this.state.budget.publicWorks) + parseFloat(this.state.budget.firstResponders) + parseFloat(this.state.budget.communityDev) + parseFloat(this.state.budget.administration) + parseFloat(this.state.budget.education));
+        console.log(userBudget);
         this.props.dispatch({ type: 'FIND_CANDIDATE', payload: this.props.reduxState.elections.election.id });
         this.props.dispatch({ type: 'SET_USER_BUDGET', payload: userBudget });
         this.props.dispatch({ type: 'FETCH_CANDIDATES', payload: this.props.reduxState.elections.election.id });

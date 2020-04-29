@@ -83,8 +83,8 @@ class AddCandidate extends Component {
     //secret button for presentation
     secretButton = () =>{
         this.setState({
-            name: 'John Doe',
-            email: 'jDoe@gmail.com'
+            name: 'John Brown',
+            email: 'jBrown@gmail.com'
         })
     }
     render() {

@@ -57,6 +57,7 @@ class Results extends Component {
         let diffID = [];
         for( let i=0; i<candidates.length; i++ ){
             let lawDiff = Math.abs(Number(userStuff.lawEnforcement) - candidates[i].budget[categories[1].id] );
+            console.log('lawdiff',lawDiff);
             let parksDiff = Math.abs( Number(userStuff.parksRec) - candidates[i].budget[categories[0].id] );
             let publicDiff = Math.abs(Number(userStuff.publicWorks) - candidates[i].budget[categories[4].id] );
             let firstDiff = Math.abs(Number(userStuff.firstResponders) - candidates[i].budget[categories[3].id] );
@@ -64,6 +65,7 @@ class Results extends Component {
             let adminDiff = Math.abs(Number(userStuff.administration) - candidates[i].budget[categories[5].id] );
             let educDiff = Math.abs(Number(userStuff.education) - candidates[i].budget[categories[2].id] );
             let totalDiff = Number( lawDiff + parksDiff + publicDiff + firstDiff + commDiff + adminDiff + educDiff );
+            console.log('total diff for each candidate', totalDiff);
             candidates[i].difference = totalDiff
             diffID.push({
                 id: i,
