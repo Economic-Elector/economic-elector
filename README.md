@@ -18,15 +18,15 @@ Two week sprint
 - Node.js
 - npm
 - brew
-- Create .env file and add the following:
-- - SERVER_SESSION_SECRET=y<)~C,689La;Amj\+3~c
-- - EMAIL=EconomicElector@gmail.com
-- - PASS=economicelector!
 
 ## Instructions
 
 * Create a database named **economic_elector**
 * Run the SQL queries found in the databse.sql file
+- Create .env file and add the following:
+* * SERVER_SESSION_SECRET=y<)~C,689La;Amj\+3~c
+* * EMAIL=EconomicElector@gmail.com
+* * PASS=economicelector!
 * In the project folder on the terminal type in **npm install**
 * To spin up the server type in **npm run server**
 * Then in a new terminal tab/window type in **npm run client**
