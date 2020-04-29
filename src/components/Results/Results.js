@@ -57,13 +57,21 @@ class Results extends Component {
         let diffID = [];
         for( let i=0; i<candidates.length; i++ ){
             let lawDiff = Math.abs(Number(userStuff.lawEnforcement) - candidates[i].budget[categories[1].id] );
+            console.log('lawdiff',lawDiff);
             let parksDiff = Math.abs( Number(userStuff.parksRec) - candidates[i].budget[categories[0].id] );
+            console.log('parksDIff', parksDiff);
             let publicDiff = Math.abs(Number(userStuff.publicWorks) - candidates[i].budget[categories[4].id] );
+            console.log('publicDiff', publicDiff);
             let firstDiff = Math.abs(Number(userStuff.firstResponders) - candidates[i].budget[categories[3].id] );
+            console.log('firstDiff', firstDiff);
             let commDiff = Math.abs(Number(userStuff.communityDev) - candidates[i].budget[categories[6].id] );
+            console.log('commDiff', commDiff);
             let adminDiff = Math.abs(Number(userStuff.administration) - candidates[i].budget[categories[5].id] );
+            console.log('adminDiff', adminDiff);
             let educDiff = Math.abs(Number(userStuff.education) - candidates[i].budget[categories[2].id] );
-            let totalDiff = Number( lawDiff + parksDiff + publicDiff + firstDiff + commDiff + adminDiff + educDiff );
+            console.log('educDiff', educDiff);
+            let totalDiff = Number(Number(lawDiff) + Number(parksDiff) + Number(publicDiff) + Number(firstDiff) + Number(commDiff) + Number(adminDiff) + Number(educDiff) );
+            console.log('total diff for each candidate', totalDiff);
             candidates[i].difference = totalDiff
             diffID.push({
                 id: i,
@@ -95,7 +103,7 @@ class Results extends Component {
                     <thead>
                         <tr>
                             <th>Candidate Name </th>
-                            <th>Total Difference </th>
+                            <th>Sum of Budget Differences </th>
                             <th>Total Budget </th>
                             <th>Law Enforcement </th>
                             <th>Parks and Rec </th>
