@@ -10,6 +10,7 @@ const pastBudget = (state = [], action) => {
     }
 };
 
+// sets the current election
 const currentElection = (state = {}, action) => {
     switch (action.type) {
         case 'SET_CURRENT':
@@ -28,6 +29,7 @@ const results = (state = {}, action) => {
     }
 };
 
+// sets the user's budget
 const userBudget = (state = {}, action) => {
     switch (action.type) {
         case 'SET_USER_BUDGET':

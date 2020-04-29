@@ -15,9 +15,7 @@ router.get('/all', (req, res) => {
 });
 
 
-router.get('/:election_id', (req, res) => {
-    console.log('getting election,', req.params.election_id);
-    
+router.get('/:election_id', (req, res) => {    
     const queryText = `SELECT * FROM elections WHERE id = ${req.params.election_id};`
     pool.query(queryText)
         .then((result) => res.send(result.rows))
@@ -30,11 +28,12 @@ router.get('/:election_id', (req, res) => {
 router.post('/newElection', (req, res) => {
     console.log(req.body);
     let id = 0;
+    //this query returns all the info that we just created in the db. the whole row
     const queryText = 'INSERT INTO "elections" (name, date, location) VALUES($1, $2, $3) RETURNING *'
     pool.query(queryText, [req.body.office, req.body.date, req.body.location])
         .then(result => {
             res.send(result);
-            // console.log('this is election result.rows[0].id', result.rows[0].id);
+            //use the id we got back from the first query text to insert all the budget categories
             id = result.rows[0].id;
             const queryTextTwo = `INSERT INTO "budget_categories" ("name", "past_allocation", "election_id") VALUES
                 ('Parks and Rec', $1, ${id}),
@@ -53,9 +52,11 @@ router.post('/newElection', (req, res) => {
         });
     });
 
+//get an elections budget
 router.get('/budget/:id', (req, res) => {
     const queryText = `SELECT * FROM "budget_categories" WHERE "election_id" = $1 ORDER BY id ASC;`
     pool.query(queryText, [req.params.id])
+    //send to the client side
     .then((result) => res.send(result.rows))
     .catch((err) => {
         console.log('Error completing GET query', err);
@@ -63,6 +64,8 @@ router.get('/budget/:id', (req, res) => {
       });
 });
 
+//delete an election. need to delete all candidates b efore you do this delete. we can change that later by adding more 
+//awaits to the transaction
 router.delete('/deleteElection/:id', (req, res) => {
 
     console.log('in deleteElection, req.params.id', req.params.id);
@@ -71,19 +74,22 @@ router.delete('/deleteElection/:id', (req, res) => {
         const client = await pool.connect()
         try {
             await client.query('BEGIN')
+            //delete all the stuff from budget categories
             let queryText = 'DELETE FROM "budget_categories" WHERE election_id=$1';
             await client.query(queryText, [req.params.id]);
+            //delete the election from the elections table
             queryText = 'DELETE FROM "elections" WHERE id=$1';
             await client.query(queryText, [req.params.id]);
             await client.query('COMMIT')
         } catch (error) {
+            //if it errors out, the db will rollback and restore the deleted data
             await client.query('ROLLBACK')
             throw error
         } finally {
             res.sendStatus(200)
             //must release the client at the end
             //or else the client will remain unavailable if you
-            //want to use it again?
+            //want to use it again
             client.release()
         }
     })().catch(e => console.error(e.stack))
@@ -113,7 +119,7 @@ router.put('/editElection/:id', (req, res) =>{
             res.sendStatus(200)
             //must release the client at the end
             //or else the client will remain unavailable if you
-            //want to use it again?
+            //want to use it again
             client.release()
         }
     })().catch(e => console.error(e.stack))

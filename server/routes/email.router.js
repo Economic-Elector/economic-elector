@@ -4,6 +4,7 @@ const router = express.Router();
 var nodemailer = require('nodemailer');
 require('dotenv').config();
 
+//setting up what email serveice we are using, and our authorization to that service. username and password
 var transport = {
     host: 'smtp.gmail.com',
     auth: {
@@ -23,19 +24,20 @@ transporter.verify((error, success) => {
 });
 
 router.post('/', (req, res, next) => {
+    //the candidate email address and the message to be sent come from the client side
     let email = req.body.candidate.email
     let message = req.body.message
     // var content = `${message} `
-    console.log(message, 'this is the message');
 
+    //create new mail object
     let mail = {
         from: 'Economic Elector',
-        to: `${email}`,  //Change to email address that you want to receive messages on
+        to: `${email}`,  //email address that you want to receive the message
         subject: 'Budget Plan Request',
         text: 'Requesting your budget plan for upcoming election',
-        html: `<html>${message}</html>`
+        html: `<html>${message}</html>`//the message is html, so that it looks nice on the email page.
     }
-
+    //use the transporter to send the email
     transporter.sendMail(mail, (err, data) => {
         if (err) {
             res.json({

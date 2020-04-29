@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { List, ListItem } from '@material-ui/core';
 
 class Election extends Component {
     state = {}
@@ -31,11 +30,6 @@ class Election extends Component {
             payload: this.props.election
         })
 
-        // this.props.dispatch({
-        //   type: 'CURRENT_ELECTION',
-        //   payload: this.props.election
-        // })
-
         this.setState({
             id: id
         })
@@ -56,11 +50,6 @@ class Election extends Component {
                     <br />
                     <b>{election.location}</b>
                     <br />
-                    {/* {new Intl.DateTimeFormat("en-GB", {
-                        year: "numeric",
-                        month: "long",
-                        day: "2-digit"
-                    }).format(date)} */}
                     {date}
                     
                     

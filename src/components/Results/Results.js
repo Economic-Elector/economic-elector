@@ -1,4 +1,4 @@
-// Displays list of candidates most closely aligned to the user in order of lowest total difference between categories. There will also be a “Back to Budget” button which will bring 
+// Displays list of candidates most closely aligned to the user in order of lowest total absolute difference between categories. There will also be a “Back to Budget” button which will bring 
 // the user back to the budget page (2) for this election.  The results table will show each candidate’s proposed spending for these categories: Law Enforcement, Parks and Rec, Education, 
 // First Responders, Public Works, Administration, and Community Development. Our wireframe software only allowed us to include three columns in the table below, but in the actual web app, each category will have a column.
 
@@ -7,36 +7,35 @@ import Candidate from '../Candidate/Candidate';
 import { connect } from 'react-redux';
 import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, VerticalBarSeries, LabelSeries, DiscreteColorLegend } from 'react-vis';
 import './Results.css'
-import { Input, InputLabel, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 class Results extends Component {
 
-    // return function for sort
+    // return function for sort, a and b are elements
     compare = (a,b) => {
         let dif = a.difference - b.difference;
         return dif
     }
+
+    // handles the button to go home
     handleBack = () => {
         this.props.history.push('/home');
     }
     
-    
+    // render in Results
     render() {
-        console.log('pastBudget:', this.props.reduxState.budget.pastBudget)
-        console.log('userData:', this.props.reduxState.budget.userBudget.budget)
-        
 
         const pastData = this.props.reduxState.budget.pastBudget
         const userStuff = this.props.reduxState.budget.userBudget.budget
 
-        // formatter
+        // formatter ****-- Turns VARCHAR into MONEY
         const formatter = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
             minimumFractionDigits: 2
         })
 
-        // const for bar graphs using react-vis
+        // *****-- const for bar graphs using react-vis
         const userData = [{ x: 'Law Enforc', y: Number(userStuff.lawEnforcement)}, { x: 'Parks/Rec', y: Number(userStuff.parksRec) }, { x: 'PublicWorks', y: Number(userStuff.publicWorks) }, { x: 'First Responders', y: Number(userStuff.firstResponders) }, { x: 'Community Dev', y: Number(userStuff.communityDev) }, { x: 'Administration', y: Number(userStuff.administration) }, { x: 'Education', y: Number(userStuff.education) }];
 
         const currentData = [{ x: 'Law Enforc', y: pastData[0].past_allocation }, { x: 'Parks/Rec', y: pastData[1].past_allocation }, { x: 'PublicWorks', y: pastData[2].past_allocation }, { x: 'First Responders', y: pastData[3].past_allocation }, { x: 'Community Dev', y: pastData[4].past_allocation }, { x: 'Administration', y: pastData[5].past_allocation }, { x: 'Education', y: pastData[6].past_allocation }];
@@ -45,27 +44,24 @@ class Results extends Component {
             x: d.x,
             y: Math.max(userData[idx].y, currentData[idx].y)
         }));
+
         const BarSeries = VerticalBarSeries;
-        console.log('USERBUDGET:', this.props.reduxState.budget.userBudget.budget)
+        // ****--
 
         // ***** MATHS *****
 
-        console.log('candidates', this.props.reduxState.candidates.allCandidates);
+        // short hand for MATHS
         const candidates = this.props.reduxState.candidates.allCandidates;
         const categories = this.props.reduxState.budget.pastBudget;
-        // Finds the total difference between user info and candidate
+
+        // Finds the total absolute difference between user info and candidate ****-- Could be updated to be universal
         let diffID = [];
         for( let i=0; i<candidates.length; i++ ){
             let lawDiff = Math.abs(Number(userStuff.lawEnforcement) - candidates[i].budget[categories[1].id] );
-            console.log('lawdiff',lawDiff);
             let parksDiff = Math.abs( Number(userStuff.parksRec) - candidates[i].budget[categories[0].id] );
-            console.log('parksDIff', parksDiff);
             let publicDiff = Math.abs(Number(userStuff.publicWorks) - candidates[i].budget[categories[4].id] );
-            console.log('publicDiff', publicDiff);
             let firstDiff = Math.abs(Number(userStuff.firstResponders) - candidates[i].budget[categories[3].id] );
-            console.log('firstDiff', firstDiff);
             let commDiff = Math.abs(Number(userStuff.communityDev) - candidates[i].budget[categories[6].id] );
-            console.log('commDiff', commDiff);
             let adminDiff = Math.abs(Number(userStuff.administration) - candidates[i].budget[categories[5].id] );
             console.log('adminDiff', adminDiff);
             let educDiff = Math.abs(Number(userStuff.education) - candidates[i].budget[categories[2].id] );
@@ -79,19 +75,15 @@ class Results extends Component {
                 tok: candidates[i].difference
             })
         }
-        console.log('diffID ARRAY: ',diffID)
-        // sorts candidates by difference
-        console.log('candidates w/ totalDiff', candidates)
 
+        // sorts candidates by difference
         // ****SORT****
         const sortedCand = candidates.sort(this.compare);
-        console.log('sorted', sortedCand);
         
         // *Dispatch*
         this.props.dispatch({ type: 'SORT_CANDIDATES', payload: sortedCand });
-        console.log('userStuff: ', userStuff)
-        
 
+        // return in Results
         return (
             
             <div className="standard_container">
@@ -165,9 +157,10 @@ class Results extends Component {
     }
 }
 
-
+// access to redux store
 const mapStateToProps = (reduxState) => ({
     reduxState
 });
 
+//export Results
 export default connect(mapStateToProps)(Results);

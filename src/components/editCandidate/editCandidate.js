@@ -22,7 +22,7 @@ class EditCandidate extends Component {
         for(let i = 0; i<candidates.length; i++){
             if (candidates[i].id === this.props.location.candidateId) {
                 this.setState ({
-                    ... this.state,
+                    ...this.state,
                     name: candidates[i].name,
                     email: candidates[i].email,
                     incumbent: candidates[i].incumbent,
