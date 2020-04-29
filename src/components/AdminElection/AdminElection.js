@@ -1,10 +1,3 @@
-// The Election View will display information for a specific election. The admin will be able to edit any of the information on this page. 
-// They can click the edit button near the header, which will enable them to edit the name, location, and date of the election. The admin will also see a table with all the candidates for the election. 
-// The table will include the name of the candidate, their total budget, and the amount of money going into each category. If the admin just created this election, the table will be empty. 
-// They can add a candidate by pressing the “Add Candidate” button, taking them to the Add Candidate page (5). To the right of each row in the table, there will be an “edit” button. 
-// Clicking this button will take the admin to the Edit Candidate page (6), where they can edit any of the information for the specific candidate they clicked on. 
-// Lastly, the admin will see a “remove” button, that removes the candidate from the table, and the election.
-
 import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
@@ -12,17 +5,13 @@ import { Button, Table, TableHead, TableBody, TableCell, TableRow } from '@mater
 
 class AdminElection extends Component {
 
-    // bring user to add Add Candidate/Edit Candidate page
-    // probably need to pass with it the election ID
+    // on button click bring user to add Add Candidate/Edit Candidate page
     addCandidate = () => {
         this.props.history.push('/addCandidate')
     }
 
-    // bring user to editCandidate page
-    // probably need to pass with it the election ID
+    // bring user to editCandidate page with election ID passed as a prop
     editCandidate = (event, id) => {
-        console.log('editCandidate id:', id);
-        
         this.props.history.push({
             pathname: '/editCandidate',
             candidateId: id
@@ -40,24 +29,24 @@ class AdminElection extends Component {
         this.props.dispatch({
             type: 'DELETE_CANDIDATE_FROM_LIST',
             payload: obj
-        });
-        
+        }); 
     }
-
+    //on button click move to editElection page
     editElection = () =>{
         this.props.history.push('/editElection');
     }
-
+     //on button click move to adminHome page
     handleBack = () => {
         this.props.history.push('/adminHome');
     }
-
+    //on button click send email to candidate email address via node mailer
     requestBudget = (candidate) =>{
-        console.log('request');
-        this.props.dispatch({ type: 'SEND_BUDGET_REQUEST', payload: { candidate: candidate, election: this.props.reduxState.elections.election, categories: this.props.reduxState.budget.pastBudget}})
+        this.props.dispatch({ type: 'SEND_BUDGET_REQUEST', 
+        payload: { candidate: candidate, election: this.props.reduxState.elections.election, 
+            categories: this.props.reduxState.budget.pastBudget}})
     }
-    //everything in h1,h2,h2 will come from "elections" DB table
-    //everything in the table body will come from "candidates" and "budget_allocation" DB tables
+    //everything in h1,h2,h2 will come from "elections" DB table via Redux Store
+    //everything in the table body will come from "candidates" and "budget_allocation" DB tables  via Redux Store
     render = () => {
         let categories = this.props.reduxState.budget.pastBudget;
         let candidates = this.props.reduxState.candidates.allCandidates;
@@ -65,7 +54,6 @@ class AdminElection extends Component {
         date = date.toUTCString()
         date = date.substring(0, 16);
         return (
-
             <div className="standard_container">
                 <div class="left_just">
                     <Button color="primary" height="50px" width="100px"onClick={this.handleBack}>Back to elections</Button>
