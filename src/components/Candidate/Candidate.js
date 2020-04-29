@@ -7,6 +7,7 @@ import { TableCell } from '@material-ui/core';
 
 class Candidate extends Component {
 
+    // Calculates totalDiff for table and returns it
     totalDiff = () => {
         for( let i=0; i<this.props.diff.length; i++){
             if(this.props.candidate.difference === this.props.diff[i].diff){
@@ -16,15 +17,13 @@ class Candidate extends Component {
     }
 
     render() {
-        //turns number into currency
+        // formatter turns VARCHAR into MONEY
         const formatter = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
             minimumFractionDigits: 2
         })
-        
-        console.log('candidate:', this.props.candidate.budget[1]);
-        console.log('item', this.props.item) 
+
         const categories = this.props.reduxState.budget.pastBudget;
         const totalBudget = Number(this.props.candidate.budget[categories[0].id] + this.props.candidate.budget[categories[1].id] + this.props.candidate.budget[categories[2].id] + this.props.candidate.budget[categories[3].id] + this.props.candidate.budget[categories[4].id] + this.props.candidate.budget[categories[5].id] + this.props.candidate.budget[categories[6].id])
             return(
