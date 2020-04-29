@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
-import { Button, Input, InputLabel } from '@material-ui/core';
+import { Button, Input } from '@material-ui/core';
 
 class AdminNewElection extends Component {
 
@@ -207,13 +207,6 @@ class AdminNewElection extends Component {
                     <br /><br />
 
                     <Button variant="outlined" color="primary" onClick={this.addNewElection}>Create Election</Button>
-
-                    {/* <input
-                        className="create-election"
-                        type="submit"
-                        name="submit"
-                        value="Create Election"
-                    /> */}
 
                     <br /><br />
 

@@ -19,8 +19,7 @@ class Budget extends Component {
             firstResponders: '',
             communityDev: '',
             administration: '',
-            education: '',
-            // total: ''
+            education: ''
         },
 
     }

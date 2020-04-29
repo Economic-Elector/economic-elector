@@ -3,7 +3,6 @@
 // If the user doesn’t know which elections they can participate in, they can click the “Which elections can I vote in?” link, and be brought to https://myballotmn.sos.state.mn.us/ to learn about their local elections.
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
-import ElectionList from '../ElectionList/ElectionList';
 import Election from '../Election/Election';
 import axios from 'axios';
 import './Home.css';
