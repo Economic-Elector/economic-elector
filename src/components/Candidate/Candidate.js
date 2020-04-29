@@ -24,6 +24,7 @@ class Candidate extends Component {
             minimumFractionDigits: 2
         })
 
+        // short hand
         const categories = this.props.reduxState.budget.pastBudget;
         const totalBudget = Number(this.props.candidate.budget[categories[0].id] + this.props.candidate.budget[categories[1].id] + this.props.candidate.budget[categories[2].id] + this.props.candidate.budget[categories[3].id] + this.props.candidate.budget[categories[4].id] + this.props.candidate.budget[categories[5].id] + this.props.candidate.budget[categories[6].id])
             return(
