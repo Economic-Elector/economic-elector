@@ -32,7 +32,6 @@ function* currentElection(action) {
     yield put({ type: 'SET_CURRENT', payload: action.payload });
 }
 
-
 function* sendBudgetRequest(action){
     console.log(action.payload);
     try{
@@ -76,7 +75,6 @@ function* userSaga() {
     yield takeLatest('SEND_BUDGET_REQUEST', sendBudgetRequest);
     yield takeLatest('ADD_NEW_CATEGORY', addCategory);
     yield takeLatest('REMOVE_CATEGORY', removeCategory);
-
 }
 
 export default userSaga;
