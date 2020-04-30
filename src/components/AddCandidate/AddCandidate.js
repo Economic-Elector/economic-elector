@@ -40,9 +40,6 @@ class AddCandidate extends Component {
         this.props.history.push('/adminElection')
     }
 
-    handleCancel = () => {
-        console.log("CANCELING");
-    }
 
     //handles the change of name and email inputs
     handleChange = (event, typeOf) => {
@@ -128,7 +125,7 @@ class AddCandidate extends Component {
                 })}
                 <br />
                 <Button variant="outlined" color="primary" onClick={this.handleAdd} >Add Candidate</Button><br></br><br></br>
-                <Button variant="outlined" color="secondary" onClick={this.handleCancel} >Cancel</Button>
+                <Button variant="outlined" color="secondary" onClick={this.handleBack} >Cancel</Button>
 
             </div>
         )

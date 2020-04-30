@@ -217,7 +217,7 @@ class AdminNewElection extends Component {
 
                     <br /><br />
 
-                    <Button variant="outlined"color="secondary" className="center" type="reset"><b>Cancel</b></Button>
+                    <Button variant="outlined"color="secondary" className="center" type="reset" onClick={this.handleBack}><b>Cancel</b></Button>
 
 
                 </form>

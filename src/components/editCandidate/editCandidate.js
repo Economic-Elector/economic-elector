@@ -123,7 +123,7 @@ class EditCandidate extends Component {
                 })}
                 <br />
                 <Button variant="outlined" color="primary" onClick={this.handleAdd} >Save</Button> <br /> <br />
-                <Button variant="outlined" color="secondary" onClick={this.handleCancel} >Cancel</Button>
+                <Button variant="outlined" color="secondary" onClick={this.handleBack} >Cancel</Button>
 
             </div>
         )
