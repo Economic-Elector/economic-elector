@@ -50,6 +50,10 @@ This should open up a window in your default browser that displays the applicati
 
 ## Known Issues
 The add category feature has been implemented on the admin side of the app. The admin can click edit election, and they will see the add category button, as well as buttons for removing categories. Here, they can adda new budget category, and then go and update the candidate's allocation for that category. It will default to $0 for each candidate. The user side is not dynamic yet. It only accounts for the default categories. If the admin deletes a default category, the user side will error out. 
+
+Admin cannot delete an election without first removing the candidates from the election. Once all candidates have been removed, then they can go back to the admin home page and press delete election. 
+
+Nodemailer is working and sending emails when the admin presses the request budget button. But the message in the email may need to be tailored. As of right now the message just says "Hello candidate, please respond with your proposed budget for this election."
 ## Acknowledgement
 
 Thanks to our Casie Siekman and Dev Java at Prime Digital Academy who equipped and helped us to make this application a reality.
