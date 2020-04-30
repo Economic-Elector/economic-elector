@@ -63,6 +63,7 @@ function* deleteElection(action) {
     console.log('in deleteElection saga, ID:', action.payload);
     try {
         yield Axios.delete(`/api/elections/deleteElection/${action.payload.electionId}`);
+        //update the list of elections
         yield put({ type: 'FETCH_ALL_ELECTIONS' })
     } catch (error) {
         console.log(error);
@@ -71,13 +72,13 @@ function* deleteElection(action) {
 
 function* editElection(action){
     try {
-
+        //send the edits to the db
         yield Axios({
             method: 'PUT',
             url: `/api/elections/editElection/${action.payload.id}`,
             data: action.payload
         })
-
+        //set the election after the edits have been made. so the updated info is displayed
         yield put({
             type: 'SET_ELECTION',
             payload: {
@@ -87,6 +88,7 @@ function* editElection(action){
                         date: action.payload.date
                     }
             })
+        //fetch the budget again with the new budget category amounts
         yield put({type: 'FETCH_BUDGET', payload: action.payload.id});
     } catch (error) {
         console.log(error);
