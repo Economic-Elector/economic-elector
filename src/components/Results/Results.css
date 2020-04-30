@@ -10,7 +10,6 @@
     text-align: center;
     align-items: left;
     margin: auto;
-    /* display: block; */
 }
 
 .graph_just{
@@ -19,7 +18,6 @@
     margin: auto;
     margin-top: 10px;
     margin-bottom: 20px;
-    /* display: block; */
     width: 50%;
     background-color: white;
     border: rgb(220,220,220) 1px solid;

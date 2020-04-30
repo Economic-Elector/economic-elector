@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Input, label, Button } from '@material-ui/core';
+import { Input, Button } from '@material-ui/core';
 
 class EditElection extends Component {
     state = {
@@ -17,6 +17,7 @@ class EditElection extends Component {
             amount: ''
         }
     }
+    //on page load dispaly in DOM inputs the past budget from redux
     componentDidMount = () =>{
         this.setState({
             budgetArray: this.props.reduxState.budget.pastBudget
@@ -33,7 +34,6 @@ class EditElection extends Component {
         this.setState({
             [typeOf]: event.target.value
         })
-        //console.log(this.state[typeOf]);
     }
     //handles change of budget Inputs
     handleBudgetChange = (event, id) => {
@@ -51,10 +51,13 @@ class EditElection extends Component {
             budgetArray: newBudgetArray
         })
     }
+    // on Submit button dispatch the change to the election to SAGAs
+    //then bring user to adminElection
     submit = () =>{
         this.props.dispatch({type:'EDIT_ELECTION', payload: this.state});
         this.props.history.push('/adminElection');
     }
+    //then bring user to adminElection
     cancel = () =>{
         this.props.history.push('/adminElection');
     }
@@ -66,7 +69,7 @@ class EditElection extends Component {
             addCategoryToggle: !this.state.addCategoryToggle
         })
     }
-
+    //handles change for inputs to set state for newCategory
     handleNewCategoryChange = (event, typeOf) => {
         this.setState({
             newCategory:{
@@ -77,7 +80,7 @@ class EditElection extends Component {
         console.log(this.state.newCategoryName);
 
     }
-
+    //call to Sagas to add a new category
     addCategory = () => {
         console.log(this.state.newCategoryName);
         this.props.dispatch({
@@ -92,7 +95,7 @@ class EditElection extends Component {
         this.addCategoryToggle();
 
     }
-
+    //call to Sagas to remove category
     removeCategory = (id) =>{
         console.log(id);
         this.props.dispatch({ 
@@ -106,7 +109,6 @@ class EditElection extends Component {
         
     }
     render = () => {
-        let election = this.props.reduxState.elections.election;
         let name = this.props.reduxState.elections.election.name;
         let location = this.props.reduxState.elections.election.location;
         

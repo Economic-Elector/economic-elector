@@ -1,13 +1,8 @@
-//On this page, the admin will enter in all the needed information to create a new election. This will include the election office, 
-//location, and date that it is taking place. Additionally, the admin will be asked to enter in the budget distribution of the prior year. 
-//This is so the users will be able to see what the budget distribution has been in the past, just as a reference. At the bottom of the 
-//form, the admin can click the “Create Election” button to finish creating the election, or press “Cancel” button to cancel the process 
-//and return to the Admin Home (2). Clicking “Create Election” will create the election, and then bring the admin to the 
-//Admin Election View (4) for that specific election.
 import React, { Component } from 'react';
 import '../App/App.css';
 import { connect } from 'react-redux';
-import { Button, Input, InputLabel } from '@material-ui/core';
+import { Button, Input } from '@material-ui/core';
+
 
 class AdminNewElection extends Component {
 
@@ -25,7 +20,7 @@ class AdminNewElection extends Component {
             education: '',
         },
     }
-
+    //set state that matched param from input
     handleNameChange = (event, param) => {
         this.setState({
             newElection: {
@@ -34,7 +29,8 @@ class AdminNewElection extends Component {
             }
         });
     }
-
+    //on button click check that inputs aren't blank and alert if blank, then call to saga to post inputs to Db, 
+    //then clear state and bring user to adminElection page
     addNewElection = event => {
 
         event.preventDefault();
@@ -58,13 +54,10 @@ class AdminNewElection extends Component {
                 type: 'INPUT_NEW_ELECTION',
                 payload: this.state.newElection
             });
-
             this.setState ({
                 newElection: this.state.newElection
             });
-
         }
-
         this.setState ({
             newElection: {
                 office: '',
@@ -79,31 +72,31 @@ class AdminNewElection extends Component {
                 education: ''
             }
         });
-
         this.props.history.push('/adminElection');
     }
+    //on button click bring user back to adminHome
     handleBack = () => {
         this.props.history.push('/adminHome');
     }
 
     //secret button for our presentation
-    secretButton = () =>{
-        this.setState({
-            newElection: {
-                ...this.state.newElection,
-                office: 'Mayor',
-                location: 'Edina',
-                lawEnforcement: 14517004,
-                parksRec: 12158792,
-                publicWorks: 5872135,
-                firstResponders: 5860604,
-                communityDev: 2320363,
-                administration: 4467514,
-                education: 6320363,
-            }
-        })
-        console.log(this.state.newElection);
-    }
+    // secretButton = () =>{
+    //     this.setState({
+    //         newElection: {
+    //             ...this.state.newElection,
+    //             office: 'Mayor',
+    //             location: 'Edina',
+    //             lawEnforcement: 14517004,
+    //             parksRec: 12158792,
+    //             publicWorks: 5872135,
+    //             firstResponders: 5860604,
+    //             communityDev: 2320363,
+    //             administration: 4467514,
+    //             education: 6320363,
+    //         }
+    //     })
+    //     console.log(this.state.newElection);
+    // }
     
 
     render = () => {
@@ -115,8 +108,8 @@ class AdminNewElection extends Component {
                 </div>
                 <form onSubmit={this.addNewElection} className="newElection">
 
-                    <h1 onClick={this.secretButton}>New Election</h1>
-
+                    {/* <h1 onClick={this.secretButton}>New Election</h1> */}
+                    <h1>New Election</h1>
 
                 <label>
                     Election Office:
@@ -208,12 +201,6 @@ class AdminNewElection extends Component {
 
                     <Button variant="outlined" color="primary" onClick={this.addNewElection}>Create Election</Button>
 
-                    {/* <input
-                        className="create-election"
-                        type="submit"
-                        name="submit"
-                        value="Create Election"
-                    /> */}
 
                     <br /><br />
 

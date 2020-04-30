@@ -1,10 +1,3 @@
-// The Add Candidate/Edit Candidate page will consist of a form for the admin to fill out in order to add a candidate to an election. The admin can input the name of the candidate. 
-// Then, they will go through the budget distribution of the candidate, and input the candidate’s proposed budget for each category. 
-// These categories will be hardcoded into the database, meaning that the categories will stay the same for every candidate and every election unless they are changed in the database. 
-// On click of “Submit” button, the candidate will be added to the election, and will be displayed in the candidates table when the admin returns to the Admin Election View (4). 
-// If the admin clicks the “cancel” button, the candidate will not be added and the admin will be returned to the Admin Election View (4). The Edit Candidate view will look the same as the Add Candidate view, 
-// except the inputs will be filled with values for the admin to change. Changing the values and then pressing submit will save the changes made for the candidate.
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './AddCandidate.css';
@@ -17,17 +10,17 @@ class AddCandidate extends Component {
         incumbent: false,
         categories: this.props.reduxState.budget.pastBudget,
         budget: {
-
         }
     }
+    //on page load get the budget
     componentDidMount = () => {
         this.props.dispatch({
             type: 'FETCH_BUDGET',
             payload: this.props.reduxState.elections.election.id
         })
     }
+    //sets state for Add Candidate button and then dispatch to Redux, then move to admin Election page
     handleAdd = () => {
-        console.log("Add candidate", this.state);
         let newCandidate = {
             name: this.state.name,
             email: this.state.email,
@@ -36,10 +29,8 @@ class AddCandidate extends Component {
             election_id: this.props.reduxState.elections.election.id
         }
         this.props.dispatch({ type: 'ADD_CANDIDATE', payload: newCandidate })
-
         this.props.history.push('/adminElection')
     }
-
 
     //handles the change of name and email inputs
     handleChange = (event, typeOf) => {
@@ -48,6 +39,7 @@ class AddCandidate extends Component {
         })
     }
 
+    //Back button
     handleBack = () => {
         this.props.history.push('/adminElection');
     }
@@ -64,26 +56,16 @@ class AddCandidate extends Component {
                 }
             }
         })
-
     }
 
-    //handles change of incumbetn checkbox
+    //handles change of incumbent checkbox
     handleCheck = () => {
-        // console.log(event.target.value);
         this.setState({
             incumbent: !this.state.incumbent
         })
         console.log(this.state.incumbent);
-
     }
 
-    //secret button for presentation
-    secretButton = () =>{
-        this.setState({
-            name: 'John Brown',
-            email: 'jBrown@gmail.com'
-        })
-    }
     render() {
         let name = this.props.reduxState.elections.election.name;
         let location = this.props.reduxState.elections.election.location;
@@ -96,7 +78,7 @@ class AddCandidate extends Component {
                 <h1>{name}</h1>
                 <h3>{location}</h3>
                 <br />
-                <h2 onClick={this.secretButton}>Add Candidate</h2>
+                <h2>Add Candidate</h2>
 
                 <label>Name:
                 <Input value={this.state.name} onChange={(event) => this.handleChange(event, 'name')} />

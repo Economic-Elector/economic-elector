@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
 
-
-
 // makes returning ID from newElection POST avail in reduxStore
 const electionId = (state = {}, action) => {
     switch (action.type) {
@@ -12,6 +10,7 @@ const electionId = (state = {}, action) => {
     }
 };
 
+// sets selected election
 const election = (state = {}, action) => {
     switch (action.type) {
         case 'SET_ELECTION':
@@ -21,6 +20,7 @@ const election = (state = {}, action) => {
     }
 };
 
+// all elections, in an array
 const allElections = (state = [], action) => {
     switch (action.type) {
         case 'SET_ALL_ELECTIONS':

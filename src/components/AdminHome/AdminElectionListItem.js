@@ -26,10 +26,9 @@ class AdminElectionListItem extends Component {
     }
 
     // handleDeleteElection deletes election and associated candidate and budget
-    // call to sagas to make DELETE call to "budget_allocation", "candidates", and "elections" tables
-    // must send with it the election ID, candidate ID
+    // call to sagas to make DELETE call to "budget_allocation", and "elections" tables
+    // must send with it the election ID
     handleDeleteElection = (event, id) => {
-        console.log('in AdminElectionListItem page, handleDeleteElection', id);
         let obj = {
             electionId: id,
         }
@@ -56,9 +55,7 @@ class AdminElectionListItem extends Component {
                     {date}
                     <br />
                 </div>
-
                 <Button color="secondary" onClick={(event) => this.handleDeleteElection(event, election.id)}>Delete Election</Button>
-                {/* <hr className="ruler" /> */}
             </div>
         )
     }
