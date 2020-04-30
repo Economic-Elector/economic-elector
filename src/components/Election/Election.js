@@ -6,10 +6,11 @@ import { withRouter } from 'react-router-dom';
 class Election extends Component {
     state = {}
 
-    handleClick = (a) => {
-        console.log(a.props.election.id)
-        let election_id = a.props.election.id
-        this.a(election_id);
+    // Handles election click, it is passed "this" and then sends the id to handleDispatch
+    handleClick = (election) => {
+        console.log(election.props.election.id)
+        let election_id = election.props.election.id
+        this.handleDispatch(election_id);
     }
 
     componentDidUpdate = (prevProps) => {
@@ -18,7 +19,8 @@ class Election extends Component {
         }
     }
 
-    a = (id) => {
+    // Dispatches and fetches "budget", sets id in state, sets the current election
+    handleDispatch = (id) => {
 
         this.props.dispatch({
             type: 'FETCH_BUDGET',
