@@ -10,15 +10,7 @@ const pastBudget = (state = [], action) => {
     }
 };
 
-// sets the current election
-const currentElection = (state = {}, action) => {
-    switch (action.type) {
-        case 'SET_CURRENT':
-            return action.payload;
-        default:
-            return state;
-    }
-};
+
 
 const results = (state = {}, action) => {
     switch (action.type) {
@@ -41,7 +33,6 @@ const userBudget = (state = {}, action) => {
 
 export default combineReducers({
     pastBudget,
-    currentElection,
     results,
     userBudget,
 });

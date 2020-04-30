@@ -67,7 +67,9 @@ function* fetchCandidates(action) {
 function* deleteCandidate(action) {
     console.log('in deleteCandidate saga, ID:', action.payload);
     try {
+        //delete the candidate from the db
         yield axios.delete(`/api/candidates/deleteCandidate/${action.payload.candidate}`);
+        //update the array of candidates after the delete by sending another 'FETCH CANDIDATES' dispatch
         yield put({ type: 'FETCH_CANDIDATES', payload: action.payload.electionId })
     } catch (error) {
         console.log(error);
@@ -77,7 +79,9 @@ function* deleteCandidate(action) {
 function* editCandidate(action) {
     console.log("in editCandidate, here's your payload ", action.payload);
     try {
+        //send the edits for a candidate to the db
         yield axios.put(`/api/candidates/editCandidate/${action.payload.id}`, action.payload);
+        //update the array of candidates after the edit by sending another 'FETCH CANDIDATES' dispatch
         yield put({ type: 'FETCH_CANDIDATES', payload: action.payload.election_id })
     } catch (error) {
         console.log(error);
