@@ -32,10 +32,6 @@ function* userBudget(action) {
     put({ type: 'SET_USER_BUDGET', payload: action.payload })
 }
 
-function* currentElection(action) {
-    yield put({ type: 'SET_CURRENT', payload: action.payload });
-}
-
 //this function sends the candidate and the message to the db to get emailed off
 //the post goes to email.router.js
 function* sendBudgetRequest(action){
@@ -81,7 +77,6 @@ function* removeCategory(action){
 
 function* userSaga() {
     yield takeLatest('FETCH_BUDGET', fetchBudget);
-    yield takeLatest('CURRENT_ELECTION', currentElection);
     yield takeLatest('FIND_CANDIDATE', findResults);
     yield takeLatest('SET_USER_BUDGET', userBudget);
     yield takeLatest('SEND_BUDGET_REQUEST', sendBudgetRequest);
