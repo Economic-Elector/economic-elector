@@ -17,6 +17,7 @@ class EditCandidate extends Component {
 
         }
     }
+    // on page load loop through candidates from redux and set state with name, eamil, budget
     findCandidate = () =>{
         let candidates = this.props.reduxState.candidates.allCandidates
         for(let i = 0; i<candidates.length; i++){
@@ -31,8 +32,10 @@ class EditCandidate extends Component {
             }
         }
     }
+    //on Save button click set newCandidate to all items of local state
+    //then dispatch to SAGAs with that info
+    //then bring back to adminElection page
     handleAdd = () => {
-        console.log("Edit candidate", this.state);
         let newCandidate = {
             name: this.state.name,
             email: this.state.email,
@@ -49,8 +52,6 @@ class EditCandidate extends Component {
 
     //handles the change of name and email inputs
     handleChange = (event, typeOf) => {
-        console.log(event.target.value);
-        
         this.setState({
             [typeOf]: event.target.value
         })
@@ -69,7 +70,7 @@ class EditCandidate extends Component {
         console.log(this.state);
 
     }
-
+    //check box on DOM for incumbent 
     handleCheck = () => {
         this.setState({
             incumbent: !this.state.incumbent
@@ -77,7 +78,7 @@ class EditCandidate extends Component {
         console.log(this.state.incumbent);
 
     }
-
+    //on button click bring back to adminElection page
     handleBack = () => {
         this.props.history.push('/adminElection');
     }
